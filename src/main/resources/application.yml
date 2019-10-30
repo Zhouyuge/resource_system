@@ -1,0 +1,40 @@
+server:
+  port: 8080   #  ���������˿ں�
+    #ssl:
+    #key-store: .keystore
+    #key-password: Kirito511
+  # key-store-type: JKS
+  # key-alias: tomcat
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #  配置当前要使用的数据源的操作类型
+    driver-class-name: com.mysql.jdbc.Driver    #  配置mysql的驱动程序类
+    url: jdbc:mysql://localhost:3306/db_shop?useUnicode=true&characterEncoding=UTF-8&useSSL=false         #  数据库连接地址
+    username: root                                 #  数据库用户名
+    password: 0323                                 #  数据库密码
+    tomcat:
+      connection-properties:  druid.stat.mergeSql=true
+    dbcp2:                                        #  进行数据库连接池的配置
+      min-idle: 5                                 #  数据库连接池的最小维持连接数
+      initial-size: 5                             #  初始化提供的连接数
+      max-total: 20                                #  最大连接数
+      max-wait-millis: 200                        #  等待连接获取的最大超时时间
+
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+    resources:
+      static-locations:
+        - classpath:/
+        - classpath:src/main/resources/static
+      add-mappings: true
+    mvc:
+      static-path-pattern: /**
+      favicon:
+        enabled: false
