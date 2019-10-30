@@ -5,6 +5,7 @@ server:
     #key-password: Kirito511
   # key-store-type: JKS
   # key-alias: tomcat
+debug: true
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  #  配置当前要使用的数据源的操作类型
@@ -38,3 +39,10 @@ spring:
       static-path-pattern: /**
       favicon:
         enabled: false
+  devtools::
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+
+  freemarker:
+    cache: false #页面不加载缓存，修改及时生效
