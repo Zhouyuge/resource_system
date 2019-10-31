@@ -6,3 +6,13 @@ function getQueryString(name){
     }
     return '';
 }
+
+function co(obj){
+    var p = obj.parentNode;
+    if(p.classList.contains("layui-nav-itemed")){
+        p.classList.remove("layui-nav-itemed");     //删除展开
+    }else{
+        p.classList.add("layui-nav-itemed");                //添加展开
+
+    }
+}
