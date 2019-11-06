@@ -1,4 +1,4 @@
-package com.bishe.mianshi;
+package com.bishe.main;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -20,11 +20,15 @@ import java.io.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@MapperScan("com.bishe.mianshi.dao")
+@MapperScan("com.bishe.main.dao")
 public class Niuke_Jsoup {
 
     private static int num = 1;
 
+    /**
+     * 爬取java面经
+     * @throws IOException
+     */
     @Test
     public void test() throws IOException {
         String url = "https://www.nowcoder.com/tutorial/94/4206176d637541fa92c784a4f547e979";
@@ -81,5 +85,21 @@ public class Niuke_Jsoup {
                 }
             }
         }
+    }
+
+    /**
+     * 爬取精华专题
+      */
+    @Test
+    public void testEtile() throws IOException{
+        String url = "https://www.nowcoder.com/activity/topics";
+        Document doc = Jsoup.connect(url).maxBodySize(0).get();   //建立连接
+
+        Elements elements = doc.select("ul[class='topic-list clearfix']");  //获取题目列表
+        Elements lis = elements.select("li");
+        for (Element li : lis) {
+            System.out.println(li.select("div[class='topic-info']").select("h3").text());
+        }
+
     }
 }

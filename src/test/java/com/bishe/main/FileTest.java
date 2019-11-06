@@ -1,6 +1,6 @@
-package com.bishe.mianshi;
+package com.bishe.main;
 
-import com.bishe.mianshi.util.FileUtils;
+import com.bishe.main.util.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -24,6 +24,7 @@ $(function(){
                     $(values).each(function () {
                         var num = this.split('.');
                         html += '<dd><a href = "test?id=' + num[0] + '">' + this + '</a></dd>';
+                        
                     });
                     html += '</dl></li>';
                 });

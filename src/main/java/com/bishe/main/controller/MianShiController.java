@@ -1,16 +1,14 @@
-package com.bishe.mianshi.controller;
+package com.bishe.main.controller;
 
-import com.bishe.mianshi.util.FileUtils;
+import com.bishe.main.util.FileUtils;
 import com.github.pagehelper.StringUtil;
 import io.swagger.annotations.*;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSourceExtensionsKt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -96,9 +94,9 @@ public class MianShiController {
                 for (File f1 : f.listFiles()) {
                     title.add(f1.getName().split("\\.txt")[0]);
                 }
-                Collections.sort(title, (t1, t2) -> {              //lambda表达式定义Comparator内部类排序规则
+                Collections.sort (title, (t1, t2) -> {              //lambda表达式定义Comparator内部类排序规则
                     //取出文件名中的排序数字
-                    int diff = Integer.parseInt(t1.split("\\.")[0]) - Integer.parseInt(t2.split("\\.")[0]);
+                    int diff = Integer.parseInt (t1.split ("\\.")[0]) - Integer.parseInt (t2.split("\\.")[0]);
                     if (diff > 0) {
                         return 1;
                     } else if (diff < 0) {
