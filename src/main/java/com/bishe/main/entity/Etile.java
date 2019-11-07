@@ -5,13 +5,11 @@ public class Etile {
 
     private String etileName;
 
-    private String etitleQuestion;
-
     private String etilePoint;
 
     private String etileType;
 
-    private String etitleAnswer;
+    private Integer etileNo;
 
     public Integer getEtileId() {
         return etileId;
@@ -27,14 +25,6 @@ public class Etile {
 
     public void setEtileName(String etileName) {
         this.etileName = etileName == null ? null : etileName.trim();
-    }
-
-    public String getEtitleQuestion() {
-        return etitleQuestion;
-    }
-
-    public void setEtitleQuestion(String etitleQuestion) {
-        this.etitleQuestion = etitleQuestion == null ? null : etitleQuestion.trim();
     }
 
     public String getEtilePoint() {
@@ -53,11 +43,11 @@ public class Etile {
         this.etileType = etileType == null ? null : etileType.trim();
     }
 
-    public String getEtitleAnswer() {
-        return etitleAnswer;
+    public Integer getEtileNo() {
+        return etileNo;
     }
 
-    public void setEtitleAnswer(String etitleAnswer) {
-        this.etitleAnswer = etitleAnswer == null ? null : etitleAnswer.trim();
+    public void setEtileNo(Integer etileNo) {
+        this.etileNo = etileNo;
     }
 }

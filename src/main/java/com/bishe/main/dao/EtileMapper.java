@@ -2,24 +2,25 @@ package com.bishe.main.dao;
 
 import com.bishe.main.entity.Etile;
 import com.bishe.main.entity.EtileExample;
+import com.bishe.main.entity.EtileWithBLOBs;
 import java.util.List;
 
 public interface EtileMapper {
     int deleteByPrimaryKey(Integer etileId);
 
-    int insert(Etile record);
+    int insert(EtileWithBLOBs record);
 
-    int insertSelective(Etile record);
+    int insertSelective(EtileWithBLOBs record);
 
-    List<Etile> selectByExampleWithBLOBs(EtileExample example);
+    List<EtileWithBLOBs> selectByExampleWithBLOBs(EtileExample example);
 
     List<Etile> selectByExample(EtileExample example);
 
-    Etile selectByPrimaryKey(Integer etileId);
+    EtileWithBLOBs selectByPrimaryKey(Integer etileId);
 
-    int updateByPrimaryKeySelective(Etile record);
+    int updateByPrimaryKeySelective(EtileWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(Etile record);
+    int updateByPrimaryKeyWithBLOBs(EtileWithBLOBs record);
 
     int updateByPrimaryKey(Etile record);
 }

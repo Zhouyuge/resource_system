@@ -234,76 +234,6 @@ public class EtileExample {
             return (Criteria) this;
         }
 
-        public Criteria andEtitleQuestionIsNull() {
-            addCriterion("etitle_question is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionIsNotNull() {
-            addCriterion("etitle_question is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionEqualTo(String value) {
-            addCriterion("etitle_question =", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionNotEqualTo(String value) {
-            addCriterion("etitle_question <>", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionGreaterThan(String value) {
-            addCriterion("etitle_question >", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionGreaterThanOrEqualTo(String value) {
-            addCriterion("etitle_question >=", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionLessThan(String value) {
-            addCriterion("etitle_question <", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionLessThanOrEqualTo(String value) {
-            addCriterion("etitle_question <=", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionLike(String value) {
-            addCriterion("etitle_question like", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionNotLike(String value) {
-            addCriterion("etitle_question not like", value, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionIn(List<String> values) {
-            addCriterion("etitle_question in", values, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionNotIn(List<String> values) {
-            addCriterion("etitle_question not in", values, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionBetween(String value1, String value2) {
-            addCriterion("etitle_question between", value1, value2, "etitleQuestion");
-            return (Criteria) this;
-        }
-
-        public Criteria andEtitleQuestionNotBetween(String value1, String value2) {
-            addCriterion("etitle_question not between", value1, value2, "etitleQuestion");
-            return (Criteria) this;
-        }
-
         public Criteria andEtilePointIsNull() {
             addCriterion("etile_point is null");
             return (Criteria) this;
@@ -441,6 +371,66 @@ public class EtileExample {
 
         public Criteria andEtileTypeNotBetween(String value1, String value2) {
             addCriterion("etile_type not between", value1, value2, "etileType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoIsNull() {
+            addCriterion("etile_no is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoIsNotNull() {
+            addCriterion("etile_no is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoEqualTo(Integer value) {
+            addCriterion("etile_no =", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoNotEqualTo(Integer value) {
+            addCriterion("etile_no <>", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoGreaterThan(Integer value) {
+            addCriterion("etile_no >", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("etile_no >=", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoLessThan(Integer value) {
+            addCriterion("etile_no <", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoLessThanOrEqualTo(Integer value) {
+            addCriterion("etile_no <=", value, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoIn(List<Integer> values) {
+            addCriterion("etile_no in", values, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoNotIn(List<Integer> values) {
+            addCriterion("etile_no not in", values, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoBetween(Integer value1, Integer value2) {
+            addCriterion("etile_no between", value1, value2, "etileNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("etile_no not between", value1, value2, "etileNo");
             return (Criteria) this;
         }
     }

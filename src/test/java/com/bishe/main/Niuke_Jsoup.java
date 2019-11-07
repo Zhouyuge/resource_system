@@ -1,5 +1,10 @@
 package com.bishe.main;
 
+import com.bishe.main.dao.EtileCategoryMapper;
+import com.bishe.main.dao.EtileMapper;
+import com.bishe.main.entity.Etile;
+import com.bishe.main.entity.EtileCategory;
+import com.bishe.main.entity.EtileWithBLOBs;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,10 +13,15 @@ import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.*;
 
 /**
  * @author Kirito
@@ -22,6 +32,11 @@ import java.io.*;
 @SpringBootTest
 @MapperScan("com.bishe.main.dao")
 public class Niuke_Jsoup {
+
+    @Autowired
+    private EtileCategoryMapper etileCategoryMapper;
+    @Autowired
+    private EtileMapper etileMapper;
 
     private static int num = 1;
 
@@ -88,7 +103,7 @@ public class Niuke_Jsoup {
     }
 
     /**
-     * 爬取精华专题
+     * 爬取精华专题分类
       */
     @Test
     public void testEtile() throws IOException{
@@ -98,8 +113,122 @@ public class Niuke_Jsoup {
         Elements elements = doc.select("ul[class='topic-list clearfix']");  //获取题目列表
         Elements lis = elements.select("li");
         for (Element li : lis) {
-            System.out.println(li.select("div[class='topic-info']").select("h3").text());
+                //EtileCategory ec = new EtileCategory();
+                String etileCategoryName = li.select("div[class='topic-info']").select("h3").text();
+                String num = li.select("span[class='font-green']").text();
+                String imgUrl = li.select("img").attr("src");
+                //downImages("D://牛客//img", imgUrl);
+                System.out.println(num);
+                //etileCategoryMapper.insert(ec);
         }
-
     }
+
+    /**
+     * 将图片写入到特定地址
+     * @param filePath
+     * @param imgUrl
+     */
+    public static void downImages(String filePath, String imgUrl) {
+        File dir = new File(filePath);
+        if(!dir.exists()) {
+            dir.mkdirs();
+        }
+        // 截取图片文件名
+        String fileName = imgUrl.substring(imgUrl.lastIndexOf('/') + 1, imgUrl.length());
+
+        try {
+            //文件名里面可能有中文或者空格，所以这里需要处理。但空格又会被URLEncoder转义为加号
+            String urlTail = URLEncoder.encode(fileName, "UTF-8");
+            //因此要将加号转化为UTF-8的格式%20
+            imgUrl = imgUrl.substring(0, imgUrl.lastIndexOf('/') + 1) + urlTail.replaceAll("\\+", "\\%20");
+        }catch(UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        //写出的路径
+        File file = new File(filePath + File.separator + fileName);
+
+        try {
+            //获取图片URL
+            URL url = new URL(imgUrl);
+            //获得连接
+            URLConnection connection = url.openConnection();
+            //设置10秒的响应时间
+            connection.setConnectTimeout(10 * 1000);
+            //获得输入流
+            InputStream in = connection.getInputStream();
+            //获得输出流
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+            //构建和缓冲区
+            byte[] buf = new byte[1024];
+            int size;
+            //写入到文件
+            while(-1 != (size = in.read(buf))) {
+                out.write(buf, 0, size);
+            }
+            out.close();
+            in.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 爬取精华专题题目
+     */
+    @Test
+    public void testEtiles() throws Exception{
+        Map<String, List<String>> map = getAAndQ();
+        String url = "https://www.nowcoder.com/ta/nine-chapter";
+        Document doc = null;
+        int num = 0;
+        while (num < 100) {
+            doc = Jsoup.connect(url).maxBodySize(0).get();
+            Elements trs = doc.select("tr");
+            int i = 0;
+            for (Element tr : trs) {
+                if (num < 100 && i != 0) {
+                    EtileWithBLOBs ewb = new EtileWithBLOBs();
+                    ewb.setEtileNo(12);
+
+                    String point = tr.select("td[class='offer-pot txt-left']").toString();
+                    String title = tr.select("td[class='txt-left']").select("a").text();
+
+                    ewb.setEtileName(title);
+                    ewb.setEtilePoint(point);
+                    ewb.setEtileType("问答题");
+                    ewb.setEtitleAnswer(map.get("ans").get(num));
+                    ewb.setEtitleQuestion(map.get("que").get(num));
+
+                    etileMapper.insertSelective(ewb);
+                    num ++;
+                }
+                i ++;
+            }
+            url = doc.select("li[class='txt-pager js-next-pager']").select("a").attr("abs:href");
+            System.out.println("------->" + url);
+        }
+    }
+
+    public Map<String, List<String>> getAAndQ() throws Exception {
+        Map<String, List<String>> qAndA = new HashMap<>();
+        List<String> answer = new ArrayList<>();
+        List<String> question = new ArrayList<>();
+        String url = "https://www.nowcoder.com/ta/nine-chapter/review?tpId=1&tqId=10782&query=&asc=true&order=&page=1";
+        Document doc = null;
+        int num = 0;
+        while (num < 100) {
+            doc = Jsoup.connect(url).maxBodySize(0).get();
+            String que = doc.select("div[class='final-question']").toString();
+            question.add(que);
+            String anw = doc.select("div[class='design-answer-box']").toString();
+            //System.out.println(anw);
+            answer.add(anw);
+            url = doc.select("div[class='pre-next-box']").select("a[class='next-question']").attr("abs:href");
+            num ++;
+        }
+        qAndA.put("ans", answer);
+        qAndA.put("que", question);
+        return qAndA;
+    }
+
 }
