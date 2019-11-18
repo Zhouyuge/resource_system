@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.BlogCenterMapper">
+    <resultMap id="BaseResultMap" type="com.bishe.main.entity.BlogCenter">
+        <id column="blog_center_id" jdbcType="INTEGER" property="blogCenterId"/>
+        <result column="blog_center_name" jdbcType="VARCHAR" property="blogCenterName"/>
+        <result column="blog_center_author" jdbcType="VARCHAR" property="blogCenterAuthor"/>
+        <result column="blog_center_pic" jdbcType="VARCHAR" property="blogCenterPic"/>
+        <result column="blog_center_agree" jdbcType="INTEGER" property="blogCenterAgree"/>
+        <result column="blog_center_collect" jdbcType="INTEGER" property="blogCenterCollect"/>
+        <result column="blog_center_edit_time" jdbcType="TIMESTAMP" property="blogCenterEditTime"/>
+        <result column="blog_center_vlog" jdbcType="VARCHAR" property="blogCenterVlog"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bishe.main.entity.BlogCenter">
+        <result column="blog_center_content" jdbcType="LONGVARCHAR" property="blogCenterContent"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        blog_center_id, blog_center_name, blog_center_author, blog_center_pic, blog_center_agree,
+        blog_center_collect, blog_center_edit_time, blog_center_vlog
+    </sql>
+    <sql id="Blob_Column_List">
+        blog_center_content
+    </sql>
+    <select id="selectByExampleWithBLOBs" parameterType="com.bishe.main.entity.BlogCenterExample"
+            resultMap="ResultMapWithBLOBs">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from tb_blog_center
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" parameterType="com.bishe.main.entity.BlogCenterExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from tb_blog_center
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from tb_blog_center
+        where blog_center_id = #{blogCenterId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from tb_blog_center
+        where blog_center_id = #{blogCenterId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.bishe.main.entity.BlogCenter">
+        insert into tb_blog_center (blog_center_id, blog_center_name, blog_center_author,
+        blog_center_pic, blog_center_agree, blog_center_collect,
+        blog_center_edit_time, blog_center_vlog, blog_center_content
+        )
+        values (#{blogCenterId,jdbcType=INTEGER}, #{blogCenterName,jdbcType=VARCHAR},
+        #{blogCenterAuthor,jdbcType=VARCHAR},
+        #{blogCenterPic,jdbcType=VARCHAR}, #{blogCenterAgree,jdbcType=INTEGER}, #{blogCenterCollect,jdbcType=INTEGER},
+        #{blogCenterEditTime,jdbcType=TIMESTAMP}, #{blogCenterVlog,jdbcType=VARCHAR},
+        #{blogCenterContent,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.bishe.main.entity.BlogCenter">
+        insert into tb_blog_center
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="blogCenterId != null">
+                blog_center_id,
+            </if>
+            <if test="blogCenterName != null">
+                blog_center_name,
+            </if>
+            <if test="blogCenterAuthor != null">
+                blog_center_author,
+            </if>
+            <if test="blogCenterPic != null">
+                blog_center_pic,
+            </if>
+            <if test="blogCenterAgree != null">
+                blog_center_agree,
+            </if>
+            <if test="blogCenterCollect != null">
+                blog_center_collect,
+            </if>
+            <if test="blogCenterEditTime != null">
+                blog_center_edit_time,
+            </if>
+            <if test="blogCenterVlog != null">
+                blog_center_vlog,
+            </if>
+            <if test="blogCenterContent != null">
+                blog_center_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="blogCenterId != null">
+                #{blogCenterId,jdbcType=INTEGER},
+            </if>
+            <if test="blogCenterName != null">
+                #{blogCenterName,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterAuthor != null">
+                #{blogCenterAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterPic != null">
+                #{blogCenterPic,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterAgree != null">
+                #{blogCenterAgree,jdbcType=INTEGER},
+            </if>
+            <if test="blogCenterCollect != null">
+                #{blogCenterCollect,jdbcType=INTEGER},
+            </if>
+            <if test="blogCenterEditTime != null">
+                #{blogCenterEditTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="blogCenterVlog != null">
+                #{blogCenterVlog,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterContent != null">
+                #{blogCenterContent,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.BlogCenter">
+        update tb_blog_center
+        <set>
+            <if test="blogCenterName != null">
+                blog_center_name = #{blogCenterName,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterAuthor != null">
+                blog_center_author = #{blogCenterAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterPic != null">
+                blog_center_pic = #{blogCenterPic,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterAgree != null">
+                blog_center_agree = #{blogCenterAgree,jdbcType=INTEGER},
+            </if>
+            <if test="blogCenterCollect != null">
+                blog_center_collect = #{blogCenterCollect,jdbcType=INTEGER},
+            </if>
+            <if test="blogCenterEditTime != null">
+                blog_center_edit_time = #{blogCenterEditTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="blogCenterVlog != null">
+                blog_center_vlog = #{blogCenterVlog,jdbcType=VARCHAR},
+            </if>
+            <if test="blogCenterContent != null">
+                blog_center_content = #{blogCenterContent,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where blog_center_id = #{blogCenterId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bishe.main.entity.BlogCenter">
+        update tb_blog_center
+        set blog_center_name = #{blogCenterName,jdbcType=VARCHAR},
+        blog_center_author = #{blogCenterAuthor,jdbcType=VARCHAR},
+        blog_center_pic = #{blogCenterPic,jdbcType=VARCHAR},
+        blog_center_agree = #{blogCenterAgree,jdbcType=INTEGER},
+        blog_center_collect = #{blogCenterCollect,jdbcType=INTEGER},
+        blog_center_edit_time = #{blogCenterEditTime,jdbcType=TIMESTAMP},
+        blog_center_vlog = #{blogCenterVlog,jdbcType=VARCHAR},
+        blog_center_content = #{blogCenterContent,jdbcType=LONGVARCHAR}
+        where blog_center_id = #{blogCenterId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.BlogCenter">
+        update tb_blog_center
+        set blog_center_name = #{blogCenterName,jdbcType=VARCHAR},
+        blog_center_author = #{blogCenterAuthor,jdbcType=VARCHAR},
+        blog_center_pic = #{blogCenterPic,jdbcType=VARCHAR},
+        blog_center_agree = #{blogCenterAgree,jdbcType=INTEGER},
+        blog_center_collect = #{blogCenterCollect,jdbcType=INTEGER},
+        blog_center_edit_time = #{blogCenterEditTime,jdbcType=TIMESTAMP},
+        blog_center_vlog = #{blogCenterVlog,jdbcType=VARCHAR}
+        where blog_center_id = #{blogCenterId,jdbcType=INTEGER}
+    </update>
+</mapper>

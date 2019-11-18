@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.CoinWareMapper">
+    <resultMap id="BaseResultMap" type="com.bishe.main.entity.CoinWare">
+        <id column="coin_ware_id" jdbcType="INTEGER" property="coinWareId"/>
+        <result column="coin_ware_name" jdbcType="VARCHAR" property="coinWareName"/>
+        <result column="coin_ware_price" jdbcType="INTEGER" property="coinWarePrice"/>
+        <result column="coin_ware_num" jdbcType="INTEGER" property="coinWareNum"/>
+        <result column="coin_ware_type" jdbcType="INTEGER" property="coinWareType"/>
+        <result column="coin_ware_big_pic" jdbcType="VARCHAR" property="coinWareBigPic"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        coin_ware_id, coin_ware_name, coin_ware_price, coin_ware_num, coin_ware_type, coin_ware_big_pic
+    </sql>
+    <select id="selectByExample" parameterType="com.bishe.main.entity.CoinWareExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from tb_coin_ware
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_coin_ware
+        where coin_ware_id = #{coinWareId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from tb_coin_ware
+        where coin_ware_id = #{coinWareId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.bishe.main.entity.CoinWare">
+        insert into tb_coin_ware (coin_ware_id, coin_ware_name, coin_ware_price,
+        coin_ware_num, coin_ware_type, coin_ware_big_pic
+        )
+        values (#{coinWareId,jdbcType=INTEGER}, #{coinWareName,jdbcType=VARCHAR}, #{coinWarePrice,jdbcType=INTEGER},
+        #{coinWareNum,jdbcType=INTEGER}, #{coinWareType,jdbcType=INTEGER}, #{coinWareBigPic,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.bishe.main.entity.CoinWare">
+        insert into tb_coin_ware
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="coinWareId != null">
+                coin_ware_id,
+            </if>
+            <if test="coinWareName != null">
+                coin_ware_name,
+            </if>
+            <if test="coinWarePrice != null">
+                coin_ware_price,
+            </if>
+            <if test="coinWareNum != null">
+                coin_ware_num,
+            </if>
+            <if test="coinWareType != null">
+                coin_ware_type,
+            </if>
+            <if test="coinWareBigPic != null">
+                coin_ware_big_pic,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="coinWareId != null">
+                #{coinWareId,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareName != null">
+                #{coinWareName,jdbcType=VARCHAR},
+            </if>
+            <if test="coinWarePrice != null">
+                #{coinWarePrice,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareNum != null">
+                #{coinWareNum,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareType != null">
+                #{coinWareType,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareBigPic != null">
+                #{coinWareBigPic,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.CoinWare">
+        update tb_coin_ware
+        <set>
+            <if test="coinWareName != null">
+                coin_ware_name = #{coinWareName,jdbcType=VARCHAR},
+            </if>
+            <if test="coinWarePrice != null">
+                coin_ware_price = #{coinWarePrice,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareNum != null">
+                coin_ware_num = #{coinWareNum,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareType != null">
+                coin_ware_type = #{coinWareType,jdbcType=INTEGER},
+            </if>
+            <if test="coinWareBigPic != null">
+                coin_ware_big_pic = #{coinWareBigPic,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where coin_ware_id = #{coinWareId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.CoinWare">
+        update tb_coin_ware
+        set coin_ware_name = #{coinWareName,jdbcType=VARCHAR},
+        coin_ware_price = #{coinWarePrice,jdbcType=INTEGER},
+        coin_ware_num = #{coinWareNum,jdbcType=INTEGER},
+        coin_ware_type = #{coinWareType,jdbcType=INTEGER},
+        coin_ware_big_pic = #{coinWareBigPic,jdbcType=VARCHAR}
+        where coin_ware_id = #{coinWareId,jdbcType=INTEGER}
+    </update>
+</mapper>

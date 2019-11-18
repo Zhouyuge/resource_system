@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.STypeMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.SType">
+    <id column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="type_f_id" jdbcType="INTEGER" property="typeFId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="type_count" jdbcType="VARCHAR" property="typeCount" />
+    <result column="type_create_time" jdbcType="TIMESTAMP" property="typeCreateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    type_id, type_f_id, type_name, type_count, type_create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.bishe.main.entity.STypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_s_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_s_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_s_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bishe.main.entity.SType">
+    insert into tb_s_type (type_id, type_f_id, type_name, 
+      type_count, type_create_time)
+    values (#{typeId,jdbcType=INTEGER}, #{typeFId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, 
+      #{typeCount,jdbcType=VARCHAR}, #{typeCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bishe.main.entity.SType">
+    insert into tb_s_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeFId != null">
+        type_f_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="typeCount != null">
+        type_count,
+      </if>
+      <if test="typeCreateTime != null">
+        type_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeFId != null">
+        #{typeFId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCount != null">
+        #{typeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCreateTime != null">
+        #{typeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.SType">
+    update tb_s_type
+    <set>
+      <if test="typeFId != null">
+        type_f_id = #{typeFId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCount != null">
+        type_count = #{typeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCreateTime != null">
+        type_create_time = #{typeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.SType">
+    update tb_s_type
+    set type_f_id = #{typeFId,jdbcType=INTEGER},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      type_count = #{typeCount,jdbcType=VARCHAR},
+      type_create_time = #{typeCreateTime,jdbcType=TIMESTAMP}
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+</mapper>
