@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
-    <link href="../layui/css/layui.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="../mianshi/icon.png"/>
+    <title>精华专题</title>
+    <link href="../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../mianshi/icon.png"/>
 </head>
-<body>
-<ul class="layui-nav" lay-filter="">
-    <li class="layui-nav-item"><img src="../mianshi/icon.png"/></li>
+<body class="layui-bg-gray">
+<ul class="layui-nav">
+    <li class="layui-nav-item"><img src="../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
-    <li class="layui-nav-item"><a href="/bs/index"></a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="">题库</a>
         <dl class="layui-nav-child">
             <dd><a href="">公司真题</a></dd>
@@ -56,42 +56,38 @@
             <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
         </dl>
     </li>
-    <li style="position: absolute; left:70%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+    <li style="position: absolute; left: 70%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
         <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
-    </li>
-    <li style="position: absolute; left: 86%" class="layui-nav-item">
-        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
-    </li>
-    <li style="position: absolute; left: 90%" class="layui-nav-item">
-        <img class="layui-circle" style="width: 35px; height: 35px" src="http://localhost:10086/img/h_img/mine.png" />
-    </li>
-
     </li>
 </ul>
 
-<div class="layui-carousel" id="test1">
-    <div carousel-item>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index1.jpg"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index2.png"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index3.jpg"/></div>
-    </div>
+<img src="http://localhost:10086/img/img/t1.jpg"
+     style="position: absolute; left: 7%; top: 80px; width: 1200px; height: 100px">
+<div style="margin-right: 10px;position: absolute; left: 7%; top: 200px; width: 1250px" class="layui-row layui-bg-cyan">
+    <ul class="layui-col-md2 layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">全部</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">考前突击</a>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:;">公司专题</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">限时活动</a></li>
+    </ul>
+    <div class="layui-col-md9" id="type"></div>
+
+</div>
+<div style="margin-right: 10px;position: absolute; left: 7%; top: 830px; width: 1250px; border: 1px #afd9ee"
+     id="f_type">
+
 </div>
 
-<script type="text/javascript" src="../mianshi/jquery.min.js"></script>
-<script type="text/javascript" src="../mianshi/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../layui/layui.js"></script>
-<script type="text/javascript" src="../layui/layui.all.js"></script>
-<script>
-    layui.use('carousel', function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            , width: '100%' //设置容器宽度
-            , arrow: 'hover' //悬停显示箭头
-            // ,anim: 'updown' //切换动画方式
-        });
-    });
-</script>
+
+<script type="text/javascript" src="../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../mianshi/js/topics.js"></script>
 </body>
 </html>

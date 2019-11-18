@@ -16,19 +16,19 @@ import java.util.List;
  * @Date 2019/6/1710:19
  */
 public class MybatisGenerator {
-    public static void main(String[] args) throws Exception{
-        String today = "2019-11-07 10:23:33";
+    public static void main(String[] args) throws Exception {
+        String today = "2019-11-18 10:23:33";
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = simpleDateFormat.parse(today);
         Date d = new Date();
 
-        if(d.getTime() > date.getTime() + 1000 * 60 * 60 * 24){
+        if (d.getTime() > date.getTime() + 1000 * 60 * 60 * 24) {
             System.err.println("-----------未运行成功---------");
             System.err.println("本程序具有破坏作用，只能运行一次，若要运行，请修改当前日期!!");
             return;
         }
-        if(false){
+        if (false) {
             System.err.println("运行失败！");
             return;
         }

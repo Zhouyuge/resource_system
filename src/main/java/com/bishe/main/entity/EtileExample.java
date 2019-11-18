@@ -433,6 +433,66 @@ public class EtileExample {
             addCriterion("etile_no not between", value1, value2, "etileNo");
             return (Criteria) this;
         }
+
+        public Criteria andEtileNoAliIsNull() {
+            addCriterion("etile_no_ali is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliIsNotNull() {
+            addCriterion("etile_no_ali is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliEqualTo(Integer value) {
+            addCriterion("etile_no_ali =", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliNotEqualTo(Integer value) {
+            addCriterion("etile_no_ali <>", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliGreaterThan(Integer value) {
+            addCriterion("etile_no_ali >", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliGreaterThanOrEqualTo(Integer value) {
+            addCriterion("etile_no_ali >=", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliLessThan(Integer value) {
+            addCriterion("etile_no_ali <", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliLessThanOrEqualTo(Integer value) {
+            addCriterion("etile_no_ali <=", value, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliIn(List<Integer> values) {
+            addCriterion("etile_no_ali in", values, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliNotIn(List<Integer> values) {
+            addCriterion("etile_no_ali not in", values, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliBetween(Integer value1, Integer value2) {
+            addCriterion("etile_no_ali between", value1, value2, "etileNoAli");
+            return (Criteria) this;
+        }
+
+        public Criteria andEtileNoAliNotBetween(Integer value1, Integer value2) {
+            addCriterion("etile_no_ali not between", value1, value2, "etileNoAli");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

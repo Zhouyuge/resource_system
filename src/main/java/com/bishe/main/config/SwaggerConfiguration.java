@@ -20,16 +20,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfiguration {
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bishe.mainshi"))
+                .apis(RequestHandlerSelectors.basePackage("com.bishe.main"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
-    private ApiInfo apiInfo(){
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("spring boots使用Swagger2构建RESTful apis")
                 .description("开发文档1.0")

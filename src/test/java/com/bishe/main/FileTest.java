@@ -19,14 +19,14 @@ public class FileTest {
      * 测试获取面试文件夹下的所有文件
      */
     @Test
-    public void fileTest(){
+    public void fileTest() {
         File file = new File("D://面试题//Java面试宝典导读//");
         //如果这个路径是文件夹
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             //获取路径下的文件夹
             File[] files = file.listFiles();
-            for(File f : files){
-                for(File f1 : f.listFiles()){
+            for (File f : files) {
+                for (File f1 : f.listFiles()) {
                     String s = FileUtils.readFileContent(f1);
                     System.out.println(s);
                 }

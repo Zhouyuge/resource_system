@@ -13,27 +13,28 @@ import java.io.IOException;
 public class FileUtils {
     /**
      * 读取文本文件内容
+     *
      * @param file
      * @return
      */
-    public static String readFileContent(File file){
+    public static String readFileContent(File file) {
         BufferedReader reader = null;
         StringBuffer sbf = new StringBuffer();
-        try{
+        try {
             reader = new BufferedReader(new FileReader(file));
             String tempStr;
-            while ((tempStr = reader.readLine()) != null ){  //读取到的数据不为空
+            while ((tempStr = reader.readLine()) != null) {  //读取到的数据不为空
                 sbf.append(tempStr);
             }
             reader.close();     //关闭输出流
             return sbf.toString();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if (reader != null){
-                try{
+        } finally {
+            if (reader != null) {
+                try {
                     reader.close();
-                } catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("----------->输出字节流关闭失败");
                 }

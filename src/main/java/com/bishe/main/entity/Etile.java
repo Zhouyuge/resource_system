@@ -11,6 +11,8 @@ public class Etile {
 
     private Integer etileNo;
 
+    private Integer etileNoAli;
+
     public Integer getEtileId() {
         return etileId;
     }
@@ -49,5 +51,13 @@ public class Etile {
 
     public void setEtileNo(Integer etileNo) {
         this.etileNo = etileNo;
+    }
+
+    public Integer getEtileNoAli() {
+        return etileNoAli;
+    }
+
+    public void setEtileNoAli(Integer etileNoAli) {
+        this.etileNoAli = etileNoAli;
     }
 }

@@ -16,13 +16,14 @@ public class OverIsMergeablePlugin extends PluginAdapter {
     public boolean validate(List<String> list) {
         return true;
     }
+
     @Override
-    public boolean sqlMapGenerated(GeneratedXmlFile generatedXmlFile, IntrospectedTable introspectedTable){
-        try{
+    public boolean sqlMapGenerated(GeneratedXmlFile generatedXmlFile, IntrospectedTable introspectedTable) {
+        try {
             Field field = generatedXmlFile.getClass().getDeclaredField("isMergeable");
             field.setAccessible(true);
             field.setBoolean(generatedXmlFile, false);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true;

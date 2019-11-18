@@ -20,15 +20,16 @@ import java.util.*;
 public class MianShiController {
     /**
      * 获取面试文章列表
+     *
      * @return
      */
     @GetMapping("/getarticle/{id}")
     @ApiOperation("获取面经文章")
     @ApiImplicitParam(name = "id", value = "用户Id", required = true, dataType = "String")
-    public Map<String, Object> getArticle(@PathVariable("id") String id){
+    public Map<String, Object> getArticle(@PathVariable("id") String id) {
         Map<String, Object> resultMap = new HashMap<>();
 
-        if(StringUtil.isEmpty(id) && Integer.parseInt(id) <= 0){
+        if (StringUtil.isEmpty(id) && Integer.parseInt(id) <= 0) {
             resultMap.put("success", false);
             resultMap.put("errMsg", "当前文章不存在");
             return resultMap;
@@ -37,31 +38,32 @@ public class MianShiController {
         File file = new File("D://面试题//Java面试宝典导读//");
         System.out.println("==============");
         //如果这个路径是文件夹
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             //获取路径下的文件夹
             File[] files = file.listFiles();
- loop:           for(File f : files){
-                if(f.isDirectory()){
-                    for(File f1 : f.listFiles()){
-                        if(f1.getName().split("\\.")[0].equals(id)){
+            loop:
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    for (File f1 : f.listFiles()) {
+                        if (f1.getName().split("\\.")[0].equals(id)) {
                             resultMap.put("success", true); //提取文章成功
                             String article = FileUtils.readFileContent(f1);
-                            if(article != null){
+                            if (article != null) {
                                 resultMap.put("success", true); //提取文章成功
                                 resultMap.put("article", article);  //将文章放入返回的map中
-                            }else{
+                            } else {
                                 resultMap.put("success", false); //提取文章成功
                                 resultMap.put("errMsg", "空白文章...");  //将文章放入返回的map中
                             }
                             break loop;
                         }
-                        continue ;
+                        continue;
                     }
                 }
             }
         }
 
-        if(resultMap.size() == 0){
+        if (resultMap.size() == 0) {
             resultMap.put("success", false);
             resultMap.put("errMsg", "您已经阅读完啦~");
         }
@@ -71,10 +73,11 @@ public class MianShiController {
 
     /**
      * 获取目录标题
+     *
      * @return
      */
     @GetMapping("/gettitles")
-    public Map<String, Object> getTitles(){
+    public Map<String, Object> getTitles() {
         String str = "D://面试题//Java面试宝典导读//";
         Map<String, Object> modelMap = new HashMap<>();
         File dir = new File(str);
@@ -83,20 +86,20 @@ public class MianShiController {
                     @Override
                     public int compare(String o1, String o2) {
                         return Integer.parseInt(o1.split("\\.")[0])
-                                -Integer.parseInt(o2.split("\\.")[0]);
+                                - Integer.parseInt(o2.split("\\.")[0]);
                     }
                 }
         );   //使用map适用存储
-        for(File f : dir.listFiles()){
+        for (File f : dir.listFiles()) {
             List<String> title = null;              //存储个大标题目录下的文件名
-            if(f != null) {
+            if (f != null) {
                 title = new ArrayList<>();
                 for (File f1 : f.listFiles()) {
                     title.add(f1.getName().split("\\.txt")[0]);
                 }
-                Collections.sort (title, (t1, t2) -> {              //lambda表达式定义Comparator内部类排序规则
+                Collections.sort(title, (t1, t2) -> {              //lambda表达式定义Comparator内部类排序规则
                     //取出文件名中的排序数字
-                    int diff = Integer.parseInt (t1.split ("\\.")[0]) - Integer.parseInt (t2.split("\\.")[0]);
+                    int diff = Integer.parseInt(t1.split("\\.")[0]) - Integer.parseInt(t2.split("\\.")[0]);
                     if (diff > 0) {
                         return 1;
                     } else if (diff < 0) {
