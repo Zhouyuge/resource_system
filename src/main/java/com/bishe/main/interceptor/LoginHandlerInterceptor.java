@@ -24,29 +24,37 @@ import java.io.IOException;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     public static final String COOKIE_NAME = "USER_TOKEN";
 
+    private static String token = "";
     @Autowired
     private UserService userService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = CookieUtils.getCookieValue(request, COOKIE_NAME);
-        if(StringUtils.isEmpty(token)) {
-            response.sendRedirect("http://localhost:8081/bs/login");
-            return false;
-        }
-        if (userService == null) {
-            BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
-            userService = (UserService) factory.getBean("userServiceImpl");
-        }
-        String userStr = userService.queryUserByToken(token);
-        if(userStr == null) {
-            response.sendRedirect("http://localhost:8081/bs/login");
-            return false;
-        }
-        ObjectMapper objectMapper = new ObjectMapper();
-        User user = objectMapper.readValue(userStr, User.class);
-        request.getSession().setAttribute("user", user);
-        //返回值决定handler是否执行。true：执行，false：不执行。
+            if (request.getSession().getAttribute("user") == null || (!token.equals("") && !this.token.equals(CookieUtils.getCookieValue(request, COOKIE_NAME)))) {
+                response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+                response.setHeader("Access-Control-Allow-Methods", "*");
+                response.setHeader("Access-Control-Allow-Credentials", "true");
+                response.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
+                String token = CookieUtils.getCookieValue(request, COOKIE_NAME);
+                if (StringUtils.isEmpty(token)) {
+                    response.sendRedirect("http://localhost:8081/bs/login");
+                    return false;
+                }
+                this.token = token;
+                if (userService == null) {
+                    BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+                    userService = (UserService) factory.getBean("userServiceImpl");
+                }
+                String userStr = userService.queryUserByToken(token);
+                if (userStr == null) {
+                    response.sendRedirect("http://localhost:8081/bs/login");
+                    return false;
+                }
+                ObjectMapper objectMapper = new ObjectMapper();
+                User user = objectMapper.readValue(userStr, User.class);
+                request.getSession().setAttribute("user", user);
+                //返回值决定handler是否执行。true：执行，false：不执行。
+            }
         return true;
 
     }

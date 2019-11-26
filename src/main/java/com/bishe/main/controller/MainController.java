@@ -50,4 +50,13 @@ public class MainController {
     public String coinWare() {
         return "coin_ware";
     }
+
+    @RequestMapping("/index/title/s_title")
+    public String title() { return "s_title"; }
+
+    @RequestMapping("/index/title/s_title_detail")
+    public String titleDetail() {return "s_title_detail";}
+
+    @RequestMapping("/index/study/self_blog")
+    public String selfBlog() {return "self_blog";}
 }

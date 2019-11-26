@@ -68,3 +68,6 @@ spring:
 
   freemarker:
     cache: false #页面不加载缓存，修改及时生效
+logging:  #打印mysql语句
+  level:
+    com.bishe.main.dao: DEBUG

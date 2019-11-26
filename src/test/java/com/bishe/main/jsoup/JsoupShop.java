@@ -57,7 +57,7 @@ public class JsoupShop {
     public void test1() throws IOException {
         String url = "https://search.jd.com/Search?keyword=手机&enc=utf-8&wq=手机&pvid=d493c4d6c2d14a8f83a8b848cfa1d44d";
         Document doc = Jsoup.connect(url).maxBodySize(0).get();
-        Elements lis = doc.select("ul[class='gl-warp clearfix']").select("li[class='gl-item']");
+        Elements lis = doc.select("ul[class='gl-warp clearfix']").select("li[class='gl-Item']");
         System.out.println(lis.size());
         for(Element li : lis){
             System.out.println(li.select("div[class='p-name p-name-type-2']").select("a").select("em").text());

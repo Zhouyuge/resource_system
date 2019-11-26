@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 /**
  * @author Kirito
  * @Date 2019/11/15 16:13
@@ -28,4 +28,6 @@ public class WebAdaptConfig implements WebMvcConfigurer {
             }
         };
     }
+
+
 }

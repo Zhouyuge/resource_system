@@ -2,7 +2,9 @@ package com.bishe.main.controller;
 
 import com.bishe.main.dto.BlogContentDto;
 import com.bishe.main.dto.BlogDto;
+import com.bishe.main.dto.BlogRestDto;
 import com.bishe.main.entity.BlogCenter;
+import com.bishe.main.entity.User;
 import com.bishe.main.service.BlogCenterService;
 import com.bishe.main.util.AutoMapperUtil;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
@@ -70,6 +74,17 @@ public class BlogController {
         modelMap.put("success", false);
         modelMap.put("errMsg", "参数错误...");
         return modelMap;
+    }
+
+    @ApiOperation("调用博客项目中获取博客的API")
+    @GetMapping("/blog_rest")
+    public List<BlogRestDto> getBlogDtosByRestUserId (HttpServletRequest request){
+        RestTemplate restTemplate = new RestTemplate();
+        User user = (User)request.getSession().getAttribute("user");
+        String url = "http://localhost:8082/kirito/blogs/" + user.getUserId();
+        Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
+        List<BlogRestDto> blogRestDtos = (List)modelMap.get("blogDtos");
+        return blogRestDtos;
     }
 
 }

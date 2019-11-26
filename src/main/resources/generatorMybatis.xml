@@ -46,37 +46,47 @@
             <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
         <!--</table>-->
 
-        <!--生成对应表及类名-->
-        <table tableName="tb_f_type" domainObjectName="FType" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <!--使用自增长键-->
-            <property name="my.isgen.usekeys" value="true"/>
-            <!--使用数据库中实际的字段名作为生成的实体类的属性-->
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+        <!--&lt;!&ndash;生成对应表及类名&ndash;&gt;-->
+        <!--<table tableName="tb_f_type" domainObjectName="FType" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash;使用自增长键&ndash;&gt;-->
+            <!--<property name="my.isgen.usekeys" value="true"/>-->
+            <!--&lt;!&ndash;使用数据库中实际的字段名作为生成的实体类的属性&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
 
-        <!--生成对应表及类名-->
-        <table tableName="tb_s_type" domainObjectName="SType" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <!--使用自增长键-->
-            <property name="my.isgen.usekeys" value="true"/>
-            <!--使用数据库中实际的字段名作为生成的实体类的属性-->
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+        <!--&lt;!&ndash;生成对应表及类名&ndash;&gt;-->
+        <!--<table tableName="tb_s_type" domainObjectName="SType" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash;使用自增长键&ndash;&gt;-->
+            <!--<property name="my.isgen.usekeys" value="true"/>-->
+            <!--&lt;!&ndash;使用数据库中实际的字段名作为生成的实体类的属性&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
 
-        <!--生成对应表及类名-->
-        <table tableName="tb_select_title" domainObjectName="SelectTitle" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <!--使用自增长键-->
-            <property name="my.isgen.usekeys" value="true"/>
-            <!--使用数据库中实际的字段名作为生成的实体类的属性-->
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
+        <!--&lt;!&ndash;生成对应表及类名&ndash;&gt;-->
+        <!--<table tableName="tb_select_title" domainObjectName="SelectTitle" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--&lt;!&ndash;使用自增长键&ndash;&gt;-->
+            <!--<property name="my.isgen.usekeys" value="true"/>-->
+            <!--&lt;!&ndash;使用数据库中实际的字段名作为生成的实体类的属性&ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+
+        <table tableName="tb_take_title" domainObjectName="TakeTitle" enableCountByExample="false"
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+        selectByExampleQueryId="false">
+        <!--使用自增长键-->
+        <property name="my.isgen.usekeys" value="true"/>
+        <!--使用数据库中实际的字段名作为生成的实体类的属性-->
+        <property name="useActualColumnNames" value="false"/>
+        <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
         <!--生成对应表及类名-->

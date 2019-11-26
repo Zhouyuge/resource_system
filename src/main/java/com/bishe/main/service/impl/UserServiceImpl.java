@@ -6,12 +6,14 @@ import com.bishe.main.service.RedisService;
 import com.bishe.main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Kirito
  * @Date 2019/11/15 16:23
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -40,7 +42,6 @@ public class UserServiceImpl implements UserService {
         redisService.remove(REDIS_USER_SESSION_KEY + ":" + token);
         redisService.set(REDIS_USER_SESSION_KEY + ":" + token, JSONUtil.parse(json), Long.parseLong(SSO_SESSION_EXPIRE));
 
-        System.err.println(jsonStr);
         return jsonStr;
     }
 }

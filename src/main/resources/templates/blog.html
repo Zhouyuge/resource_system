@@ -7,14 +7,14 @@
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
 <body style="background: #e0e0e0">
-<ul class="layui-nav">
+<ul class="layui-nav" lay-filter="">
     <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
     <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="">题库</a>
         <dl class="layui-nav-child">
             <dd><a href="">公司真题</a></dd>
-            <dd><a href="">专项练习</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
             <dd><a href="">在线编程</a></dd>
             <dd><a href="">模拟笔试</a></dd>
             <dd><a href="">教材全解</a></dd>
@@ -56,12 +56,18 @@
             <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
         </dl>
     </li>
-    <li style="position: absolute; left: 70%;" class="layui-nav-item">
-        <div class="tags">
-            <input type="text" name="" id="inputTags" placeholder="输入搜索条件" autocomplete="off">
-        </div>
-</ul>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
 
+    </li>
+
+    </li>
+</ul>
 <div>
     <div align="center" style="background: #5f5f5f"><img src="http://localhost:10086/img/b_img/bg_blog.jpg"/></div>
     <div>
@@ -97,4 +103,6 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/blog/blog.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+
 </html>

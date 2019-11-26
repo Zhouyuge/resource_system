@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
-    <link href="../layui/css/layui.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="../mianshi/icon.png"/>
+    <title>专项练习</title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
-<body>
+<body style="background: #d5d5d5">
 <ul class="layui-nav" lay-filter="">
-    <li class="layui-nav-item"><img src="../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
     <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="">题库</a>
@@ -68,31 +68,49 @@
 
     </li>
 </ul>
+<div align="center" style="margin: 10px"><img src = "http://localhost:10086/img/b_img/bd_sb.jpg" /></div>
 
-<div class="layui-carousel" id="test1">
-    <div carousel-item>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index1.jpg"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index2.png"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index3.jpg"/></div>
+<div class="layui-row">
+    <div class="layui-col-md8 layui-col-md-offset2"  style="background: #ffffff">
+        <div style="margin: 15px">
+            <i class="layui-icon layui-icon-survey" style="color: #FD482C"></i>
+            <span>笔试练习</span>
+        </div>
+
+            <div id="types" style="margin:15px;width:880px">
+            </div>
+
+        <div style="margin: 20px">
+            <span>调整难度：</span>
+            <div id="hard"></div>
+
+            <button style="margin-left: 500px" type="button" onclick="toDo()" class="layui-btn layui-btn-radius">
+                <i class="layui-icon layui-icon-edit"><span style="text: 14px">开始练习</span></i>
+            </button>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="../mianshi/jquery.min.js"></script>
-<script type="text/javascript" src="../mianshi/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../layui/layui.js"></script>
-<script type="text/javascript" src="../layui/layui.all.js"></script>
-<script type="text/javascript" src="../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/title/s_title.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/title/s2_title.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
 <script>
-    layui.use('carousel', function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            , width: '100%' //设置容器宽度
-            , arrow: 'hover' //悬停显示箭头
-            // ,anim: 'updown' //切换动画方式
+    layui.use('rate', function(){
+        var rate = layui.rate;
+
+        //渲染
+        var ins1 = rate.render({
+            elem: '#hard'  //绑定元素
+            ,value : 3
+            ,text : true
         });
     });
 </script>
+
 </body>
 </html>
