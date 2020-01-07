@@ -53,6 +53,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
                 ObjectMapper objectMapper = new ObjectMapper();
                 User user = objectMapper.readValue(userStr, User.class);
                 request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("token", token);
                 //返回值决定handler是否执行。true：执行，false：不执行。
             }
         return true;

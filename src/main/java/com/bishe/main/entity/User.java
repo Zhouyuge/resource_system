@@ -1,5 +1,7 @@
 package com.bishe.main.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class User {
@@ -94,11 +96,11 @@ public class User {
     public void setUserHeadPic(String userHeadPic) {
         this.userHeadPic = userHeadPic == null ? null : userHeadPic.trim();
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getUserCreateTime() {
         return userCreateTime;
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public void setUserCreateTime(Date userCreateTime) {
         this.userCreateTime = userCreateTime;
     }

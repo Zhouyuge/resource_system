@@ -59,4 +59,12 @@ public class MainController {
 
     @RequestMapping("/index/study/self_blog")
     public String selfBlog() {return "self_blog";}
+
+    @RequestMapping("/index/study/self_blog_detail")
+    public String selfBlogDetail() {return "self_blog_detail";}
+
+    @RequestMapping("/index/self_index")
+    public String selfIndex() {
+        return "self_index";
+    }
 }

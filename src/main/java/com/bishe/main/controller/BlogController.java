@@ -4,6 +4,7 @@ import com.bishe.main.dto.BlogContentDto;
 import com.bishe.main.dto.BlogDto;
 import com.bishe.main.dto.BlogRestDto;
 import com.bishe.main.entity.BlogCenter;
+import com.bishe.main.entity.RestBlog;
 import com.bishe.main.entity.User;
 import com.bishe.main.service.BlogCenterService;
 import com.bishe.main.util.AutoMapperUtil;
@@ -87,4 +88,14 @@ public class BlogController {
         return blogRestDtos;
     }
 
+    @GetMapping("/blog_rest_detail/{id}")
+    public Object getBlogByRestId(@PathVariable("id") String blogId) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://localhost:8082/kirito/blog/" + blogId;
+        Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
+        if ((boolean)modelMap.get("success")) {
+            return modelMap.get("blog");
+        }
+        return null;
+    }
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="self_title"></title>
+    <link href="../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../mianshi/icon.png"/>
+</head>
+<body class="layui-bg-gray">
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><img src="../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="">题库</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">公司真题</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
+            <dd><a href="">在线编程</a></dd>
+            <dd><a href="">模拟笔试</a></dd>
+            <dd><a href="">教材全解</a></dd>
+            <dd><a href="">考研真题</a></dd>
+            <dd><a href="">期末考题</a></dd>
+            <dd><a href="/bs/index/topics">精华广场</a></dd>
+            <dd><a href="">试题广场</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">面试</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">AI面经总结</a>
+            <dd><a href="">模拟面试</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">学习</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">课程</a></dd>
+            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
+            <dd><a href="">项目实战</a></dd>
+            <dd><a href="">图书馆</a></dd>
+            <dd><a href="">技术栈</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">求职</a></li>
+    <li class="layui-nav-item"><a href="">讨论区</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">讨论区</a></dd>
+            <dd><a href="">帖子</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">发现</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">竞赛</a></dd>
+            <dd><a href="">offer神器</a></dd>
+            <dd><a href="">职业身份验证</a></dd>
+            <dd><a href="">牛人堂</a></dd>
+            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
+        </dl>
+    </li>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
+    </li>
+
+</ul>
+
+<div style="margin-top: 20px; margin-left: 150px; background: #ffffff; width: 75%">
+    <blockquote style="background: #ffffff;height: 70px" class="layui-elem-quote">
+        <div class="margin-left: 20px;" id="imgAndName"></div>
+    </blockquote>
+</div>
+<div style="margin-top: 14px; margin-left: 150px" class="layui-row">
+    <div style="text-align: center;" class="layui-col-md2">
+        <div style="width: 100%; height: 40px; background: #ffffff;">
+            <a href="/bs/index/study/self_blog"><i style="position: relative; top: 20%" class="layui-icon layui-icon-edit">我的博客</i></a>
+        </div>
+
+            <!--<div style="margin-top: 10px;background: #ffffff">
+               <ul>
+                    <li>
+                        <i class="layui-icon layui-icon-release" style="color:#1E9FFF"></i>
+                        <span>我的简历</span>
+                    </li>
+                </ul>
+            </div> -->
+    </div>
+
+    <div style="margin-left:10px; background: #ffffff;" class="layui-col-md8">
+        <div style="margin-left: 20px; margin-top: 15px">
+            <strong style="font-size: 20px;">基本信息</strong>
+            <button style="margin-left: 72%; width: 100px" type="button"  class="layui-btn" onclick="showEdit();">编辑</button>
+        </div>
+        <hr style="color: grey; width: 93%;margin-left: 20px;">
+
+        <div id="ul_list_info">
+            <ul>
+                <li style="margin-left: 100px; margin-top: 40px">
+                    <span>我的昵称</span>
+                    <span style="color: #1E9FFF; margin-left: 50px" id="user_name"></span>
+                </li>
+
+                <li style="margin-left: 100px; margin-top: 40px" id="user_sex">
+                     <span>我的性别</span>
+                </li>
+
+                <li style="margin-left: 100px; margin-top: 40px">
+                       <span>我的手机</span>
+                      <span style="color: #1E9FFF; margin-left: 50px" id="user_tel"></span>
+                 </li>
+
+                 <li style="margin-left: 100px; margin-top: 40px">
+                     <span>我的邮箱</span>
+                     <span style="color: #1E9FFF; margin-left: 50px" id="user_email"></span>
+                 </li>
+
+                 <li style="margin-left: 100px; margin-top: 40px">
+                     <span>加入时间</span>
+                      <span style="color: #1E9FFF; margin-left: 50px" id="user_create_data"></span>
+                 </li>
+
+                   <li style="margin-left: 100px; margin-top: 40px; margin-bottom: 100px">
+                        <span>我的简介</span>
+                        <span style="color: #1E9FFF; margin-left: 50px" id="user_detail"></span>
+                   </li>
+            </ul>
+        </div>
+
+        <form class="layui-form" action="" lay-filter="example" id="edit_form" style="display: none">
+                      <div class="layui-form-item" style="margin-left: 100px; margin-top: 40px; width: 60%">
+                        <label class="layui-form-label">我的昵称</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="username" lay-verify="title" autocomplete="off" value="请输入昵称" class="layui-input">
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item" style="width: 60%; margin-left: 100px; margin-top: 40px">
+                          <label class="layui-form-label">我的性别</label>
+                          <div class="layui-input-block">
+                            <input type="radio" name="sex" value="1" title="男" checked="">
+                            <input type="radio" name="sex" value="0" title="女">
+                          </div>
+                        </div>
+
+                      <div class="layui-form-item" style="width: 60%; margin-left: 100px; margin-top: 40px">
+                          <label class="layui-form-label">我的手机</label>
+                          <div class="layui-input-block">
+                            <input type="text" name="usertel" lay-verify="title" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                          </div>
+                        </div>
+
+                    <div class="layui-form-item" style="width: 60%; margin-left: 100px; margin-top: 40px">
+                          <label class="layui-form-label">我的邮箱</label>
+                          <div class="layui-input-block">
+                            <input type="text" name="useremail" lay-verify="title" autocomplete="off" placeholder="请输入邮箱地址" class="layui-input">
+                          </div>
+                        </div>
+
+                      <div class="layui-form-item layui-form-text" style="width: 60%; margin-left: 100px; margin-top: 40px">
+                        <label class="layui-form-label">我的简介</label>
+                        <div class="layui-input-block">
+                          <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item" style="width: 60%; margin-left: 100px; margin-top: 40px">
+                        <div class="layui-input-block">
+                          <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-getval">确定</button>                        </div>
+                      </div>
+                    </form>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../mianshi/js/topics.js"></script>
+<script type="text/javascript" src="../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../mianshi/js/user/user_index.js"></script>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+
+  //表单取值
+  layui.$('#LAY-component-form-getval').on('click', function(){
+    var data = form.val('example');
+
+    var user = new Object();
+    $.ajaxSettings.async = false;
+    $.getJSON('/user/api/user_id', function(e){
+          alert(123);
+          user.userId = e;
+     });
+    user.userName = data.username;
+    if (data.sex == '1') {
+        user.userSex = true;
+    } else {
+        user.userSex = false;
+    }
+    user.userTel = data.usertel;
+    user.userEmal = data.useremail;
+    user.userDetail = data.desc;
+
+    var e = JSON.stringify(user);
+
+    var url = '/user/api/user';
+    $.ajax({
+        url : url,
+        type : "put",
+        datatype : "json",
+        data : {"user" : e},
+        success : function(data) {
+            alert(data);
+             window.location.reload();
+        }
+    });
+
+  });
+
+});
+</script>
+
+</body>
+</html>
