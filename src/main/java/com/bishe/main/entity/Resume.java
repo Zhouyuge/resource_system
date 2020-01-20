@@ -9,37 +9,37 @@ public class Resume {
 
     private String name;
 
+    private Integer age;
+
+    private String selfDesc;
+
+    private String edu;
+
     private String sex;
-
-    private String wordDate;
-
-    private String workExpirence;
-
-    private String imgUrl;
 
     private String tel;
 
     private String email;
 
-    private String age;
+    private String school;
 
-    private String edu;
-
-    private String qq;
-
-    private String selfDetail;
-
-    private String workType;
-
-    private String productDate;
+    private String skill;
 
     private String productName;
 
-    private String productExpirence;
-
     private String productType;
 
+    private String productDate;
+
+    private String productExpirence;
+
     private String workName;
+
+    private String workType;
+
+    private String workDate;
+
+    private String workExpirence;
 
     private Date createTime;
 
@@ -71,36 +71,36 @@ public class Resume {
         this.name = name == null ? null : name.trim();
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getSelfDesc() {
+        return selfDesc;
+    }
+
+    public void setSelfDesc(String selfDesc) {
+        this.selfDesc = selfDesc == null ? null : selfDesc.trim();
+    }
+
+    public String getEdu() {
+        return edu;
+    }
+
+    public void setEdu(String edu) {
+        this.edu = edu == null ? null : edu.trim();
+    }
+
     public String getSex() {
         return sex;
     }
 
     public void setSex(String sex) {
         this.sex = sex == null ? null : sex.trim();
-    }
-
-    public String getWordDate() {
-        return wordDate;
-    }
-
-    public void setWordDate(String wordDate) {
-        this.wordDate = wordDate == null ? null : wordDate.trim();
-    }
-
-    public String getWorkExpirence() {
-        return workExpirence;
-    }
-
-    public void setWorkExpirence(String workExpirence) {
-        this.workExpirence = workExpirence == null ? null : workExpirence.trim();
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
     }
 
     public String getTel() {
@@ -119,52 +119,20 @@ public class Resume {
         this.email = email == null ? null : email.trim();
     }
 
-    public String getAge() {
-        return age;
+    public String getSchool() {
+        return school;
     }
 
-    public void setAge(String age) {
-        this.age = age == null ? null : age.trim();
+    public void setSchool(String school) {
+        this.school = school == null ? null : school.trim();
     }
 
-    public String getEdu() {
-        return edu;
+    public String getSkill() {
+        return skill;
     }
 
-    public void setEdu(String edu) {
-        this.edu = edu == null ? null : edu.trim();
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
-    }
-
-    public String getSelfDetail() {
-        return selfDetail;
-    }
-
-    public void setSelfDetail(String selfDetail) {
-        this.selfDetail = selfDetail == null ? null : selfDetail.trim();
-    }
-
-    public String getWorkType() {
-        return workType;
-    }
-
-    public void setWorkType(String workType) {
-        this.workType = workType == null ? null : workType.trim();
-    }
-
-    public String getProductDate() {
-        return productDate;
-    }
-
-    public void setProductDate(String productDate) {
-        this.productDate = productDate == null ? null : productDate.trim();
+    public void setSkill(String skill) {
+        this.skill = skill == null ? null : skill.trim();
     }
 
     public String getProductName() {
@@ -175,14 +143,6 @@ public class Resume {
         this.productName = productName == null ? null : productName.trim();
     }
 
-    public String getProductExpirence() {
-        return productExpirence;
-    }
-
-    public void setProductExpirence(String productExpirence) {
-        this.productExpirence = productExpirence == null ? null : productExpirence.trim();
-    }
-
     public String getProductType() {
         return productType;
     }
@@ -191,12 +151,52 @@ public class Resume {
         this.productType = productType == null ? null : productType.trim();
     }
 
+    public String getProductDate() {
+        return productDate;
+    }
+
+    public void setProductDate(String productDate) {
+        this.productDate = productDate == null ? null : productDate.trim();
+    }
+
+    public String getProductExpirence() {
+        return productExpirence;
+    }
+
+    public void setProductExpirence(String productExpirence) {
+        this.productExpirence = productExpirence == null ? null : productExpirence.trim();
+    }
+
     public String getWorkName() {
         return workName;
     }
 
     public void setWorkName(String workName) {
         this.workName = workName == null ? null : workName.trim();
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType == null ? null : workType.trim();
+    }
+
+    public String getWorkDate() {
+        return workDate;
+    }
+
+    public void setWorkDate(String workDate) {
+        this.workDate = workDate == null ? null : workDate.trim();
+    }
+
+    public String getWorkExpirence() {
+        return workExpirence;
+    }
+
+    public void setWorkExpirence(String workExpirence) {
+        this.workExpirence = workExpirence == null ? null : workExpirence.trim();
     }
 
     public Date getCreateTime() {

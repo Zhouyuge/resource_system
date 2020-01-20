@@ -5,6 +5,7 @@ import com.bishe.main.entity.User;
 import com.bishe.main.service.WorkService;
 import com.bishe.main.util.MapUtil;
 import com.bishe.main.vo.SelfDetailVO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,10 +28,13 @@ public class WorkController {
 
     @PostMapping("/resume")
     @ApiOperation("生成简历")
-    public Map<String, Object> generatorResume(@RequestBody SelfDetailVO selfDetailVO, HttpServletRequest request) {
+    public Map<String, Object> generatorResume(HttpServletRequest request) throws Exception {
         Map<String, Object> resultMap = new HashMap<>();
         User user = (User)request.getSession().getAttribute("user");
         String userId = user.getUserId();
+        String resumeStr = request.getParameter("resume");
+        System.err.println(resumeStr);
+        SelfDetailVO selfDetailVO = new ObjectMapper().readValue(resumeStr, SelfDetailVO.class);
         Integer code = workService.generatorPdf(selfDetailVO, userId);
         if (code == 200) {
             resultMap = MapUtil.sucMsg("简历生成成功！");

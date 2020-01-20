@@ -1,7 +1,9 @@
 package com.bishe.main.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.bishe.main.dao.ResumeMapper;
 import com.bishe.main.entity.Resume;
+import com.bishe.main.entity.ResumeExample;
 import com.bishe.main.service.WorkService;
 import com.bishe.main.util.AutoMapperUtil;
 import com.bishe.main.util.PDFUtil;
@@ -34,17 +36,25 @@ public class WorkServiceImpl implements WorkService {
         PDFUtil pdfUtil = new PDFUtil();
         try {
             pdfUtil.writeCharpter(selfDetailVO);
+            ResumeExample resumeExample = new ResumeExample();
+            resumeExample.or().andUserIdEqualTo(userId);
+            Resume resume = new Resume();
+            AutoMapperUtil.mapping(selfDetailVO, resume);
+            if(ObjectUtil.isEmpty(resumeMapper.selectByExample(resumeExample))) {
+                resume.setUserId(userId);
+                resume.setCreateTime(new Date());
+                resume.setEditTime(new Date());
+                resume.setDeliverNum(0);
+                resumeMapper.insertSelective(resume);
+            } else {
+                resume.setEditTime(new Date());
+                resumeMapper.updateByPrimaryKey(resume);
+            }
         }catch (Exception e) {
             e.printStackTrace();
             log.error("生成pdf错误");
             return 500;
         }
-        Resume resume = new Resume();
-        AutoMapperUtil.mapping(selfDetailVO, resume);
-        resume.setUserId(userId);
-        resume.setCreateTime(new Date());
-        resume.setEditTime(new Date());
-        resumeMapper.insertSelective(resume);
         return 200;
     }
 }
