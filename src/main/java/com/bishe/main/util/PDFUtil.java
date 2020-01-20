@@ -4,6 +4,7 @@ package com.bishe.main.util;
  * @author Kirito
  * @Date 2019/11/30 13:49
  */
+import com.bishe.main.vo.SelfDetailVO;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
@@ -28,7 +29,7 @@ public class PDFUtil{
         }
     }
 
-    public String writeCharpter() throws Exception{
+    public String writeCharpter(SelfDetailVO selfDetailVO) throws Exception{
 //新建document对象  第一个参数是页面大小。接下来的参数分别是左、右、上和下页边距。
         Document document = new Document(PageSize.A4, 20, 20, 20, 20);
 //建立一个书写器(Writer)与document对象关联，通过书写器(Writer)可以将文档写入到磁盘中。
@@ -72,7 +73,7 @@ public class PDFUtil{
 
 
         PdfPCell pCell2 = new PdfPCell();
-        pCell2.setPhrase(new Phrase("姓名: 朱伟光",textfont));
+        pCell2.setPhrase(new Phrase("姓名: "+ selfDetailVO.getName(),textfont));
         pCell2.setBorder(Rectangle.NO_BORDER);
         // 设置占用列数
         pCell2.setColspan(3);
@@ -86,7 +87,7 @@ public class PDFUtil{
 
         PdfPCell pCell3 = new PdfPCell();
         pCell3.setBorder(Rectangle.NO_BORDER);
-        pCell3.setPhrase(new Phrase("年龄: 22岁",textfont));
+        pCell3.setPhrase(new Phrase("年龄: " + selfDetailVO.getAge(),textfont));
         pCell3.setColspan(3);
         pCell3.setPaddingLeft(10);
         pCell3.setFixedHeight(20);
@@ -98,7 +99,7 @@ public class PDFUtil{
 
         PdfPCell pCell6 = new PdfPCell();
         pCell6.setBorder(Rectangle.NO_BORDER);
-        pCell6.setPhrase(new Phrase("湖南湘潭 | 本科 | 学生",textfont));
+        pCell6.setPhrase(new Phrase(selfDetailVO.getEdu(),textfont));
         pCell6.setColspan(3);
         pCell6.setPaddingLeft(10);
         pCell6.setFixedHeight(20);
@@ -110,7 +111,7 @@ public class PDFUtil{
 
         PdfPCell pCell4 = new PdfPCell();
         pCell4.setBorder(Rectangle.NO_BORDER);
-        pCell4.setPhrase(new Phrase("电话: 13874148709", textfont));
+        pCell4.setPhrase(new Phrase("电话: " + selfDetailVO.getTel(), textfont));
         pCell2.setColspan(1);
         pCell4.setPaddingLeft(10);
         pCell4.setFixedHeight(20);
@@ -122,7 +123,7 @@ public class PDFUtil{
 
         PdfPCell pCell5 = new PdfPCell();
         pCell5.setBorder(Rectangle.NO_BORDER);
-        pCell5.setPhrase(new Phrase("qq: 404910970@qq.com", textfont));
+        pCell5.setPhrase(new Phrase("qq: " + selfDetailVO.getQq(), textfont));
         pCell5.setColspan(1);
         pCell5.setPaddingLeft(10);
         pCell5.setFixedHeight(20);
@@ -134,7 +135,7 @@ public class PDFUtil{
 
         PdfPCell pCellSex = new PdfPCell();
         pCellSex.setBorder(Rectangle.NO_BORDER);
-        pCellSex.setPhrase(new Phrase("性别 : 男", textfont));
+        pCellSex.setPhrase(new Phrase("性别 : " + selfDetailVO.getSex(), textfont));
         pCellSex.setColspan(1);
         pCellSex.setPaddingLeft(10);
         pCellSex.setFixedHeight(20);
@@ -154,7 +155,7 @@ public class PDFUtil{
 
         PdfPCell pCell8 = new PdfPCell();
         pCell8.setBorder(Rectangle.NO_BORDER);
-        pCell8.setPhrase(new Phrase("学习态度认真，积极上进，吃苦耐劳，对新技术有极强的好奇心。",textfont));
+        pCell8.setPhrase(new Phrase(selfDetailVO.getSelfDetail(),textfont));
         pCell8.setColspan(4);
         pCell8.setPaddingLeft(10);
         pCell8.setFixedHeight(20);
@@ -174,7 +175,7 @@ public class PDFUtil{
 
         PdfPCell corpName = new PdfPCell();
         corpName.setBorder(Rectangle.NO_BORDER);
-        corpName.setPhrase(new Phrase("公司名称: archforce",textfont));
+        corpName.setPhrase(new Phrase("公司名称: " + selfDetailVO.getWorkName(),textfont));
         corpName.setColspan(1);
         corpName.setPaddingLeft(10);
         corpName.setFixedHeight(20);
@@ -184,7 +185,7 @@ public class PDFUtil{
 
         PdfPCell corpTime = new PdfPCell();
         corpTime.setBorder(Rectangle.NO_BORDER);
-        corpTime.setPhrase(new Phrase("时间: 2019.10.09 - 至今",textfont));
+        corpTime.setPhrase(new Phrase("时间: " + selfDetailVO.getWorkDate(),textfont));
         corpTime.setColspan(1);
         corpTime.setPaddingLeft(10);
         corpTime.setFixedHeight(20);
@@ -195,13 +196,23 @@ public class PDFUtil{
 
         PdfPCell workName = new PdfPCell();
         workName.setBorder(Rectangle.NO_BORDER);
-        workName.setPhrase(new Phrase("任职职务",textfont));
+        workName.setPhrase(new Phrase("任职职务: " + selfDetailVO.getWorkType(),textfont));
         workName.setColspan(3);
         workName.setPaddingLeft(10);
         workName.setFixedHeight(20);
         workName.setHorizontalAlignment(Element.ALIGN_LEFT);
         workName.setVerticalAlignment(Element.ALIGN_MIDDLE);
         table.addCell(workName);
+
+        PdfPCell workExperience = new PdfPCell();
+        workExperience.setBorder(Rectangle.NO_BORDER);
+        workExperience.setPhrase(new Phrase("工作内容: " + selfDetailVO.getWorkExpirence(),textfont));
+        workExperience.setColspan(3);
+        workExperience.setPaddingLeft(10);
+        workExperience.setFixedHeight(20);
+        workExperience.setHorizontalAlignment(Element.ALIGN_LEFT);
+        workExperience.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        table.addCell(workExperience);
 
         PdfPCell jobExp = new PdfPCell();
         jobExp.setBorder(Rectangle.NO_BORDER);
@@ -216,7 +227,7 @@ public class PDFUtil{
 
         PdfPCell jobName = new PdfPCell();
         jobName.setBorder(Rectangle.NO_BORDER);
-        jobName.setPhrase(new Phrase("项目名称",textfont));
+        jobName.setPhrase(new Phrase("项目名称: " + selfDetailVO.getProductName(),textfont));
         jobName.setColspan(1);
         jobName.setPaddingLeft(10);
         jobName.setFixedHeight(20);
@@ -226,8 +237,8 @@ public class PDFUtil{
 
         PdfPCell jobTime = new PdfPCell();
         jobTime.setBorder(Rectangle.NO_BORDER);
-        jobTime.setPhrase(new Phrase("项目时间",textfont));
-        jobTime.setColspan(2);
+        jobTime.setPhrase(new Phrase("项目时间: " + selfDetailVO.getProductDate(),textfont));
+        jobTime.setColspan(3);
         jobTime.setPaddingLeft(10);
         jobTime.setFixedHeight(20);
         jobTime.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -236,10 +247,7 @@ public class PDFUtil{
 
         PdfPCell jobDescr = new PdfPCell();
         jobDescr.setBorder(Rectangle.NO_BORDER);
-        jobDescr.setPhrase(new Phrase("详情：校园o2o平台系统\n" +
-                "1.配置ssm框架\n" +
-                "2.通过redis缓存服务层数据\n" +
-                "3.与前端数据交互采用json对象形式。且带有restful风格。",textfont));
+        jobDescr.setPhrase(new Phrase(selfDetailVO.getProductExpirence(),textfont));
         jobDescr.setColspan(4);
         jobDescr.setPaddingLeft(10);
         jobDescr.setFixedHeight(20);
@@ -255,10 +263,6 @@ public class PDFUtil{
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("begin");
-        PDFUtil ppt=new PDFUtil();
-        ppt.writeCharpter();
-        System.out.println("end");
 
     }
 }

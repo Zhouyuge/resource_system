@@ -34,6 +34,8 @@ public class SelfDetailVO {
     private String workType;
     // 项目时间
     private String productDate;
+    // 项目名称
+    private String productName;
     // 项目经历
     private String productExpirence;
     // 项目岗位
