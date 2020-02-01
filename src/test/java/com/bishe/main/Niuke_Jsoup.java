@@ -39,8 +39,6 @@ public class Niuke_Jsoup {
     @Autowired
     private BlogCenterMapper blogCenterMapper;
 
-    private static int num = 1;
-
     /**
      * 爬取java面经
      *
@@ -48,16 +46,16 @@ public class Niuke_Jsoup {
      */
     @Test
     public void test() throws IOException {
-        String url = "https://www.nowcoder.com/tutorial/94/4206176d637541fa92c784a4f547e979";
+        String url = "https://www.nowcoder.com/tutorial/10009/93ea8bfac75844888a914d1b8741b791";
         Document doc = Jsoup.connect(url).maxBodySize(0).get();
-//        Elements tMenu = doc.select("dt[class='clearfix js-fold-section']")
-//                .select("span[class='sub-menu-lesson']");           //菜单
-//        for(Element i : tMenu) {
-//            boolean t = new File("D://面试题//" + tMenu.first().text() + "//" + i.text()).mkdirs();  //创建存储目录
-//            if(t == false){
-//                System.out.println("=========================》失败");
-//            }
-//        }
+        Elements tMenu = doc.select("dt[class='clearfix js-fold-section']")
+                .select("span[class='sub-menu-lesson']");           //菜单
+        for(Element i : tMenu) {
+            boolean t = new File("D://面试题//javascript//" + tMenu.first().text() + "//" + i.text()).mkdirs();  //创建存储目录
+            if(t == false){
+                System.out.println("=========================》失败");
+            }
+        }
         while (StringUtils.isNotEmpty(url)) {
             Elements title = doc.select("dd[class='sub-menu-underway']").select("a");   //标题
             System.out.println(title.text());
@@ -80,7 +78,7 @@ public class Niuke_Jsoup {
      */
     public void saveDataToFile(String fileName, String data) {
         OutputStream os = null;
-        String destDirName = "D:\\面试题\\" + (num++) + "." + fileName + ".txt";
+        String destDirName = "D:\\面试题\\javascript\\" + fileName + ".txt";
         File dir = new File(destDirName);   //建立连接
         try {
             //2.选择输出流，以追加形式（在原有内容上追加）写出文件，必须为true，否则为覆盖
@@ -115,14 +113,21 @@ public class Niuke_Jsoup {
 
         Elements elements = doc.select("ul[class='topic-list clearfix']");  //获取题目列表
         Elements lis = elements.select("li");
+        int i = 0;
         for (Element li : lis) {
-            //EtileCategory ec = new EtileCategory();
+            i ++;
+            EtileCategory ec = new EtileCategory();
             String etileCategoryName = li.select("div[class='topic-info']").select("h3").text();
-            String num = li.select("span[class='font-green']").text();
-            String imgUrl = li.select("img").attr("src");
-            //downImages("D://牛客//img", imgUrl);
-            System.out.println(num);
-            //etileCategoryMapper.insert(ec);
+            Integer num = 100;
+//            String imgUrl = li.select("img").attr("src");
+            String picUrl = "http://localhost:10086/img/img/" + i + ".png";
+            System.out.println(picUrl);
+            ec.setEtileCategoryNum(num);
+            ec.setEtileCategoryName(etileCategoryName);
+            ec.setEtileCategoryEditTime(new Date());
+            ec.setEtileCategoryCreateTime(new Date());
+            ec.setEtileCategoryPhoto(picUrl);
+            etileCategoryMapper.insert(ec);
         }
     }
 
@@ -186,15 +191,15 @@ public class Niuke_Jsoup {
         String url = "https://www.nowcoder.com/ta/nine-chapter";
         Document doc = null;
         int num = 0;
-        while (num < 100) {
+        while (num < 69) {
             doc = Jsoup.connect(url).maxBodySize(0).get();
             Elements trs = doc.select("tr");
             int i = 0;
             for (Element tr : trs) {
-                if (num < 100 && i != 0) {
+                if (num < 69 && i != 0) {
                     EtileWithBLOBs ewb = new EtileWithBLOBs();
                     ewb.setEtileNo(12);
-
+                    ewb.setEtileNoAli(num);
                     String point = tr.select("td[class='offer-pot txt-left']").toString();
                     String title = tr.select("td[class='txt-left']").select("a").text();
 
@@ -227,7 +232,7 @@ public class Niuke_Jsoup {
         String url = "https://www.nowcoder.com/ta/nine-chapter/review?tpId=1&tqId=10782&query=&asc=true&order=&page=1";
         Document doc = null;
         int num = 0;
-        while (num < 100) {
+        while (num < 69) {
             doc = Jsoup.connect(url).maxBodySize(0).get();
             String que = doc.select("div[class='final-question']").toString();
             question.add(que);

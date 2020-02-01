@@ -3,10 +3,7 @@ package com.bishe.main.controller;
 import com.bishe.main.util.FileUtils;
 import com.github.pagehelper.StringUtil;
 import io.swagger.annotations.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.util.*;
@@ -23,10 +20,10 @@ public class MianShiController {
      *
      * @return
      */
-    @GetMapping("/getarticle/{id}")
+    @GetMapping("/getarticle")
     @ApiOperation("获取面经文章")
-    @ApiImplicitParam(name = "id", value = "用户Id", required = true, dataType = "String")
-    public Map<String, Object> getArticle(@PathVariable("id") String id) {
+    @ApiImplicitParam(name = "id", value = "面经Id", required = true, dataType = "String")
+    public Map<String, Object> getArticle(@RequestParam(value = "id", required = true) String id, @RequestParam(value = "title", required = true) String title) {
         Map<String, Object> resultMap = new HashMap<>();
 
         if (StringUtil.isEmpty(id) && Integer.parseInt(id) <= 0) {
@@ -35,8 +32,7 @@ public class MianShiController {
             return resultMap;
         }
 
-        File file = new File("D://面试题//Java面试宝典导读//");
-        System.out.println("==============");
+        File file = new File("D://面试题//" + title + "//");
         //如果这个路径是文件夹
         if (file.isDirectory()) {
             //获取路径下的文件夹
@@ -45,7 +41,7 @@ public class MianShiController {
             for (File f : files) {
                 if (f.isDirectory()) {
                     for (File f1 : f.listFiles()) {
-                        if (f1.getName().split("\\.")[0].equals(id)) {
+                        if ((f1.getName().split("\\D")[0] + "." + f1.getName().split("\\D")[1]).equals(id)) {
                             resultMap.put("success", true); //提取文章成功
                             String article = FileUtils.readFileContent(f1);
                             if (article != null) {
@@ -77,16 +73,16 @@ public class MianShiController {
      * @return
      */
     @GetMapping("/gettitles")
-    public Map<String, Object> getTitles() {
-        String str = "D://面试题//Java面试宝典导读//";
+    public Map<String, Object> getTitles(@RequestParam(value = "title", required = true) String direct) {
+        String str = "D://面试题//" + direct + "//";
         Map<String, Object> modelMap = new HashMap<>();
         File dir = new File(str);
         Map<String, Object> titles = new TreeMap<>(
                 new Comparator<String>() {
                     @Override
                     public int compare(String o1, String o2) {
-                        return Integer.parseInt(o1.split("\\.")[0])
-                                - Integer.parseInt(o2.split("\\.")[0]);
+                        return Integer.parseInt(o1.split("\\D")[0])
+                                - Integer.parseInt(o2.split("\\D")[0]);
                     }
                 }
         );   //使用map适用存储
@@ -99,7 +95,7 @@ public class MianShiController {
                 }
                 Collections.sort(title, (t1, t2) -> {              //lambda表达式定义Comparator内部类排序规则
                     //取出文件名中的排序数字
-                    int diff = Integer.parseInt(t1.split("\\.")[0]) - Integer.parseInt(t2.split("\\.")[0]);
+                    int diff = Integer.parseInt(t1.split("\\D")[1]) - Integer.parseInt(t2.split("\\D")[1]);
                     if (diff > 0) {
                         return 1;
                     } else if (diff < 0) {

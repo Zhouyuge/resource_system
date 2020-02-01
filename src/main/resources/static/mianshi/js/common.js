@@ -67,7 +67,7 @@ function getDetail(obj) {
                         ,
                         id: 'layerDemo' + obj.id //防止重复弹出
                         ,
-                        content: '<div style="width: 500px; height: 450px;"><img src="http://localhost:10086/img/ware_img/' + data.ware.coinWareBigPic + '"><br/><br/><br/><div><button style="position: absolute; left: 43%" type="button" onclick="tips_msg()" class="layui-btn layui-btn-radius layui-btn-primary">点击购买</button></div>'
+                        content: '<div style="width: 500px; height: 450px;"><img style="position: relative; left: 30%" width="400px" height="400px" src="' + data.ware.coinWareBigPic + '"><br/><br/><br/><div><button style="position: absolute; left: 43%" type="button" onclick="tips_msg()" class="layui-btn layui-btn-radius layui-btn-primary">点击购买</button></div>'
                         ,
                         area: ['700px', '600px']
                         ,

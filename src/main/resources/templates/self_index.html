@@ -36,7 +36,7 @@
             <dd><a href="">课程</a></dd>
             <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
             <dd><a href="">项目实战</a></dd>
-            <dd><a href="">图书馆</a></dd>
+            <dd><a href="/bs/index/library">图书馆</a></dd>
             <dd><a href="">技术栈</a></dd>
         </dl>
     </li>
@@ -185,7 +185,6 @@
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript" src="../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../mianshi/js/common.js"></script>
-<script type="text/javascript" src="../../mianshi/js/topics.js"></script>
 <script type="text/javascript" src="../../mianshi/js/user/common_user.js"></script>
 <script type="text/javascript" src="../../mianshi/js/user/user_index.js"></script>
 <script>
@@ -262,7 +261,7 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
                    '  <div class="layui-form-item layui-col-md6">\n'+
                    '    <label class="layui-form-label">年龄</label>\n'+
                    '    <div class="layui-input-block">\n'+
-                   '      <input type="text" name="sex" required lay-verify="required" autocomplete="off" class="layui-input">\n'+
+                   '      <input type="text" name="age" required lay-verify="required" autocomplete="off" class="layui-input">\n'+
                    '    </div>\n'+
                    '  </div>\n'+
                    '  <div class="layui-form-item layui-form-text">\n'+
@@ -312,14 +311,14 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
                    '  <div class="layui-form-item">\n'+
                    '    <label class="layui-form-label">技能</label>\n'+
                    '    <div class="layui-input-block">\n'+
-                   '      <input type="checkbox" name="MySQL" title="MySQL">\n'+
-                   '      <input type="checkbox" name="JAVA" title="JAVA" checked>\n'+
-                   '      <input type="checkbox" name="C++" title="C++">\n'+
-                   '      <input type="checkbox" name="GO" title="GO">\n'+
-                   '      <input type="checkbox" name="C#" title="C#">\n'+
-                   '      <input type="checkbox" name="PHP" title="PHP">\n'+
-                   '      <input type="checkbox" name="服务器" title="服务器">\n'+
-                   '      <input type="checkbox" name="大数据" title="大数据">\n'+
+                   '      <input type="checkbox" name="skill" title="MySQL">\n'+
+                   '      <input type="checkbox" name="skill" title="JAVA" checked>\n'+
+                   '      <input type="checkbox" name="skill" title="C++">\n'+
+                   '      <input type="checkbox" name="skill" title="GO">\n'+
+                   '      <input type="checkbox" name="skill" title="C#">\n'+
+                   '      <input type="checkbox" name="skill" title="PHP">\n'+
+                   '      <input type="checkbox" name="skill" title="服务器">\n'+
+                   '      <input type="checkbox" name="skill" title="大数据">\n'+
                    '    </div>\n'+
                    '  </div>\n'+
                    '  <div class="layui-form-item layui-col-md6">\n'+
@@ -373,8 +372,8 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
                    '  </div>\n'+
                    '  <div class="layui-form-item">\n'+
                    '    <div class="layui-input-block">\n'+
-                   '      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>\n'+
-                   '      <button type="reset" class="layui-btn layui-btn-primary">页面重显</button>\n'+
+                   '      <button class="layui-btn" lay-submit lay-filter="formDemo">生成简历</button>\n'+
+                   '      <button type="reset" class="layui-btn layui-btn-primary">页面修复</button>\n'+
                    '    </div>\n'+
                    '  </div>\n'+
                    '</form>\n'+
@@ -402,8 +401,15 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
      form.on('submit(formDemo)', function(data){
        var url = '/work/api/resume';
        var s = JSON.stringify(data.field);
-       layer.msg(s);
-       // 该数据库字段
+        $.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: "json",
+                        data : {"resume" : s},
+                        success : function (data) {
+                            layer.msg(data.code + ":" + data.msg);
+                        }
+               });
        return false;
      });
    });

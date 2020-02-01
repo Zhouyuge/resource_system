@@ -14,7 +14,7 @@ $(function () {
                 wares.map(function (item, index) {
                     if (item.coinWareTypeName == '牛客定制') {
                         n_html += '<div class="layui-col-md3" style="text-align:center ; border: 1px solid grey; margin: 25px; height: 200px">'
-                            + '<img align="center" style="width: 160px; height: 120px" src="' + "http://localhost:10086/img/ware_img/" + item.coinWareBigPic + '"/>'
+                            + '<img align="center" style="width: 160px; height: 120px" src="' +  item.coinWareBigPic + '"/>'
                             + '<br>'
                             + '<span style="text-align:center ; color: #737373">' + item.coinWareName + '</span><br/>'
                             + '<button  id="btn' + item.coinWareId + '" onclick="getDetail(this)" data-method="notice" data-type="auto" type="button" style="position: absolute; left: 0%; top:80%; width: 100%; height: 20%" class="layui-btn layui-btn-danger"><span style="font-size: 16px">兑 &nbsp;&nbsp;&nbsp; 换</button>'
@@ -23,7 +23,7 @@ $(function () {
                     }
                     if (item.coinWareTypeName == '热门商品') {
                         hw_html += '<div class="layui-col-md3" style="text-align:center ;border: 1px solid grey; margin: 25px; height: 200px">'
-                            + '<img align="center" style="width: 160px; height: 120px" src="' + "http://localhost:10086/img/ware_img/" + item.coinWareBigPic + '"/>'
+                            + '<img align="center" style="width: 160px; height: 120px" src="' +  item.coinWareBigPic + '"/>'
                             + '<br>'
                             + '<span style="text-align:center ;color: #737373">' + item.coinWareName + '</span><br/>'
                             + '<button  id="btn' + item.coinWareId + '" onclick="getDetail(this)" data-method="notice" data-type="auto" type="button" style="position: absolute; left: 0%; top:80%; width: 100%; height: 20%" class="layui-btn layui-btn-danger"><span style="font-size: 16px">兑 &nbsp;&nbsp;&nbsp; 换</button>'
@@ -33,7 +33,7 @@ $(function () {
 
                     if (item.coinWareTypeName == '名企周边') {
                         hz_html += '<div class="layui-col-md3" style="text-align:center ; border: 1px solid grey; margin: 25px; height: 200px">'
-                            + '<img align="center" style="width: 160px; height: 120px" src="' + "http://localhost:10086/img/ware_img/" + item.coinWareBigPic + '"/>'
+                            + '<img align="center" style="width: 160px; height: 120px" src="' +  item.coinWareBigPic + '"/>'
                             + '<br>'
                             + '<span style="text-align:center ;color: #737373">' + item.coinWareName + '</span><br/>'
                             + '<button  id="btn' + item.coinWareId + '" onclick="getDetail(this)" data-method="notice" data-type="auto" type="button" style="position: absolute; left: 0%; top:80%; width: 100%; height: 20%" class="layui-btn layui-btn-danger"><span style="font-size: 16px">兑 &nbsp;&nbsp;&nbsp; 换</button>'
@@ -43,7 +43,7 @@ $(function () {
 
                     if (item.coinWareTypeName == '专业书籍') {
                         b_html += '<div class="layui-col-md3" style="text-align:center ; border: 1px solid grey; margin: 25px; height: 200px ">'
-                            + '<img align="center" style="width: 160px; height: 120px" src="' + "http://localhost:10086/img/ware_img/" + item.coinWareBigPic + '"/>'
+                            + '<img align="center" style="width: 160px; height: 120px" src="' +  item.coinWareBigPic + '"/>'
                             + '<br>'
                             + '<span style="color: #737373">' + item.coinWareName + '</span><br/>'
                             + '<button  id="btn' + item.coinWareId + '" onclick="getDetail(this)" data-method="notice" data-type="auto" type="button" style="position: absolute; left: 0%; top:80%; width: 100%; height: 20%" class="layui-btn layui-btn-danger"><span style="font-size: 16px">兑 &nbsp;&nbsp;&nbsp; 换</button>'

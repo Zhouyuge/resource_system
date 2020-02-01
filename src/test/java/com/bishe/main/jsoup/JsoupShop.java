@@ -36,17 +36,17 @@ public class JsoupShop {
         for (Element good : goods) {
             Elements wares = good.select("dd[class='js-product']");
             for (Element ware : wares) {
-//                CoinWare coinWare = new CoinWare();
+                CoinWare coinWare = new CoinWare();
                 int price = Integer.parseInt(ware.select("div[class='goods-tag']").text());
                 String picUrl = ware.select("div[class='goods-img']").select("img").attr("abs:src");
                 String name = ware.select("div[class='goods-name']").text();
-                String coinUrl = "http://localhost:10086/img/ware_img/" + PicUtil.downImages("D://niuke//ware_img//", picUrl);
-//                coinWare.setCoinWareName(name);
-//                coinWare.setCoinWarePrice(price);
-//                coinWare.setCoinWareType(typeId);
-//                coinWare.setCoinWareNum(10);
-//                coinWare.setCoinWareSmallPic(coinUrl);
-//                coinWareMapper.insertSelective(coinWare);
+                String coinUrl = "http://localhost:10086/img/wareImg/" + PicUtil.downImages("D://niuke//wareImg//", picUrl);
+                coinWare.setCoinWareName(name);
+                coinWare.setCoinWarePrice(price);
+                coinWare.setCoinWareType(typeId);
+                coinWare.setCoinWareNum(10);
+                coinWare.setCoinWareBigPic(coinUrl);
+                coinWareMapper.insertSelective(coinWare);
             }
             typeId++;
         }

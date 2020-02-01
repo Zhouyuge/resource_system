@@ -71,4 +71,13 @@ public class MainTest {
         String str = userService.queryUserByToken(token);
         System.out.println(str);
     }
+
+    @Test
+    public void testRegex() {
+        String s = "4.111汉字javaxx";
+        String ss[] = s.split("\\D");
+        for (String t : ss) {
+            System.out.println(t);
+        }
+    }
 }

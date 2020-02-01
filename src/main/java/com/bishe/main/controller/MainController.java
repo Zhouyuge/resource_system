@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/bs")
 public class MainController {
-    @RequestMapping("/test")
+    @RequestMapping("/index/mianshi")
     public String test() {
         return "test";
+    }
+
+    @RequestMapping("/index/library")
+    public String library() {
+        return "library";
     }
 
     @RequestMapping("/index")
@@ -67,4 +72,7 @@ public class MainController {
     public String selfIndex() {
         return "self_index";
     }
+
+    @RequestMapping("/index/book_detail")
+    public String bookDeial() { return "book_detail"; }
 }

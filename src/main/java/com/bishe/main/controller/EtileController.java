@@ -1,6 +1,7 @@
 package com.bishe.main.controller;
 
 import cn.hutool.core.map.MapBuilder;
+import cn.hutool.core.util.ObjectUtil;
 import com.bishe.main.dto.EtileCategoryDto;
 import com.bishe.main.dto.EtileDto;
 import com.bishe.main.entity.Etile;
@@ -109,7 +110,7 @@ public class EtileController {
     public Map<String, Object> getCategorys() {
         Map<String, Object> modelMap = new HashMap<>();
         List<EtileCategoryDto> etileCategoryDtos = etileService.getEtileCategorys();
-        if (etileCategoryDtos.size() < 0) {
+        if (ObjectUtil.isEmpty(etileCategoryDtos)) {
             modelMap.put("success", false);
             modelMap.put("errMsg", "未获取到分类信息");
         } else {
