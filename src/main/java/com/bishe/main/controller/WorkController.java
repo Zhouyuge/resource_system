@@ -33,7 +33,6 @@ public class WorkController {
         User user = (User)request.getSession().getAttribute("user");
         String userId = user.getUserId();
         String resumeStr = request.getParameter("resume");
-        System.err.println(resumeStr);
         SelfDetailVO selfDetailVO = new ObjectMapper().readValue(resumeStr, SelfDetailVO.class);
         Integer code = workService.generatorPdf(selfDetailVO, userId);
         if (code == 200) {

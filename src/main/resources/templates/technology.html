@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
-    <link href="../layui/css/layui.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="../mianshi/icon.png"/>
+    <title>技术栈</title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
-<body>
+<body style="background: #e0e0e0">
 <ul class="layui-nav" lay-filter="">
-    <li class="layui-nav-item"><img src="../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
     <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="">题库</a>
@@ -69,30 +69,32 @@
     </li>
 </ul>
 
-<div class="layui-carousel" id="test1">
-    <div carousel-item>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index1.jpg"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index2.png"/></div>
-        <div ><img width="100%" src="http://localhost:10086/img/b_img/bg_index3.jpg"/></div>
+<div>
+    <div style="top: 10px; position: relative; left: 5%; width: 90%;">
+       <div style="margin: 20px">
+             <span class="layui-badge-dot"></span>
+            <b><span style="font-size: 16px;">全部技术栈</span></b>
+       </div>
+
+        <div class="layui-tab layui-tab-card" style="background: #ffffff; height: 1730px;">
+          <ul class="layui-tab-title">
+            <li class="layui-this">语言和框架</li>
+            <li>数据存储</li>
+          </ul>
+          <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show layui-row" id="tech_lang">
+            </div>
+            <div class="layui-tab-item" id="tech_math"></div>
+          </div>
+        </div>
     </div>
 </div>
-
-<script type="text/javascript" src="../mianshi/jquery.min.js"></script>
-<script type="text/javascript" src="../mianshi/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../layui/layui.js"></script>
-<script type="text/javascript" src="../layui/layui.all.js"></script>
-<script type="text/javascript" src="../mianshi/js/user/common_user.js"></script>
-<script>
-    layui.use('carousel', function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            , width: '100%' //设置容器宽度
-            , arrow: 'hover' //悬停显示箭头
-            // ,anim: 'updown' //切换动画方式
-        });
-    });
-</script>
 </body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/tech/tech.js"></script>
 </html>

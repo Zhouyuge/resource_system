@@ -484,6 +484,136 @@ public class TechnologyExample {
             addCriterion("edit_time not between", value1, value2, "editTime");
             return (Criteria) this;
         }
+
+        public Criteria andTechnologyPicIsNull() {
+            addCriterion("technology_pic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicIsNotNull() {
+            addCriterion("technology_pic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicEqualTo(String value) {
+            addCriterion("technology_pic =", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicNotEqualTo(String value) {
+            addCriterion("technology_pic <>", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicGreaterThan(String value) {
+            addCriterion("technology_pic >", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicGreaterThanOrEqualTo(String value) {
+            addCriterion("technology_pic >=", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicLessThan(String value) {
+            addCriterion("technology_pic <", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicLessThanOrEqualTo(String value) {
+            addCriterion("technology_pic <=", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicLike(String value) {
+            addCriterion("technology_pic like", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicNotLike(String value) {
+            addCriterion("technology_pic not like", value, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicIn(List<String> values) {
+            addCriterion("technology_pic in", values, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicNotIn(List<String> values) {
+            addCriterion("technology_pic not in", values, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicBetween(String value1, String value2) {
+            addCriterion("technology_pic between", value1, value2, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyPicNotBetween(String value1, String value2) {
+            addCriterion("technology_pic not between", value1, value2, "technologyPic");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeIsNull() {
+            addCriterion("technology_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeIsNotNull() {
+            addCriterion("technology_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeEqualTo(Integer value) {
+            addCriterion("technology_type =", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeNotEqualTo(Integer value) {
+            addCriterion("technology_type <>", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeGreaterThan(Integer value) {
+            addCriterion("technology_type >", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("technology_type >=", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeLessThan(Integer value) {
+            addCriterion("technology_type <", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("technology_type <=", value, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeIn(List<Integer> values) {
+            addCriterion("technology_type in", values, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeNotIn(List<Integer> values) {
+            addCriterion("technology_type not in", values, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeBetween(Integer value1, Integer value2) {
+            addCriterion("technology_type between", value1, value2, "technologyType");
+            return (Criteria) this;
+        }
+
+        public Criteria andTechnologyTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("technology_type not between", value1, value2, "technologyType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

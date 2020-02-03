@@ -75,4 +75,10 @@ public class MainController {
 
     @RequestMapping("/index/book_detail")
     public String bookDeial() { return "book_detail"; }
+
+    @RequestMapping("/index/technology")
+    public String technology() { return "technology"; }
+
+    @RequestMapping("/index/tech_detail")
+    public String techDetail() { return "tech_detail"; }
 }

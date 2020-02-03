@@ -1,5 +1,7 @@
 package com.bishe.main.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Technology {
@@ -14,6 +16,10 @@ public class Technology {
     private Date createTime;
 
     private Date editTime;
+
+    private String technologyPic;
+
+    private Integer technologyType;
 
     public Integer getId() {
         return id;
@@ -55,11 +61,28 @@ public class Technology {
         this.createTime = createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getEditTime() {
         return editTime;
     }
 
     public void setEditTime(Date editTime) {
         this.editTime = editTime;
+    }
+
+    public String getTechnologyPic() {
+        return technologyPic;
+    }
+
+    public void setTechnologyPic(String technologyPic) {
+        this.technologyPic = technologyPic == null ? null : technologyPic.trim();
+    }
+
+    public Integer getTechnologyType() {
+        return technologyType;
+    }
+
+    public void setTechnologyType(Integer technologyType) {
+        this.technologyType = technologyType;
     }
 }
