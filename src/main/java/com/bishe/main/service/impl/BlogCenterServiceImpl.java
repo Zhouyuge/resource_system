@@ -34,7 +34,6 @@ public class BlogCenterServiceImpl implements BlogCenterService {
         BlogCenterExample blogCenterExample = new BlogCenterExample();
         blogCenterExample.setOrderByClause("blog_center_edit_time DESC");   //按时间降序
         List<BlogCenter> blogCenterList = blogCenterMapper.selectByExample(blogCenterExample);
-
         return blogCenters;
     }
 

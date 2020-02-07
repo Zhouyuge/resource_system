@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>技术栈</title>
+    <title id="title"></title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
@@ -69,53 +69,45 @@
     </li>
 </ul>
 
-<div>
-    <div class="layui-row" style="top: 15px; position: relative; left: 13%; width: 74%; background: #ffffff">
-        <div id="tech_detail">
+<div class="layui-row" style="margin-top: 20px">
+    <div style="background: #ffffff" class="layui-col-md-offset1 layui-col-md10 layui-row" id="circle_detail">
+       <div class="layui-col-md1" style="margin: 20px;">
+          <img width="110px" height="110px" src="http://localhost:10086/img/cir_img/63_1564995409745_36BDAB378CEEB4E9F6D6A3BC24AD6C2563_1564995409745_36BDAB378CEEB4E9F6D6A3BC24AD6C25.png">
+       </div>
+       <div style="margin-left: 20px; margin-top: 20px" class="layui-col-md7">
+            <b style="font-size: 18px">许愿池</b>
+            <br/>
+            <span style="color: grey">本圈子为牛友许愿专用，可以许愿求offer，求笔试，求面试，求上岸，求offer call，求实习，求转正，甚至于求男友，求女友，求好运等等</span>
+            <br/>
+            <br/>
+            <button class="layui-btn-primary layui-btn-radius layui-btn-sm">求offer</button>
+       </div>
+       <div class="layui-col-md-offset1 layui-col-md1" style="margin-top: 40px; text-align: center" >
+            <button class="layui-btn-radius layui-btn layui-btn-lg">+加入圈子</button>
+            <span>11</span>
+       </div>
+    </div>
 
+    <div class="layui-col-md-offset1 layui-col-md7" style="margin-top: 15px;background: #ffffff">
+        <span>123</span>
+    </div>
+
+    <div class="layui-col-md2 layui-row" style="width: 327px; margin-top: 15px; margin-left: 15px; background: #ffffff">
+        <div class="layui-col-md-offset1 layui-col-md7" style="margin-top: 15px">
+            <img class="layui-circle" width="45px" height="45px" src="http://localhost:10086/img/h_img/default.jpg">
+            <span style="color: #d43f3a; font-size: 15px">南方男孩</span>
         </div>
 
-        <hr class="layui-bg-gray" style="margin: 20px; width: 95%">
-
-        <div>
-            <div style="margin: 20px">
-                <span class="layui-badge-dot"></span>
-                <b><span style="font-size: 16px;">一句话评论</span></b>
-            </div>
-
-            <div style="margin-top: 20px; margin-left: 20px">
-                <span>暂时还没有人评论</span>
-            </div>
-
-            <div style="margin: 20px" class="layui-input-block layui-row">
-                <input style="height: 35px; margin-bottom: 20px" class="layui-col-md7 layui-input-inline" type="text" placeholder="一句话说明你的阅读体验" autocomplete="off">
-                <button style="margin-bottom: 20px" class="layui-btn layui-col-md-offset1 layui-col-md2">回复</button>
-            </div>
+        <div style="margin-top: 20px" class="layui-col-md-offset1 layui-col-md2">
+            <button class="layui-btn layui-btn-danger layui-btn-radius layui-btn-sm">圈主</button>
         </div>
 
-        <hr class="layui-bg-gray" style="margin: 20px; width: 95%">
-
-        <div>
-            <div style="margin: 20px; ">
-                <span class="layui-badge-dot"></span>
-                <b><span style="font-size: 16px;">学习资料</span></b>
-            </div>
-            <div id="no_sty" style="margin: 20px;">
-                <span>暂无学习资料</span>
-                <br/>
-                <br/>
-            </div>
-
-            <div class="layui-row" id="tech_material">
-
-            </div>
-            <div id="file_btn" style="margin-left: 80%">
-
-            </div>
+        <div style="margin-top: 20px" class=" layui-col-md-offset1 layui-col-md11">
+            <span style="color: #5FB878">本群创建于：2019-08-05</span>
         </div>
-
     </div>
 </div>
+
 </body>
 <script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
 <script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
@@ -123,6 +115,5 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/tech/tech_detail.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/tech/tech_function.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/circle/circle_detail.js"></script>
 </html>

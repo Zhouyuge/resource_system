@@ -81,4 +81,10 @@ public class MainController {
 
     @RequestMapping("/index/tech_detail")
     public String techDetail() { return "tech_detail"; }
+
+    @RequestMapping("/index/circle")
+    public String circle() { return "circle"; }
+
+    @RequestMapping("/index/circle_detail")
+    public String circleDetail() { return "circle_detail"; }
 }
