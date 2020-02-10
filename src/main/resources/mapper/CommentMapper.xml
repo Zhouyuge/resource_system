@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="comment_type" jdbcType="INTEGER" property="commentType" />
+    <result column="function_type" jdbcType="INTEGER" property="functionType" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="agree_num" jdbcType="INTEGER" property="agreeNum" />
+    <result column="comment_num" jdbcType="INTEGER" property="commentNum" />
+    <result column="object_id" jdbcType="INTEGER" property="objectId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, parent_id, user_id, comment_type, function_type, comment_content, comment_time, 
+    agree_num, comment_num, object_id
+  </sql>
+  <select id="selectByExample" parameterType="com.bishe.main.entity.CommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tb_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.Comment" useGeneratedKeys="true">
+    insert into tb_comment (parent_id, user_id, comment_type, 
+      function_type, comment_content, comment_time, 
+      agree_num, comment_num, object_id
+      )
+    values (#{parentId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{commentType,jdbcType=INTEGER}, 
+      #{functionType,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, 
+      #{agreeNum,jdbcType=INTEGER}, #{commentNum,jdbcType=INTEGER}, #{objectId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.Comment" useGeneratedKeys="true">
+    insert into tb_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="commentType != null">
+        comment_type,
+      </if>
+      <if test="functionType != null">
+        function_type,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+      <if test="agreeNum != null">
+        agree_num,
+      </if>
+      <if test="commentNum != null">
+        comment_num,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentType != null">
+        #{commentType,jdbcType=INTEGER},
+      </if>
+      <if test="functionType != null">
+        #{functionType,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreeNum != null">
+        #{agreeNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null">
+        #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.Comment">
+    update tb_comment
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentType != null">
+        comment_type = #{commentType,jdbcType=INTEGER},
+      </if>
+      <if test="functionType != null">
+        function_type = #{functionType,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreeNum != null">
+        agree_num = #{agreeNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null">
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.Comment">
+    update tb_comment
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
+      comment_type = #{commentType,jdbcType=INTEGER},
+      function_type = #{functionType,jdbcType=INTEGER},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      agree_num = #{agreeNum,jdbcType=INTEGER},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      object_id = #{objectId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

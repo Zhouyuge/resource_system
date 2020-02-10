@@ -115,3 +115,45 @@ function fileUpload(obj) {
 function toPdfDetail(obj) {
     window.open(obj.id);
 }
+
+
+function getComment() {
+    var comment = $('#comment').val();
+    if(comment.length > 20) {
+        layui.use('layer', function(){
+            var layer = layui.layer;
+            layer.msg("输入的字数不得大于20哟");
+        });
+    }
+    if(comment == '') {
+        layui.use('layer', function(){
+            var layer = layui.layer;
+            layer.msg('评论不能为空X__X');
+        });
+    }
+    var id = getQueryString('tech_id');
+    $.ajax({
+        type : "POST",
+        data : {"id" : id, "content" : comment},
+        dataType : "json",
+        url : "/tech/api/comment",
+        success : function(data) {
+            if(data.success) {
+                no_comment.style.display="none";
+                var html = '                <div class="layui-col-md5 layui-row" style="margin-bottom: 15px">\n' +
+                    '                    <div class="layui-col-md2" style="text-align: center">\n' +
+                    '                        <i class="layui-icon layui-icon-fire"></i>\n' +
+                    '                        <br/>\n' +
+                    '                        <span>0</span>\n' +
+                    '                    </div>\n' +
+                    '\n' +
+                    '                    <div class="layui-col-md9">\n' +
+                    '                        <span>' + comment + '</span>\n' +
+                    '                    </div>\n' +
+                    '                </div>\n';
+
+                $('#comment_list').append(html);
+            }
+        }
+    });
+}

@@ -83,13 +83,16 @@
                 <b><span style="font-size: 16px;">一句话评论</span></b>
             </div>
 
-            <div style="margin-top: 20px; margin-left: 20px">
+            <div id="no_comment" style="margin-top: 20px; margin-left: 20px">
                 <span>暂时还没有人评论</span>
             </div>
 
+            <div id="comment_list" style="margin-top: 20px; margin-left: 20px" class="layui-row">
+            </div>
+
             <div style="margin: 20px" class="layui-input-block layui-row">
-                <input style="height: 35px; margin-bottom: 20px" class="layui-col-md7 layui-input-inline" type="text" placeholder="一句话说明你的阅读体验" autocomplete="off">
-                <button style="margin-bottom: 20px" class="layui-btn layui-col-md-offset1 layui-col-md2">回复</button>
+                <input id="comment" style="height: 35px; margin-bottom: 20px" class="layui-col-md7 layui-input-inline" type="text" placeholder="一句话说明你的阅读体验" autocomplete="off" />
+                <button onclick="getComment()" style="margin-bottom: 20px" class="layui-btn layui-col-md-offset1 layui-col-md2">回复</button>
             </div>
         </div>
 

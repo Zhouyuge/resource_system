@@ -1,8 +1,10 @@
 package com.bishe.main.controller;
 
+import com.bishe.main.entity.Comment;
 import com.bishe.main.entity.TechFile;
 import com.bishe.main.entity.Technology;
 import com.bishe.main.entity.User;
+import com.bishe.main.service.CommentService;
 import com.bishe.main.service.TechnologeService;
 import com.bishe.main.util.MapUtil;
 import com.bishe.main.vo.TechnologeVO;
@@ -28,6 +30,10 @@ public class TechnologyController {
     @Autowired
     private TechnologeService technologeService;
 
+    @Autowired
+    private CommentService commentService;
+
+    private final Integer functionId = 1;
     @ApiOperation("根据分类Id获取技术栈: 1.语言框架; 2.数据存储")
     @GetMapping("/technology/{id}")
     public Map<String, Object> getTechByTypeId(@PathVariable("id") Integer typeId) {
@@ -84,6 +90,27 @@ public class TechnologyController {
             }
         } else {
          return MapUtil.errMsg("文件为空");
+        }
+    }
+
+    @PostMapping("/comment")
+    @ApiOperation("添加用户")
+    public Map<String, Object> addComment(@RequestParam("content") String content,@RequestParam("id") Integer id, HttpServletRequest request) {
+        Comment comment = new Comment();
+        User user = (User)request.getSession().getAttribute("user");
+        comment.setAgreeNum(0);
+        comment.setCommentContent(content);
+        comment.setCommentNum(0);
+        comment.setCommentTime(new Date());
+        comment.setFunctionType(functionId);
+        comment.setObjectId(id);
+        comment.setUserId(user.getUserId());
+        try {
+            Map<String, Object> modelMap = MapUtil.sucMsg(commentService.addComment(comment));
+            return modelMap;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return MapUtil.errMsg("内部错误");
         }
     }
 }
