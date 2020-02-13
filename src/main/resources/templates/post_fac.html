@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>圈子</title>
+    <title id="title"></title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
@@ -68,46 +68,19 @@
 
     </li>
 </ul>
+<div style="margin-top: 20px" class="layui-row">
+      <div class="layui-col-md-offset1 layui-col-md7" style="background: #ffffff">
+         <div style="margin: 20px">
+               <span class="layui-badge-dot"></span>
+               <b><span style="font-size: 16px;">职业列表</span></b>
+         </div>
+         <div id="post_list">
+         </div>
+      </div>
+      <div id="factory_detail" class="layui-col-md3" style="margin-left: 5px; background: #ffffff">
 
-<div class="layui-row" style="margin-top: 15px">
-    <div class="layui-col-md-offset1 layui-col-md7" style="background: #ffffff">
-        <div style="margin: 20px">
-             <span class="layui-badge-dot"></span>
-             <b><span style="font-size: 16px;">发现圈子</span></b>
-        </div>
-
-        <div style="margin: 20px; background: #c8e5bc">
-            <br/>
-            <span class="layui-breadcrumb" lay-separator=" ">
-              <a href="/bs/index/circle">全部</a>
-              <a href="/bs/index/circle?id=1">学习</a>
-              <a href="/bs/index/circle?id=2">求职</a>
-              <a href="/bs/index/circle?id=3">公司</a>
-              <a href="/bs/index/circle?id=4">考研</a>
-              <a href="/bs/index/circle?id=5">竞赛</a>
-              <a href="/bs/index/circle?id=6">生活</a>
-              <a href="/bs/index/circle?id=7">留学</a>
-            </span>
-            <br/>
-            <br/>
-        </div>
-
-        <div style="margin: 20px" class="layui-row" id="circles">
-        </div>
-
-        <div style="margin-left: 30%" id="test1"></div>
-
-    </div>
-
-
-
-
-    <div style="margin-left: 20px; background: #ffffff" class="layui-col-md2">
-
-    </div>
+     </div>
 </div>
-
-
 </body>
 <script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
 <script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
@@ -115,5 +88,6 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/circle/circle.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/post/post_detail.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/post/post_function.js"></script>
 </html>

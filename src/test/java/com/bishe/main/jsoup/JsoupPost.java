@@ -4,7 +4,9 @@ import com.bishe.main.dao.FactoryMapper;
 import com.bishe.main.dao.PostMapper;
 import com.bishe.main.entity.Factory;
 import com.bishe.main.entity.Post;
+import com.bishe.main.service.PostService;
 import com.bishe.main.util.PicUtil;
+import com.bishe.main.vo.PostVO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Kirito
@@ -33,6 +36,9 @@ public class JsoupPost {
 
     @Autowired
     private PostMapper postMapper;
+
+    @Autowired
+    private PostService postService;
 
     @Test
     public void test() throws Exception{
@@ -64,9 +70,9 @@ public class JsoupPost {
             Elements postDiv = doc.select("div[class='module-body module-info']");
             String postName = postDiv.select("div[class='rec-job-hd']").select("div[class='rec-job-title clearfix']").select("h2").select("a").text();
             String postPlace = postDiv.select("div[class='rec-job-detail']").select("span[class='rec-job-item js-nc-title-tips']").get(1).text();
-            String postWelface = postDiv.select("div[class='rec-job-detail']").select("p").text();
-            String postInfo = postDiv.select("div[class='nc-post-content js-duty-content']").get(0).text().replaceAll(";", ";\n");
-            String postRequirement = postDiv.select("div[class='nc-post-content js-duty-content']").get(1).text().replaceAll(";", ";\n");
+            String postWelface = postDiv.select("div[class='rec-job-detail']").select("p").toString();
+            String postInfo = postDiv.select("div[class='nc-post-content js-duty-content']").get(0).toString();
+            String postRequirement = postDiv.select("div[class='nc-post-content js-duty-content']").get(1).toString();
             Post post = new Post();
             post.setFactoryId(factory.getId());
             post.setPostCity(postPlace);
@@ -76,8 +82,15 @@ public class JsoupPost {
             post.setPostWelfare(postWelface);
             post.setPostRequirement(postRequirement);
             post.setPublishTime(new Date());
-            postMapper.insertSelective(post);
+            //postMapper.insertSelective(post);
         }
     }
 
+    @Test
+    public void test1() {
+        List<PostVO> postVOS = postService.getPostVOsByTypeId(2,1);
+        postVOS.forEach(e -> {
+            System.out.println(e.toString());
+        });
+    }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>技术栈</title>
+    <title>互联网招聘平台</title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
@@ -70,54 +70,81 @@
 </ul>
 
 <div>
-    <div class="layui-row" style="top: 15px; position: relative; left: 13%; width: 74%; background: #ffffff">
-        <div id="tech_detail">
-
-        </div>
-
-        <hr class="layui-bg-gray" style="margin: 20px; width: 95%">
-
-        <div>
-            <div style="margin: 20px">
-                <span class="layui-badge-dot"></span>
-                <b><span style="font-size: 16px;">一句话评论</span></b>
-            </div>
-
-            <div id="no_comment" style="margin-top: 20px; margin-left: 20px">
-                <span>暂时还没有人评论</span>
-            </div>
-
-            <div id="comment_list" style="margin-top: 20px; margin-left: 20px" class="layui-row">
-            </div>
-
-            <div style="margin: 20px" class="layui-input-block layui-row">
-                <input id="comment" style="height: 35px; margin-bottom: 20px" class="layui-col-md7 layui-input-inline" type="text" placeholder="一句话说明你的阅读体验" autocomplete="off" />
-                <button onclick="getComment()" style="margin-bottom: 20px" class="layui-btn layui-col-md-offset1 layui-col-md2">回复</button>
-            </div>
-        </div>
-
-        <hr class="layui-bg-gray" style="margin: 20px; width: 95%">
-
-        <div>
-            <div style="margin: 20px; ">
-                <span class="layui-badge-dot"></span>
-                <b><span style="font-size: 16px;">学习资料</span></b>
-            </div>
-            <div id="no_sty" style="margin: 20px;">
-                <span>暂无学习资料</span>
-                <br/>
-                <br/>
-            </div>
-
-            <div class="layui-row" id="tech_material">
-
-            </div>
-            <div id="file_btn" style="margin-left: 80%">
-
-            </div>
-        </div>
-
+    <div>
+        <img width="100%" src="http://localhost:10086/img/b_img/bg_post.jpg" />
     </div>
+
+    <div style="background: #ffffff" class="layui-row">
+        <div class="layui-col-md-offset2 layui-col-md2" style="margin-top: 10px; margin-bottom: 10px">
+            <img class="layui-circle" src="http://localhost:10086/img/b_img/icon1.png" />
+            <span style="font-size: 16px; font-family: 'Arvo', serif">实习广场</span>
+        </div>
+        <div class="layui-col-md2" style="margin-top: 10px; margin-bottom: 10px">
+            <img class="layui-circle" src="http://localhost:10086/img/b_img/icon2.png" />
+            <span style="font-size: 16px; font-family: 'Arvo', serif">笔试日历</span>
+        </div>
+        <div class="layui-col-md2" style="margin-top: 10px; margin-bottom: 10px">
+            <img class="layui-circle" src="http://localhost:10086/img/b_img/icon3.png" />
+            <span style="font-size: 16px; font-family: 'Arvo', serif">宣讲信息</span>
+        </div>
+        <div class="layui-col-md2" style="margin-top: 10px; margin-bottom: 10px">
+            <img class="layui-circle" src="http://localhost:10086/img/b_img/icon4.png" />
+            <span style="font-size: 16px; font-family: 'Arvo', serif">校招日程</span>
+        </div>
+    </div>
+
+    <div class="layui-row" style="margin-top: 15px">
+        <div class="layui-col-md-offset1 layui-col-md10" style="background: #ffffff">
+            <div style="margin: 20px">
+                 <span class="layui-badge-dot"></span>
+                 <b><span style="font-size: 16px;">实习岗位</span></b>
+            </div>
+            <div style="margin-left: 20px">
+              <span class="layui-breadcrumb" lay-separator=" ">
+                      <a href="">全部</a>
+                      <a href="">北京</a>
+                      <a href="">上海</a>
+                      <a href="">广州</a>
+                      <a href="">深圳</a>
+                      <a href="">杭州</a>
+                      <a href="">南京</a>
+                      <a href="">成都</a>
+                      <a href="">厦门</a>
+                      <a href="">武汉</a>
+                      <a href="">西安</a>
+                      <a href="">长沙</a>
+                      <a href="">哈尔滨</a>
+                      <a href="">合肥</a>
+                      <a href="">其他</a>
+                    </span>
+             <div>
+
+        </div>
+     </div>
+
+            <div style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
+              <span class="layui-breadcrumb" lay-separator=" ">
+                      <a href="post">全部</a>
+                      <a href="?type_id=1">研发</a>
+                      <a href="?type_id=2">测试</a>
+                      <a href="?type_id=3">数据</a>
+                      <a href="?type_id=4">算法</a>
+                      <a href="?type_id=5">前端</a>
+                      <a href="?type_id=6">产品</a>
+                      <a href="?type_id=7">运营</a>
+                      <a href="?type_id=8">其他</a>
+                    </span>
+             </div>
+
+             <div class="layui-row" id="content" style="margin: 20px">
+             </div>
+
+            <div style="margin-left: 60px; margin-top: 20px; margin-bottom: 50px">
+                <button style="width: 900px" class="layui-btn-primary">+ 更多</button>
+            </div>
+
+        </div>
+     </div>
 </div>
 </body>
 <script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
@@ -126,6 +153,6 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/tech/tech_detail.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/tech/tech_function.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/post/post.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/post/post_function.js"></script>
 </html>

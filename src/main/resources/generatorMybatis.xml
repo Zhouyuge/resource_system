@@ -55,17 +55,7 @@
             <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
         <!--</table>-->
 
-        <table tableName="tb_post" domainObjectName="Post" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <!--使用自增长键-->
-            <property name="my.isgen.usekeys" value="true"/>
-            <!--使用数据库中实际的字段名作为生成的实体类的属性-->
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-
-        <table tableName="tb_factory" domainObjectName="Factory" enableCountByExample="false"
+        <table tableName="tb_university" domainObjectName="University" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--使用自增长键-->

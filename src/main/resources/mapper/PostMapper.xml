@@ -16,6 +16,28 @@
     id, factory_id, post_name, post_type, post_city, post_info, post_requirement, post_welfare, 
     publish_time
   </sql>
+
+  <select id="getPosts" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_post
+  </select>
+
+  <select id="getPostsByFactoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_post
+    where
+    factory_id=#{factoryId, jdbcType=INTEGER}
+  </select>
+  <select id = "getPostsByTypeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_post
+    where
+    post_type = #{typeId, jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

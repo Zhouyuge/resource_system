@@ -87,4 +87,13 @@ public class MainController {
 
     @RequestMapping("/index/circle_detail")
     public String circleDetail() { return "circle_detail"; }
+
+    @RequestMapping("/index/post")
+    public String post() { return "post"; }
+
+    @RequestMapping("/index/post_detail")
+    public String postDetail() { return "post_detail"; }
+
+    @RequestMapping("/index/post_fac")
+    public String postFac() { return "post_fac"; }
 }

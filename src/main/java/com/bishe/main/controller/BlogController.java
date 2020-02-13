@@ -84,6 +84,7 @@ public class BlogController {
         User user = (User)request.getSession().getAttribute("user");
         String url = "http://localhost:8082/kirito/blogs/" + user.getUserId();
         Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
+        System.out.println(modelMap.toString());
         List<BlogRestDto> blogRestDtos = (List)modelMap.get("blogDtos");
         return blogRestDtos;
     }
