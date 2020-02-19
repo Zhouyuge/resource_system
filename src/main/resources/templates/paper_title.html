@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>精华专题</title>
-    <link href="../../layui/css/layui.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="../../mianshi/icon.png"/>
+    <title>考研真题</title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
-<body class="layui-bg-gray">
+<body style="background: #e0e0e0">
 <ul class="layui-nav" lay-filter="">
-    <li class="layui-nav-item"><img src="../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
     <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
     <li class="layui-nav-item layui-this"><a href="">题库</a>
@@ -62,34 +62,38 @@
     </li>
 </ul>
 
-<img src="http://localhost:10086/img/img/t1.jpg"
-     style="position: absolute; left: 7%; top: 80px; width: 1200px; height: 100px">
-<div style="margin-right: 10px;position: absolute; left: 7%; top: 200px; width: 1250px" class="layui-row layui-bg-cyan">
-    <ul class="layui-col-md2 layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-        <li class="layui-nav-item layui-nav-itemed">
-            <a href="javascript:;">全部</a>
-        </li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">考前突击</a>
-        </li>
-        <li class="layui-nav-item"><a href="javascript:;">公司专题</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">限时活动</a></li>
-    </ul>
-    <div class="layui-col-md9" id="type"></div>
+<div>
+    <div id="uni_info" class="layui-row" style="background: url(http://localhost:10086/img/uni_img/bg.png); height: 200px">
 
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md-offset1 layui-col-md7" lay-skin="line" style="background: #ffffff; margin-top: 15px">
+            <ul class="layui-nav" lay-filter="">
+              <li class="layui-nav-item layui-this">试题列表</li>
+              <li id="paper_name" class="layui-nav-item"><li>
+             </ul>
+
+            <table class="layui-table">
+              <thead>
+                <tr>
+                  <th>题目</th>
+                  <th>题型</th>
+                </tr>
+              </thead>
+              <tbody id="papers">
+
+              </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-<div style="margin-right: 10px;position: absolute; left: 7%; top: 830px; width: 1250px; border: 1px #afd9ee"
-     id="f_type">
-
-</div>
-
-
-<script type="text/javascript" src="../../mianshi/jquery.min.js"></script>
-<script type="text/javascript" src="../../mianshi/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../../layui/layui.js"></script>
-<script type="text/javascript" src="../../layui/layui.all.js"></script>
-<script type="text/javascript" src="../../mianshi/js/common.js"></script>
-<script type="text/javascript" src="../../mianshi/js/topics.js"></script>
-<script type="text/javascript" src="../../mianshi/js/user/common_user.js"></script>
 </body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/uni/paper_list.js"></script>
 </html>

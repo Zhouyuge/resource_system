@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>精华专题</title>
+    <title>试卷试题</title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
-    <link href="../../../bootstrap/css/bootstrap.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
-<body class="layui-bg-gray">
+
+<style>
+    pre{
+        margin: 20px;
+    }
+</style>
+
+<body style="background: #e0e0e0">
 <ul class="layui-nav" lay-filter="">
     <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
@@ -50,7 +56,9 @@
             <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
         </dl>
     </li>
-
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
     <li style="position: absolute; left: 79%" class="layui-nav-item">
         <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
     </li>
@@ -60,46 +68,52 @@
 
     </li>
 </ul>
-<div style="left: 20%; width: 100%; height: 200px;background: #ffffff" id="pic_bg">
 
-</div>
-
-<div style="background:#ffffff; position:absolute; left: 15%; border:1px solid #e0e0e0;width: 50%" id="etiles">
-
-</div>
-
-<div id="page_helper" style="position: absolute; left: 18%; top:178%;"></div>
-
-
-<div style="background:#ffffff; position:absolute; left: 66%; border:1px solid #e0e0e0;width: 20%;height: 330px">
-    <div style="position: absolute; top: 5%; left: 10%">
-        <span class="glyphicon glyphicon-gift" style="color: #ac2925"></span>
-        <strong>热门推荐</strong>
-    </div>
-    <div class="layui-carousel" id="test1" style="position: absolute; top: 15%">
-        <div carousel-item>
-            <div>
-                <a href="http://localhost:10086/img/img/re1.png"><img src="http://localhost:10086/img/img/re1.png"></a>
-                <a href="http://localhost:10086/img/img/re2.jpg"><img src="http://localhost:10086/img/img/re2.jpg"></a>
-                <a href="http://localhost:10086/img/img/re4.png"><img src="http://localhost:10086/img/img/re4.png"></a>
+<div>
+    <div class="layui-row">
+        <div style="margin-top: 25px; background: #ffffff" class="layui-col-md-offset1 layui-col-md7">
+            <div style="margin: 20px">
+                <i class="layui-icon layui-icon-survey" style="color: #FD482C;font-size: 20px"></i>
+                <span style="margin-left: 10px; font-size: 18px">[单选题]</span>
             </div>
-            <div><a href="http://localhost:10086/img/img/re6.jpg"><img src="http://localhost:10086/img/img/re6.jpg"></a>
+
+            <hr class="layui-bg-gray">
+
+            <div style="margin: 25px" id="title_detail">
+
             </div>
-            <div><a href="http://localhost:10086/img/img/re7.jpg"><img src="http://localhost:10086/img/img/re7.jpg"></a>
-            </div>
+        </div>
+        <div style="margin-top: 25px;margin-left: 10px" class="layui-col-md3 layui-row">
+              <div style="background: #ffffff" class="layui-col-md12">
+                   <div style="margin: 20px">
+                       <span class="layui-badge-dot"></span>
+                       <b><span style="font-size: 16px;">热门推荐</span></b>
+                   </div>
+                       <div class="layui-carousel" id="test1" style="margin-top: 15px">
+                           <div carousel-item>
+                               <div>
+                                   <a href="http://localhost:10086/img/img/re1.png"><img src="http://localhost:10086/img/img/re1.png"></a>
+                                   <a href="http://localhost:10086/img/img/re2.jpg"><img src="http://localhost:10086/img/img/re2.jpg"></a>
+                                   <a href="http://localhost:10086/img/img/re4.png"><img src="http://localhost:10086/img/img/re4.png"></a>
+                               </div>
+                               <div><a href="http://localhost:10086/img/img/re6.jpg"><img src="http://localhost:10086/img/img/re6.jpg"></a>
+                               </div>
+                               <div><a href="http://localhost:10086/img/img/re7.jpg"><img src="http://localhost:10086/img/img/re7.jpg"></a>
+                               </div>
+                           </div>
+                       </div>
+              </div>
         </div>
     </div>
 </div>
-
+</body>
 <script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
 <script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../../../layui/layui.js"></script>
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
-<script type="text/javascript" src="../../../bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/etile.js"></script>
-<script type="text/javascript" src="../../../mianshi/user/common_user.js"></script>
-
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/uni/paper_detail.js"></script>
 <script>
     layui.use('carousel', function () {
         var carousel = layui.carousel;
@@ -112,41 +126,4 @@
         });
     });
 </script>
-
-<script>
-    var c_page = getQueryString('page');
-    if (c_page == '' || c_page < 1) {
-        c_page = 1;
-    }
-    var type = getQueryString('category');
-    var url = '/zt/api/count/' + type;
-    var type_counts = 0;
-    var re_url = 'http://localhost:8080/bs/index/topics/etiles?category=' + type;
-    $.ajaxSettings.async = false;       //开启同步
-    $.getJSON(url, function (data) {
-        type_counts = data;
-    });
-    layui.use('laypage', function () {
-        var laypage = layui.laypage;
-        //执行一个laypage实例
-        laypage.render({
-            elem: 'page_helper' //注意，这里的 page_helper 是 ID，不用加 # 号
-            , count: type_counts //数据总数，从服务端得到
-            , curr: c_page
-            , limit: 20
-            , jump: function (obj, first) {
-                var page_num = Math.ceil(obj.count / obj.limit);
-                if (c_page > page_num && type_counts > 0) {
-                    alert("没有更多了哟！！");
-                    window.location.href = re_url + '&page=' + page_num;
-                }
-                if (!first) {         //第一次加载不执行
-                    window.location.href = re_url + '&page=' + obj.curr;
-                }
-            }
-        });
-    });
-</script>
-
-</body>
 </html>

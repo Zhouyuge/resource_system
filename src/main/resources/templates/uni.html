@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>专栏-文章</title>
+    <title>考研真题</title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
@@ -19,21 +19,20 @@
             <dd><a href="">模拟笔试</a></dd>
             <dd><a href="">教材全解</a></dd>
             <dd><a href="/bs/index/uni">考研真题</a></dd>
-            <dd><a href="/bs/index/topics">精华广场</a></dd>
+<dd><a href="/bs/index/topics">精华广场</a></dd>
             <dd><a href="">试题广场</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item"><a href="">面试</a>
         <dl class="layui-nav-child">
-            <dd><a href="">面经总结</a>
-        </dl>
+<dd><a href="">面经总结</a></dl>
     </li>
     <li class="layui-nav-item">
         <a href="javascript:;">学习</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
             <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
-            <dd><a href="/bs/index/project_action">项目实战</a></dd>
-            <dd><a href="/bs/index/library">图书馆</a></dd>
+<dd><a href="/bs/index/project_action">项目实战</a></dd><dd><a href="/bs/index/library">图书馆</a></dd>
             <dd><a href="/bs/index/technology">技术栈</a></dd>
         </dl>
     </li>
@@ -62,31 +61,55 @@
 
     </li>
 </ul>
+
 <div>
-    <div align="center" style="background: #5f5f5f"><img src="http://localhost:10086/img/b_img/bg_blog.jpg"/></div>
-    <div>
-        <div id="top1" style="background: #ffffff; position: relative; left: 81px;top: 20px; width: 800px">
-            <ul class="flow-default yuyue_list" id="LAY_demo1">
-                <li><h2 style="color: #5FB878; text-align: center">专栏-文章列表</h2></li>
-            </ul>
+    <div style="background: url(http://localhost:10086/img/b_img/bg_uni.jpg); text-align: center; height: 436px">
+        <div style="line-height: 200px;">
+            <span style="color: #ffffff; font-size: 36px">考研备考专场</span>
+        </div>
+
+        <div style="line-height: 10px">
+            <span style="color: #ffffff; font-size: 20px">汇聚历年考研专业课真题</span>
         </div>
     </div>
 
-    <div style="position: absolute; left: 70%; top: 60%; background: #ffffff; width: 340px">
-        <div style="margin: 20px">
-            <span class="layui-badge">热</span>
-            <strong>精选作者</strong>
-        </div>
-        <div style="margin: 20px">
-            <div class="pic">
-                <img style="width: 60px; height: 60px"
-                     src="https://uploadfiles.nowcoder.com/images/20191022/416907265_1571736625708_B0EA1810D347D5D545F7DADB4312F40F"
-                     alt="">
-                <span>海神唐三</span>
+    <div class="layui-row">
+        <div class="layui-col-md-offset1 layui-col-md10" style="background: #ffffff; margin-top: 10px; margin-bottom: 20px">
+            <div style="margin: 25px">
+                <img src="http://localhost:10086/img/uni_img/ico-house.png">
+                <span style="font-size: 20px"><b>研招院校</b></span>
             </div>
-        </div>
-        <div style="margin: 20px">
-            <p>曾就职于阿里、美团点评和某港股上市公司，拥有8年“电商和本地生活、2B和2C、平台和工具”的相关产品经验。面试过的产品经理（校招和社招）不下200人，对互联网产品的面试有着深刻的体会。</p>
+
+            <div style="margin-left: 25px; margin-bottom: 25px">
+                <span class="layui-breadcrumb" lay-separator=" ">
+                  <a href="?city_name=北京" id="北京">北京</a>
+                  <a href="?city_name=上海" id="上海">上海</a>
+                  <a href="?city_name=吉林" id="吉林">吉林</a>
+                  <a href="?city_name=辽宁" id="辽宁">辽宁</a>
+                  <a href="?city_name=安徽" id="安徽">安徽</a>
+                  <a href="?city_name=江苏" id="江苏">江苏</a>
+                  <a href="?city_name=浙江" id="浙江">浙江</a>
+                  <a href="?city_name=陕西" id="陕西">陕西</a>
+                  <a href="?city_name=湖北" id="湖北">湖北</a>
+                  <a href="?city_name=广东" id="广东">广东</a>
+                  <a href="?city_name=湖南" id="湖南">湖南</a>
+                  <a href="?city_name=甘肃" id="甘肃">甘肃</a>
+                  <a href="?city_name=四川" id="四川">四川</a>
+                  <a href="?city_name=山东" id="山东">山东</a>
+                  <a href="?city_name=福建" id="福建">福建</a>
+                  <a href="?city_name=重庆" id="重庆">重庆</a>
+                </span>
+            </div>
+
+            <hr style="margin-left: 25px; margin-bottom: 25px; margin-right: 25px" />
+
+            <div style="margin-left: 40px;" class="layui-row" id="unis">
+                <div class="layui-col-md2" style="margin-right: 5px; margin-bottom: 20px">
+                    <h3 style="font-size: 20px"><b>清华大学</b></h3>
+                    <br/>
+                    <span style="color: grey">共0道真题</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -96,7 +119,7 @@
 <script type="text/javascript" src="../../../layui/layui.js"></script>
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/blog/blog.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-
+<script type="text/javascript" src="../../../mianshi/js/uni/uni.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/uni/uni_function.js"></script>
 </html>

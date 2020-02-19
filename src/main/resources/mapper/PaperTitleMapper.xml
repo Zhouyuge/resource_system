@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.PaperTitleMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.PaperTitle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="paper_id" jdbcType="INTEGER" property="paperId" />
+    <result column="paper_title_name" jdbcType="VARCHAR" property="paperTitleName" />
+    <result column="paper_title_type" jdbcType="INTEGER" property="paperTitleType" />
+    <result column="paper_title_body" jdbcType="VARCHAR" property="paperTitleBody" />
+    <result column="paper_title_hard" jdbcType="INTEGER" property="paperTitleHard" />
+    <result column="paper_title_anser_num" jdbcType="INTEGER" property="paperTitleAnserNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, paper_id, paper_title_name, paper_title_type, paper_title_body, paper_title_hard, 
+    paper_title_anser_num
+  </sql>
+
+  <select id="getPaperIds" resultMap="BaseResultMap">
+    select * from tb_paper_title group by paper_id;
+  </select>
+
+  <select id="getPaperTitlesByPaperId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tb_paper_title
+    where
+    paper_id = #{paperId, jdbcType = INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_paper_title
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_paper_title
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.PaperTitle" useGeneratedKeys="true">
+    insert into tb_paper_title (paper_id, paper_title_name, paper_title_type, 
+      paper_title_body, paper_title_hard, paper_title_anser_num
+      )
+    values (#{paperId,jdbcType=INTEGER}, #{paperTitleName,jdbcType=VARCHAR}, #{paperTitleType,jdbcType=INTEGER}, 
+      #{paperTitleBody,jdbcType=VARCHAR}, #{paperTitleHard,jdbcType=INTEGER}, #{paperTitleAnserNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.PaperTitle" useGeneratedKeys="true">
+    insert into tb_paper_title
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        paper_id,
+      </if>
+      <if test="paperTitleName != null">
+        paper_title_name,
+      </if>
+      <if test="paperTitleType != null">
+        paper_title_type,
+      </if>
+      <if test="paperTitleBody != null">
+        paper_title_body,
+      </if>
+      <if test="paperTitleHard != null">
+        paper_title_hard,
+      </if>
+      <if test="paperTitleAnserNum != null">
+        paper_title_anser_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleName != null">
+        #{paperTitleName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTitleType != null">
+        #{paperTitleType,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleBody != null">
+        #{paperTitleBody,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTitleHard != null">
+        #{paperTitleHard,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleAnserNum != null">
+        #{paperTitleAnserNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.PaperTitle">
+    update tb_paper_title
+    <set>
+      <if test="paperId != null">
+        paper_id = #{paperId,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleName != null">
+        paper_title_name = #{paperTitleName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTitleType != null">
+        paper_title_type = #{paperTitleType,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleBody != null">
+        paper_title_body = #{paperTitleBody,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTitleHard != null">
+        paper_title_hard = #{paperTitleHard,jdbcType=INTEGER},
+      </if>
+      <if test="paperTitleAnserNum != null">
+        paper_title_anser_num = #{paperTitleAnserNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.PaperTitle">
+    update tb_paper_title
+    set paper_id = #{paperId,jdbcType=INTEGER},
+      paper_title_name = #{paperTitleName,jdbcType=VARCHAR},
+      paper_title_type = #{paperTitleType,jdbcType=INTEGER},
+      paper_title_body = #{paperTitleBody,jdbcType=VARCHAR},
+      paper_title_hard = #{paperTitleHard,jdbcType=INTEGER},
+      paper_title_anser_num = #{paperTitleAnserNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

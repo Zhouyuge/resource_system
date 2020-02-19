@@ -96,4 +96,19 @@ public class MainController {
 
     @RequestMapping("/index/post_fac")
     public String postFac() { return "post_fac"; }
+
+    @RequestMapping("/index/uni")
+    public String uni() { return "uni"; }
+
+    @RequestMapping("/index/uni_list")
+    public String uniList() { return "uni_list"; }
+
+    @RequestMapping("/index/paper_list")
+    public String paperList() { return "paper_title"; }
+
+    @RequestMapping("/index/paper_detail")
+    public String paperDetail() { return "paper_detail"; }
+
+    @RequestMapping("/index/project_action")
+    public String projectAction() { return "project_action"; }
 }
