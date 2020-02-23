@@ -5,6 +5,8 @@ import com.bishe.main.entity.Paper;
 import java.util.List;
 
 public interface PaperMapper {
+    List<Paper> getPapers();
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Paper record);
@@ -16,8 +18,6 @@ public interface PaperMapper {
     int updateByPrimaryKeySelective(Paper record);
 
     int updateByPrimaryKey(Paper record);
-
-    List<Paper> getPapers();
 
     List<Paper> getPapersByUni(Integer uniId);
 }

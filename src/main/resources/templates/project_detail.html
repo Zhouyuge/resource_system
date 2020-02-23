@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
+</head>
+
+<body style="background: #e0e0e0">
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="">题库</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">公司真题</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
+            <dd><a href="">在线编程</a></dd>
+            <dd><a href="">模拟笔试</a></dd>
+            <dd><a href="">教材全解</a></dd>
+            <dd><a href="/bs/index/uni">考研真题</a></dd>
+<dd><a href="/bs/index/topics">精华广场</a></dd>
+            <dd><a href="">试题广场</a></dd>
+        </dl>
+    </li>
+
+    <li class="layui-nav-item">
+        <a href="javascript:;">学习</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
+            <dd><a href="/bs/index/project_action">项目实战</a></dd>
+            <dd><a href="/bs/index/library">图书馆</a></dd>
+            <dd><a href="/bs/index/technology">技术栈</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
+    <li class="layui-nav-item"><a href="">讨论区</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/bs/index/talk">讨论区</a></dd>
+            <dd><a href="/bs/index/circle">圈子</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">发现</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
+        </dl>
+    </li>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
+
+    </li>
+
+    </li>
+</ul>
+
+<div>
+    <div style="background: #0d1633; height: 340px;">
+        <div style="text-align: center; margin-left: 150px;width: 1000px;background: url(http://localhost:10086/img/b_img/project.jpg) no-repeat; height: 300px">
+            <p style="color: #ffffff; font-size: 60px; line-height: 200px" id="project_name"></p>
+            <div style="color: #fff;
+                            cursor: pointer;
+                            margin: 0 auto;
+                            background: rgba(0,0,0,.3);
+                            padding: 8px 15px;
+                            border-radius: 10px;
+                            font-size: 14px;
+                            display: inline-block;">
+            <i class="layui-icon layui-icon-share"></i>
+            邀请朋友一起做项目
+            </div>
+        </div>
+        <div style="margin-left:150px; background: #ffffff; width: 1000px; height: 50px">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+              <ul class="layui-tab-title">
+                <li class="layui-this">项目介绍</li>
+                <li>项目资料</li>
+                <li>项目源码</li>
+                <li>项目问答</li>
+                <li>我的同学</li>
+              </ul>
+               <div class="layui-tab-content" style="background: #ffffff">
+                  <div class="layui-tab-item layui-show" id="action">
+
+                    </div>
+
+
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">
+                      <button style="margin-left: 80%" type="button" class="layui-btn" id="upload">
+                           <i class="layui-icon">&#xe67c;</i>源码上传
+                      </button>
+                      <hr style="margin: 20px" />
+                      <div style="margin: 20px">
+                           <span class="layui-badge-dot"></span>
+                           <b><span style="font-size: 16px;">我的源码</span></b>
+                      </div>
+                      <table class="layui-table" lay-even lay-skin="nob">
+                         <thead>
+                            <tr>
+                              <th>源码名称</th>
+                              <th>上传时间</th>
+                              <th>操作</th>
+                            </tr>
+                          </thead>
+                          <tbody id="myDemo">
+
+                          </tbody>
+                      </table>
+
+                      <hr style="margin: 20px" />
+                         <div style="margin: 20px">
+                             <span class="layui-badge-dot"></span>
+                             <b><span style="font-size: 16px;">牛友源码</span></b>
+                         </div>
+
+                         <div style="margin: 20px" class="layui-row" id="not_my_demo">
+                         </div>
+                   </div>
+                  <div class="layui-tab-item">内容4</div>
+                  <div class="layui-tab-item">内容5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/pa/project_detail.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/pa/project_function.js"></script>
+<script>
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , arrow: 'hover' //始终显示箭头
+            , anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+<script>
+var pId =getQueryString('action_id');
+layui.use('upload', function(){
+  var upload = layui.upload;
+  var layer = layui.layer;
+
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#upload' //绑定元素
+    ,url: '/pa/api/upload' //上传接口
+    ,data: {id : pId}
+    ,accept: 'file'
+    ,done: function(res){
+        if(res.success) {
+            location.reload();
+        } else {
+              layer.msg(res.errMsg);
+        }
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+</script>
+<script type="text/javascript" src="../../../mianshi/js/pa/project_action.js"></script>
+</html>

@@ -111,4 +111,13 @@ public class MainController {
 
     @RequestMapping("/index/project_action")
     public String projectAction() { return "project_action"; }
+
+    @RequestMapping("/index/project_detail")
+    public String projectDetail() { return "project_detail"; }
+
+    @RequestMapping("/index/talk")
+    public String talk() { return"talk_cri"; }
+
+    @RequestMapping("/index/talk_detail")
+    public String talkDetail() { return "talk_detail"; }
 }

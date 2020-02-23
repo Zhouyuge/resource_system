@@ -26,7 +26,7 @@
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from tb_paper
     where id = #{id,jdbcType=INTEGER}
@@ -36,9 +36,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.Paper" useGeneratedKeys="true">
-    insert into tb_paper (uni_id, paper_year, paper_code, 
+    insert into tb_paper (uni_id, paper_year, paper_code,
       paper_hot, title_num)
-    values (#{uniId,jdbcType=INTEGER}, #{paperYear,jdbcType=VARCHAR}, #{paperCode,jdbcType=VARCHAR}, 
+    values (#{uniId,jdbcType=INTEGER}, #{paperYear,jdbcType=VARCHAR}, #{paperCode,jdbcType=VARCHAR},
       #{paperHot,jdbcType=VARCHAR}, #{titleNum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.Paper" useGeneratedKeys="true">

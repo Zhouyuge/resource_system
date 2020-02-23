@@ -24,10 +24,7 @@
             <dd><a href="">试题广场</a></dd>
         </dl>
     </li>
-    <li class="layui-nav-item"><a href="">面试</a>
-        <dl class="layui-nav-child">
-<dd><a href="">面经总结</a></dl>
-    </li>
+
     <li class="layui-nav-item">
         <a href="javascript:;">学习</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
@@ -41,7 +38,7 @@
     <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
     <li class="layui-nav-item"><a href="">讨论区</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
-            <dd><a href="">讨论区</a></dd>
+            <dd><a href="/bs/index/talk">讨论区</a></dd>
             <dd><a href="/bs/index/circle">圈子</a></dd>
         </dl>
     </li>
@@ -87,44 +84,8 @@
                 <b><span style="font-size: 16px;">实战项目</span></b>
             </div>
 
-            <div style="margin: 20px">
-            <!-- 做判断 -->
-               <div class="layui-col-md3" style="margin-left: 40px; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; width: 218px;">
-                    <img width="218px" height="146px" src="http://localhost:10086/img/img/2.png" />
-                    <div style="border-left: 1px solid #ebebeb; border-right: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb">
-                        <br/>
-                        <b style="font-family: 'Microsoft YaHei UI'; margin-left: 10px;">同字母依序查找项目</b>
-                        <span style="margin-left: 20px" class="layui-badge layui-bg-blue">java</span>
-                        <div style="margin-top: 30px;">
-                            <span style="color: #5f5f5f; margin-left: 10px;">初级</span>
-                            <span class="level" style="margin-left: 20%"></span>
-                        </div>
-                    </div>
-                </div>
-               <div class="layui-col-md3" style="margin: 10px; margin-right: 20px; width: 218px;">
-                                <img width="218px" height="146px" src="http://localhost:10086/img/img/2.png" />
-                                <div style="border-left: 1px solid #ebebeb; border-right: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb">
-                                    <br/>
-                                    <b style="font-family: 'Microsoft YaHei UI'; margin-left: 10px;">同字母依序查找项目</b>
-                                    <span style="margin-left: 20px" class="layui-badge layui-bg-blue">java</span>
-                                    <div style="margin-top: 30px;">
-                                        <span style="color: #5f5f5f; margin-left: 10px;">初级</span>
-                                        <span class="level" style="margin-left: 20%"></span>
-                                    </div>
-                                </div>
-                            </div>
-               <div class="layui-col-md3" style="margin: 10px; margin-right: 20px; width: 218px;">
-                    <img width="218px" height="146px" src="http://localhost:10086/img/img/2.png" />
-                    <div style="border-left: 1px solid #ebebeb; border-right: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb">
-                        <br/>
-                        <b style="font-family: 'Microsoft YaHei UI'; margin-left: 10px;">同字母依序查找项目</b>
-                        <span style="margin-left: 20px" class="layui-badge layui-bg-blue">java</span>
-                        <div style="margin-top: 30px;">
-                            <span style="color: #5f5f5f; margin-left: 10px;">初级</span>
-                            <span class="level" style="margin-left: 20%"></span>
-                        </div>
-                    </div>
-                </div>
+            <div style="margin: 20px" id="action_list">
+
             </div>
         </div>
     </div>
@@ -137,7 +98,6 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/uni/paper_detail.js"></script>
 <script>
     layui.use('carousel', function () {
         var carousel = layui.carousel;
@@ -152,14 +112,7 @@
 </script>
 
 <script>
-  layui.use('rate', function(){
-    var rate = layui.rate;
 
-    //渲染
-    var ins1 = rate.render({
-      elem: '.level',  //绑定元素
-      value: 2
-    });
-  });
 </script>
+<script type="text/javascript" src="../../../mianshi/js/pa/project_action.js"></script>
 </html>
