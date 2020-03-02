@@ -13,6 +13,8 @@ public interface CommentService {
 
     List<Comment> getCommentListByParentId(Integer parentId);
 
+    List<Comment> getCommentListByFunctionId(Integer functionId, Integer commentid);
+
     Comment getCommentById(Integer commentId);
 
     int addComment(Comment comment);

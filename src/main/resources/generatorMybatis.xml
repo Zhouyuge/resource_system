@@ -55,7 +55,7 @@
             <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
         <!--</table>-->
 
-        <table tableName="tb_project_demo" domainObjectName="ProjectDemo" enableCountByExample="false"
+        <table tableName="tb_daily" domainObjectName="DailyPoint" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--使用自增长键-->

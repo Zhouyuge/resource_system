@@ -11,6 +11,7 @@ public class Result<T> {
 
     private T data;
 
+    private Integer page;
     /**
      * 请求成功时调用
      * @param data
@@ -41,6 +42,12 @@ public class Result<T> {
         this.data = data;
     }
 
+    public Result(T data, String msg, Integer code){
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
     private Result(CodeMsg codeMsg) {
         if (codeMsg == null) {
             return;
@@ -59,5 +66,13 @@ public class Result<T> {
 
     public T getData() {
         return data;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
     }
 }

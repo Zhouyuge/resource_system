@@ -5,8 +5,15 @@
     <title>讨论区_技术交流/产品运营/留学</title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
+    <link rel="stylesheet" href="//static.nowcoder.com/nc/style/0.0.39/fontcustom/global/global.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nc/style/0.0.39/common/global.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nc/style/0.0.39/common/ui.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nowcoder/1.2.1384/stylesheets/common/base.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nowcoder/1.2.1384/stylesheets/common/channel/default.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nowcoder/1.2.1384/stylesheets/pages/discuss/discuss.css">
+    <link charset="utf-8" rel="stylesheet" href="https://static.nowcoder.com/nc/jslib/katex@0.10.2/katex.min.css"><link charset="utf-8" rel="stylesheet" href="https://static.nowcoder.com/nc/plugin/1.0.17/release/highlighter/style/shCoreDefault.css"></head>
 </head>
-<body style="background: #e0e0e0">
+<body style="">
 <ul class="layui-nav" lay-filter="">
     <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
@@ -46,7 +53,8 @@
             <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
         </dl>
     </li>
-    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+    <li style="position: absolute; left:63%" class="layui-nav-item">
+        <input type="text" style="height: 5px; width: 150px" class="layui-input-inline"/>
         <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
     </li>
     <li style="position: absolute; left: 79%" class="layui-nav-item">
@@ -58,74 +66,26 @@
 
     </li>
 </ul>
-<div style="margin-left: 180px; margin-top: 20px">
-    <a href=""><img width="1000px"; height="80px" src="http://localhost:10086/img/b_img/bg_circle.png" ></a>
-</div>
 
 <div style="margin-left: 180px; margin-top: 15px; width: 1000px" class="layui-row">
     <div class="layui-col-md8" style="background: #ffffff">
-        <div style="margin: 20px">
-            <span class="layui-badge-dot"></span>
-            <b><span style="font-size: 18px;">分享与求助</span></b>
-            <button class="layui-btn layui-btn-sm" style="margin-left: 380px">
-                <i class="layui-icon layui-icon-edit">我也要发布</i>
-            </button>
+        <div style="margin: 20px" id="header">
+
         </div>
 
-        <div style="background: #f0f0f0">
-          <div style="margin-bottom: 10px; width: 550px;margin-left: 20px;">
-            <span class="layui-breadcrumb" lay-separator=" " style="line-height: 40px; margin-top: 20px">
-              <a class="type_href" href="talk">全部</a>
-              <a class="type_href" href="?type_id=1">站内公告</a>
-              <a class="type_href" href="?type_id=2">笔经面经</a>
-              <a class="type_href" href="?type_id=3">我要提问</a>
-              <a class="type_href" href="?type_id=4">技术交流</a>
-              <a class="type_href" href="?type_id=5">产品运营</a>
-              <a class="type_href" href="?type_id=6">留学生</a>
-              <a class="type_href" href="?type_id=7">职业发展</a>
-              <a class="type_href" href="?type_id=8">招聘信息</a>
-              <a class="type_href" href="?type_id=9">资源分享</a>
-              <a class="type_href" href="?type_id=10">猿生活</a>
-              <a class="type_href" href="?type_id=11">工作以后</a>
-            </span>
+        <hr style="height: 0px"/>
+
+        <div style="margin: 20px" id="content">
+
+
         </div>
     </div>
 
-    <div style="margin-bottom: 20px">
-        <span style="margin-left: 20px" class="layui-breadcrumb" lay-separator="|">
-          <a href=""><span style="color: #009f95">最新回复</span></a>
-          <a href=""><span>最新发表</span></a>
-          <a href=""><span>最热</span></a>
-          <a href=""><span>精华</span></a>
-        </span>
-    </div>
-
-        <ul id="talk_list">
-        </ul>
-    </div>
-
-    <div style="background: #ffffff; position: absolute; left: 860px; width: 318px">
+    <div style="background: #ffffff; position: absolute; left: 860px; width: 318px" id="hot_list">
         <div style="margin: 20px">
             <span class="layui-badge-dot"></span>
             <b><span style="font-size: 18px;">热议话题</span></b>
         </div>
-
-        <div style="margin: 20px; line-height: 30px">
-            <p>#春招备战#</p>
-            <span style="color: grey;">55人预览</span>
-            <span style="color: grey; margin-left: 10px">8人参与</span>
-            <hr />
-        </div>
-        <div style="margin: 20px; line-height: 30px">
-            <p>#春招备战#</p>
-            <span style="color: grey;">55人预览</span>
-            <span style="color: grey; margin-left: 10px">8人参与</span>
-            <hr />
-        </div>
-        <div id="hot_list">
-
-        </div>
-
     </div>
 </div>
 </body>
@@ -135,5 +95,5 @@
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/invi/invi.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/invi/invi_detail.js"></script>
 </html>

@@ -7,7 +7,7 @@ $(function(){
         $.getJSON(url, function (data) {
             var html = '';
             html += '<img onclick="skipToIndex();" class="layui-circle" style="width: 35px; height: 35px" src="' + data.userHeadPic + '" />'
-                +'<span style="color: #ffffff">&nbsp;'
+                +'<span id="user" data-self="' + data.userId + '" style="color: #ffffff">&nbsp;'
                 + (data.userVisualName == '' ? data.userName : data.userVisualName) + '</span>';
             $('#user_info').html(html);
             $('#self_blog_author')
