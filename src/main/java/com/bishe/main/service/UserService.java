@@ -1,5 +1,7 @@
 package com.bishe.main.service;
 
+import com.bishe.main.entity.User;
+import com.bishe.main.ro.LoginRo;
 import com.bishe.main.vo.DailyPointVO;
 import com.github.pagehelper.Page;
 
@@ -16,7 +18,23 @@ public interface UserService {
 
     Page<DailyPointVO> getAllDailyPointVO(Integer pageNum);
 
+    List<DailyPointVO> getDailyPointVOByUserId(String userId);
+
+    int deleteDailyPointById(Integer id);
+
     int addDailyPoint(DailyPointVO dailyPointVO, String userId);
 
     int pageCount();
+
+    User getUserByPrimaryKey(String userId);
+
+    List<User> getAllUsers();
+
+    LoginRo registerUser(String email, String password);
+
+    LoginRo updateUser(User user, String token);
+
+    User getUser(User user);
+
+    User getUserById(String userId);
 }

@@ -57,7 +57,7 @@ public class PDFUtil{
         table.getDefaultCell().setBorder(0);
 
         // 在表格添加图片
-        Image cellimg = Image.getInstance("http://localhost:10086/img/h_img/mine.png");
+        Image cellimg = Image.getInstance("http://39.106.218.135:10086/img/h_img/mine.png");
         PdfPCell cell=new PdfPCell(cellimg,true);
 //        PdfPCell cell = new PdfPCell(new Phrase("头像",keyfont));
         cell.setRowspan(4);

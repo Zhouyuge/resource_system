@@ -15,8 +15,8 @@ $(function () {
                             //假设你的列表返回在data集合中
                             layui.each(res.blogDtos, function (index, value) {
                                 var html = '<li><div style="margin: 15px">'
-                                    + '<img style="width: 40px; height: 40px" class="layui-circle" src="' + value.blogCenterPic + '">'
-                                    + '<span style="color: #31b0d5; margin-left: 5px">' + value.blogCenterAuthor + '</span>'
+                                    + '<img style="width: 40px; height: 40px" class="layui-circle" src="' + value.user.userHeadPic + '">'
+                                    + '<span style="color: #31b0d5; margin-left: 5px">' + value.user.userVisualName + '</span>'
                                     + '</div>'
                                     + '<div style="width: 700px;margin-left: 15px">'
                                     + '<h3><a href="/bs/index/study/detail_blog?id=' + value.blogCenterId + '">' + value.blogCenterName + '</a></h3><br/>'
@@ -24,7 +24,7 @@ $(function () {
                                     + '</div><br/>'
                                     + '<div style="margin-left: 15px;">'
                                     + '<span>来自          </span>'
-                                    + '<span style="color: #d5d5d5">' + value.blogCenterAuthor + '的博客</span>'
+                                    + '<span style="color: #d5d5d5">' + value.user.userName + '的博客</span>'
                                     + '<div align="right" style="margin-right: 60px">'
                                     + '<a onclick="change_state(this)"><i class="layui-icon layui-icon-praise" style=" width: 25px; height: 25px"><span>' + value.blogCenterAgree + '</span></i></a>'
                                     + '<a onclick="change_state(this)"><i class="layui-icon layui-icon-star" style="margin-left: 30px; width: 25px; height: 25px"><span>' + value.blogCenterCollect + '</span></i></a>'

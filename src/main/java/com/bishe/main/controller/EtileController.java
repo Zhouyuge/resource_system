@@ -29,6 +29,7 @@ import java.util.*;
 public class EtileController {
     @Autowired
     private EtileService etileService;
+
     private final int NUM = 20;     //每页获取的专题数
 
     /**
@@ -78,10 +79,10 @@ public class EtileController {
      */
     @GetMapping("/etile_detail/{no}/{no_ali}")
     @ApiOperation("通过Id来获取专题")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "no", value = "专题分类Id", required = true, paramType = "int"),
-            @ApiImplicitParam(name = "no_ali", value = "专题别名Id", required = true, paramType = "int")
-    })
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "no", value = "专题分类Id", required = true, paramType = "int"),
+//            @ApiImplicitParam(name = "no_ali", value = "专题别名Id", required = true, paramType = "int")
+//    })
 
     public Map<String, Object> getEtileById(@PathVariable("no") Integer no, @PathVariable("no_ali") Integer noAli) {
         Map<String, Object> modelMap = new HashMap<>();

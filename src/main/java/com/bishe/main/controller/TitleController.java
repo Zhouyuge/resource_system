@@ -6,6 +6,7 @@ import com.bishe.main.dto.FTypeDto;
 import com.bishe.main.dto.STypeDto;
 import com.bishe.main.dto.TitleDto;
 import com.bishe.main.entity.User;
+import com.bishe.main.entity.result.Result;
 import com.bishe.main.service.TitileTypeService;
 import com.bishe.main.service.TitleService;
 import com.bishe.main.util.MapUtil;
@@ -51,7 +52,7 @@ public class TitleController {
 
     @ApiOperation("获取所有二级分类")
     @GetMapping("/stype/{fId}")
-    @ApiImplicitParam(name = "一级类别Id", value = "fId", required = true, paramType = "int")
+//    @ApiImplicitParam(name = "一级类别Id", value = "fId", required = true, paramType = "int")
     public Map<String, Object> getSTypes(@PathVariable("fId") Integer fId) {
         Map<String, Object> modelMap = new HashMap<>();
         List<STypeDto> sTypeDtos = titleTypeService.getSTypesByFId(fId);
@@ -65,28 +66,28 @@ public class TitleController {
         return modelMap;
     }
 
-    @ApiOperation("获取20个题")
-    @GetMapping("/s_title")
-    public Map<String, Object> getTitleDtos (HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        String userId = user.getUserId();
-        List<TitleDto> titleDtos = titleService.getTitleDtos(userId);
+    @ApiOperation("获取二级分类下20个题")
+    @GetMapping("/s_title/{s_type}/{user_id}")
+    public Map<String, Object> getTitleDtos (@PathVariable("s_type")Integer sType, @PathVariable("user_id") String userId) {
+        List<TitleDto> titleDtos = titleService.getTitleDtos(userId, sType);
         if (titleDtos != null) {
             return MapUtil.sucMsg(titleDtos);
         }
-        return MapUtil.errMsg("用户未做过题哟..");
+        return MapUtil.errMsg("该分类暂无更多题..");
     }
 
     @ApiOperation("验证做题答案")
-    @PostMapping("/s_title")
-    @ApiImplicitParam(name = "答题信息", value = "titleDtos", required = true, paramType = "List")
-    public int checkAns (@RequestBody List<TitleDto> titleDtos, HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("user");
-        String userId = user.getUserId();
-
-        log.error("---->" + titleDtos.size());
+    @PostMapping("/s_title/{user_id}")
+    public int checkAns (@RequestBody List<TitleDto> titleDtos, @PathVariable("user_id") String userId) {
         int rNum = titleService.updateTitle(titleDtos, userId);
 
         return rNum;
     }
+
+    @ApiOperation("获取用户所有错题")
+    @GetMapping("/wrong_title/{user_id}")
+    public Result<List> getWrongTitles(@PathVariable("user_id")String userId){
+        return Result.success(titleService.getWrongDtos(userId));
+    }
+
 }

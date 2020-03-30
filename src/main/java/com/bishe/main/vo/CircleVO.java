@@ -9,9 +9,9 @@ import lombok.Data;
  */
 @Data
 public class CircleVO  extends Circle {
-    private String userName;
+        private String userName;
 
-    private String userHeadPic;
+        private String userHeadPic;
 
-    private String typeValue;
+        private String typeValue;
 }

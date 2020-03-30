@@ -63,7 +63,7 @@ public class TechnologyController {
             TechnologeVO technology = technologeService.getTechnologyById(id);
             TechFile techFile = new TechFile();
             try {
-                String filePath = "D://pdf//" + technology.getTechnologyName() + "//";
+                String filePath = "/home/pdf/" + technology.getTechnologyName() + "//";
                 File pdfFile = new File(filePath);
                 if(! pdfFile.exists()) {
                     pdfFile.mkdirs();
@@ -73,7 +73,7 @@ public class TechnologyController {
                 out.write(file.getBytes());
                 out.close();
 
-                techFile.setFileDownUrl("http://localhost:9527/pdf/" + technology.getTechnologyName() + "/" +file.getOriginalFilename());
+                techFile.setFileDownUrl("http://39.106.218.135:9527/pdf/" + technology.getTechnologyName() + "/" +file.getOriginalFilename());
                 techFile.setFileName(file.getOriginalFilename());
                 User user = (User)request.getSession().getAttribute("user");
                 techFile.setUserId(user.getUserId());
@@ -94,7 +94,7 @@ public class TechnologyController {
     }
 
     @PostMapping("/comment")
-    @ApiOperation("添加用户")
+    @ApiOperation("添加用户评论")
     public Map<String, Object> addComment(@RequestParam("content") String content,@RequestParam("id") Integer id, HttpServletRequest request) {
         Comment comment = new Comment();
         User user = (User)request.getSession().getAttribute("user");

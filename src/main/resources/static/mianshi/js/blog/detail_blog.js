@@ -17,8 +17,8 @@ $(function () {
                 + '<br/>'
                 + '<span style="color: grey">' + res.blogCenterEditTime + '</span>'
                 + '<br/><div style="margin-top: 20px; margin-bottom: 20px">'
-                + '<img style="width: 40px; height: 40px" class="layui-circle" src="' + res.blogCenterPic + '">'
-                + '<span style="color: #31b0d5; margin-left: 5px">' + res.blogCenterAuthor + '</span>'
+                + '<img style="width: 40px; height: 40px" class="layui-circle" src="' + res.user.userHeadPic + '">'
+                + '<span style="color: #31b0d5; margin-left: 5px">' + res.user.userVisualName + '</span>'
                 + '</div>'
                 + '<div style="border: 1px solid #c8e5bc">'
                 + res.blogCenterContent

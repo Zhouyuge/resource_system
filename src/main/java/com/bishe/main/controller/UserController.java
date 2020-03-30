@@ -6,6 +6,7 @@ import cn.hutool.log.LogFactory;
 import com.bishe.main.entity.User;
 import com.bishe.main.entity.result.CodeMsg;
 import com.bishe.main.entity.result.Result;
+import com.bishe.main.ro.LoginRo;
 import com.bishe.main.service.UserService;
 import com.bishe.main.util.AutoMapperUtil;
 import com.bishe.main.util.MapUtil;
@@ -65,7 +66,7 @@ public class UserController {
         Map<String, Object> modelMap = new HashMap<>();
         modelMap.put("user", userStr);
         modelMap.put("token", token);
-        restTemplate.put("http://localhost:8081/login/api/user/{user}/{token}", null, modelMap);
+        restTemplate.put("http://39.106.218.135:8081/login/api/user/{user}/{token}", null, modelMap);
         String str = userService.queryUserByToken(token);
         //TODO 待改善...
         ObjectMapper objectMapper = new ObjectMapper();
@@ -81,7 +82,7 @@ public class UserController {
         if ( ! file.isEmpty()) {
             Map<String, Object> data = new HashMap<>();
             try {
-                String filePath = "D://niuke//daily_img//";
+                String filePath = "/home/niuke/daily_img/";
                 File file1 = new File(filePath);
                 if( !file1.exists()){
                     file1.mkdirs();
@@ -92,7 +93,7 @@ public class UserController {
                 out.write(file.getBytes());
                 out.close();
 
-                data.put("src", "http://localhost:10086/img/daily_img/" + file.getOriginalFilename());
+                data.put("src", "http://39.106.218.135:10086/img/daily_img/" + file.getOriginalFilename());
                 result = new Result<Map>(data, "", 0);
             }catch (Exception e) {
                 e.printStackTrace();
@@ -109,11 +110,78 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation("获取用户的签到信息")
+    @GetMapping("/dailys/{user_id}")
+    public Result<List> getDailyPoints(@PathVariable("user_id") String userId){
+        Result result = Result.success(userService.getDailyPointVOByUserId(userId));
+        return result;
+    }
+
+    @ApiOperation("根据Id删除签到信息")
+    @DeleteMapping("/daily_point")
+    public Result deleteDailyPointsById(@RequestParam Integer id){
+        return Result.success(userService.deleteDailyPointById(id));
+    }
+
     @ApiOperation("插入签到信息")
-    @PostMapping("/daily_point")
-    public Result insertDailyPoint(@RequestBody DailyPointVO dailyPointVO, HttpServletRequest request){
-        User user = (User) request.getSession().getAttribute("user");
-        String userId = user.getUserId();
+    @PostMapping("/daily_point/{user_id}")
+    public Result insertDailyPoint(@RequestBody DailyPointVO dailyPointVO, @PathVariable("user_id") String userId){
+    //    User user = (User) request.getSession().getAttribute("user");
         return Result.success(userService.addDailyPoint(dailyPointVO, userId));
     }
+
+    @ApiOperation("获取所有用户信息")
+    @GetMapping("users")
+    public Result getAllUsers() {
+        return Result.success(userService.getAllUsers());
+    }
+    /**
+     * 新用户注册
+     * @param email
+     * @param password
+     * @return
+     */
+    @PostMapping("/register")
+    public Map<String, Object> register(@RequestParam("email") String email, @RequestParam("password") String password) {
+        Map<String, Object> modelMap = new HashMap<>();
+        LoginRo loginRo = userService.registerUser(email, password);
+
+        modelMap.put("code", loginRo.getCode());
+        modelMap.put("msg", loginRo.getMsg());
+
+        return modelMap;
+    }
+
+    @PutMapping("/user/{user}/{token}")
+    public Map<String, Object> updateUser(@PathVariable("user") String userStr, @PathVariable("token") String token) throws IOException{
+        Map<String, Object> modelMap = new HashMap<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        User user = objectMapper.readValue(userStr, User.class);
+        User temp = objectMapper.readValue(userService.queryUserByToken(token), User.class);    //查询用户,提供用户Id
+        user.setUserId(temp.getUserId());
+        System.out.println(user.toString());
+        LoginRo login = userService.updateUser(user, token);
+        if (login.getCode() == 500) {
+            modelMap.put("code", login.getCode());
+            modelMap.put("msg", login.getMsg());
+        } else {
+            modelMap.put("code", login.getCode());
+            modelMap.put("user", user);
+        }
+        return modelMap;
+    }
+
+    @ApiOperation("用户登录")
+    @PostMapping("/login")
+    public Result load(@RequestBody User user) {
+        return Result.success(userService.getUser(user));
+    }
+
+    @GetMapping("/login_user")
+    @ApiOperation("根据用户id获取用户信息")
+    public Result getUser(@RequestParam("user_id")String userId) {
+        System.out.println(userId);
+        return Result.success(userService.getUserById(userId));
+    }
 }
+

@@ -46,6 +46,15 @@
     d.user_id = u.user_id order by d.create_time desc
   </select>
 
+  <select id="selectByUserId" resultMap="BaseResultMap2">
+    select
+      d.*,u.user_visual_name,u.user_head_pic
+    from tb_daily d,tb_user u
+    where
+      d.user_id = u.user_id and d.user_id = #{userId, jdbcType=VARCHAR} order by d.create_time desc
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_daily
     where id = #{id,jdbcType=INTEGER}

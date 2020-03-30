@@ -14,20 +14,19 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class WebAdaptConfig implements WebMvcConfigurer {
     // 所有的WebMvcConfigurerAdapter组件都会一起起作用
-    @Bean
-    public WebMvcConfigurer webMvcConfigurerAdapter() {
-        return new WebMvcConfigurer() {
-            /**
-             * 注册拦截器
-             * @param registry
-             */
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new LoginHandlerInterceptor())
-                        .addPathPatterns("/**");
-            }
-        };
-    }
-
-
+//    @Bean
+//    public WebMvcConfigurer webMvcConfigurerAdapter() {
+//        return new WebMvcConfigurer() {
+//            /**
+//             * 注册拦截器
+//             * @param registry
+//             */
+//            @Override
+//            public void addInterceptors(InterceptorRegistry registry) {
+//                registry.addInterceptor(new LoginHandlerInterceptor())
+//                        .addPathPatterns("/**")
+//                ;
+//            }
+//        };
+//    }
 }

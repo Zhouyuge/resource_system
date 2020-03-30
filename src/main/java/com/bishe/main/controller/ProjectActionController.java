@@ -58,7 +58,7 @@ public class ProjectActionController {
             ProjectDemo projectDemo = new ProjectDemo();
             ProjectAction projectAction = projectActionSerivce.getProjectActionById(id);
             try {
-                String filePath = "D://demo//" + projectAction.getActionName().split(" ")[0] + "//";
+                String filePath = "/home/demo/" + projectAction.getActionName().split(" ")[0] + "/";
                 File pdfFile = new File(filePath);
                 if(! pdfFile.exists()) {
                     pdfFile.mkdirs();
@@ -72,13 +72,13 @@ public class ProjectActionController {
                 out.write(file.getBytes());
                 out.close();
 
-                projectDemo.setDemoUrl("http://localhost:9526/demo/" + projectAction.getActionName().split(" ")[0] + "/" +file.getOriginalFilename());
+                projectDemo.setDemoUrl("http://39.106.218.135:9526/demo/" + projectAction.getActionName().split(" ")[0] + "/" +file.getOriginalFilename());
                 projectDemo.setDemoName(file.getOriginalFilename());
                 User user = (User)request.getSession().getAttribute("user");
                 projectDemo.setUserId(user.getUserId());
                 projectDemo.setUploadTime(new Date());
                 projectDemo.setProjectId(id);
-                projectDemo.setDemoDownUrl("D://download");
+                projectDemo.setDemoDownUrl("/home/download");
                 projectDemo.setDemoStatus(1);
                 projectActionSerivce.insertDemo(projectDemo);
 

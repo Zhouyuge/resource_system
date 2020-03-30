@@ -1,5 +1,6 @@
 package com.bishe.main.dto;
 
+import com.bishe.main.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -27,4 +28,8 @@ public class BlogContentDto {
     private String blogCenterContent;
 
     private String blogCenterPic;
+
+    private User user;
+
+    private String prettyTime;
 }

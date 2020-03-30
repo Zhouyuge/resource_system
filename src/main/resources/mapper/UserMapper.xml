@@ -46,6 +46,16 @@
     user_id, user_name, user_password, user_sex, user_visual_name, user_tel, user_emal, 
     user_detail, user_head_pic, user_create_time
   </sql>
+
+  <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_user
+    where user_emal = #{userEmail, jdbcType=VARCHAR}
+  </select>
+
+
+
   <select id="selectByExample" parameterType="com.bishe.main.entity.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

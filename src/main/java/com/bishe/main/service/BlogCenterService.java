@@ -14,4 +14,6 @@ public interface BlogCenterService {
     Page<BlogCenter> getBlogDtos(Integer page, Integer num);
 
     BlogContentDto getBlogContentDtoById(Integer id);
+
+    Integer getPages();
 }

@@ -1,5 +1,7 @@
 package com.bishe.main.controller;
 
+import com.bishe.main.entity.MeetingEntity;
+import com.bishe.main.entity.result.Result;
 import com.bishe.main.util.FileUtils;
 import com.github.pagehelper.StringUtil;
 import io.swagger.annotations.*;
@@ -32,7 +34,7 @@ public class MianShiController {
             return resultMap;
         }
 
-        File file = new File("D://面试题//" + title + "//");
+        File file = new File("/home/面试题/" + title + "/");
         //如果这个路径是文件夹
         if (file.isDirectory()) {
             //获取路径下的文件夹
@@ -74,7 +76,7 @@ public class MianShiController {
      */
     @GetMapping("/gettitles")
     public Map<String, Object> getTitles(@RequestParam(value = "title", required = true) String direct) {
-        String str = "D://面试题//" + direct + "//";
+        String str = "/home/面试题/" + direct + "/";
         Map<String, Object> modelMap = new HashMap<>();
         File dir = new File(str);
         Map<String, Object> titles = new TreeMap<>(
@@ -111,4 +113,83 @@ public class MianShiController {
         return modelMap;
     }
 
+    @GetMapping("")
+    @ApiOperation("获取教程大体信息")
+    public Result getTechs() {
+        List<MeetingEntity> meetingEntities = new ArrayList<>();
+
+        MeetingEntity java = new MeetingEntity();
+        java.setChapters("共4章");
+        java.setImgSrc("http://192.168.1.106:10086/img/lib_img/java.png");
+        java.setName("java教程");
+        java.setStudyNum("210403人学习");
+        java.setTitle("java");
+        meetingEntities.add(java);
+
+        MeetingEntity c = new MeetingEntity();
+        c.setChapters("共3章");
+        c.setImgSrc("http://192.168.1.106:10086/img/lib_img/c.png");
+        c.setName("c教程");
+        c.setStudyNum("187339人学习");
+        c.setTitle("c");
+        meetingEntities.add(c);
+
+        MeetingEntity c2 = new MeetingEntity();
+        c2.setChapters("共4章");
+        c2.setImgSrc("http://192.168.1.106:10086/img/lib_img/c++.png");
+        c2.setName("c++教程");
+        c2.setStudyNum("100808人学习");
+        c2.setTitle("c++");
+        meetingEntities.add(c2);
+
+        MeetingEntity python2 = new MeetingEntity();
+        python2.setChapters("共3章");
+        python2.setImgSrc("http://192.168.1.106:10086/img/lib_img/python.png");
+        python2.setName("python2教程");
+        python2.setStudyNum("46984人学习");
+        python2.setTitle("python2");
+        meetingEntities.add(python2);
+
+        MeetingEntity python3 = new MeetingEntity();
+        python3.setChapters("共3章");
+        python3.setImgSrc("http://192.168.1.106:10086/img/lib_img/python3.png");
+        python3.setName("python3教程");
+        java.setStudyNum("107544人学习");
+        python3.setTitle("python3");
+        meetingEntities.add(python3);
+
+        MeetingEntity MySQL = new MeetingEntity();
+        MySQL.setChapters("共1章");
+        MySQL.setImgSrc("http://192.168.1.106:10086/img/lib_img/MySQL.png");
+        MySQL.setName("MySQL教程");
+        MySQL.setStudyNum("46676人学习");
+        MySQL.setTitle("MySQL");
+        meetingEntities.add(MySQL);
+
+        MeetingEntity HTML = new MeetingEntity();
+        HTML.setChapters("共4章");
+        HTML.setImgSrc("http://192.168.1.106:10086/img/lib_img/HTML.png");
+        HTML.setName("HTML教程");
+        HTML.setStudyNum("6573人学习");
+        HTML.setTitle("HTML");
+        meetingEntities.add(HTML);
+
+        MeetingEntity CSS  = new MeetingEntity();
+        CSS.setChapters("共4章");
+        CSS.setImgSrc("http://192.168.1.106:10086/img/lib_img/CSS.png");
+        CSS.setName("CSS教程");
+        CSS.setStudyNum("3469人学习");
+        CSS.setTitle("CSS");
+        meetingEntities.add(CSS);
+
+        MeetingEntity javascript = new MeetingEntity();
+        javascript.setChapters("共8章");
+        javascript.setImgSrc("http://192.168.1.106:10086/img/lib_img/js.png");
+        javascript.setName("javascript教程");
+        javascript.setStudyNum("6001人学习");
+        javascript.setTitle("javascript");
+        meetingEntities.add(javascript);
+
+        return Result.success(meetingEntities);
+    }
 }

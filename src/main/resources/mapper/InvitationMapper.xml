@@ -36,6 +36,16 @@
     create_time desc
   </select>
 
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_invitation
+    where user_id = #{userId,jdbcType=INTEGER}
+    order by
+    create_time desc
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
@@ -44,6 +54,16 @@
     from tb_invitation
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByCirId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_invitation
+    where topic_id = #{cirId,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tb_invitation
     where id = #{id,jdbcType=INTEGER}

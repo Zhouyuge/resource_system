@@ -97,4 +97,44 @@ public class InvitationServiceImpl implements InvitationService {
         page = invitationList.size() / pageSize + 1;
         return page;
     }
+
+    @Override
+    public Integer insertInvitation(Invitation invitation) {
+        return invitationMapper.insertSelective(invitation);
+    }
+
+    @Override
+    public List<InvitationVO> getInvitationVOByUserId(String userId) {
+        List<Invitation> invitations = invitationMapper.selectByUserId(userId);
+        List<InvitationVO> invitationVOS = new ArrayList<>();
+        AutoMapperUtil.mappingList(invitations, invitationVOS, InvitationVO.class);
+        invitationVOS = invitationVOS.stream().map(e -> {
+            User user = userMapper.selectByPrimaryKey(e.getUserId());
+            e.setUserVisualName(user.getUserVisualName());
+            e.setUserImg(user.getUserHeadPic());
+            e.setSimpleName(e.getUserVisualName().length() > 5 ? e.getUserVisualName().substring(0, 4) + "..." : e.getUserVisualName());
+            return e;
+        }).collect(Collectors.toList());
+        return invitationVOS;
+    }
+
+    @Override
+    public List<InvitationVO> getInvitationVOByCircleId(Integer cirId) {
+        List<Invitation> invitations = invitationMapper.selectByCirId(cirId);
+        List<InvitationVO> invitationVOS = new ArrayList<>();
+        AutoMapperUtil.mappingList(invitations, invitationVOS, InvitationVO.class);
+        invitationVOS = invitationVOS.stream().map(e -> {
+            User user = userMapper.selectByPrimaryKey(e.getUserId());
+            e.setUserVisualName(user.getUserVisualName());
+            e.setUserImg(user.getUserHeadPic());
+            e.setSimpleName(e.getUserVisualName().length() > 5 ? e.getUserVisualName().substring(0, 4) + "..." : e.getUserVisualName());
+            return e;
+        }).collect(Collectors.toList());
+        return invitationVOS;
+    }
+
+    @Override
+    public Integer deleteInvitation(int id) {
+        return invitationMapper.deleteByPrimaryKey(id);
+    }
 }

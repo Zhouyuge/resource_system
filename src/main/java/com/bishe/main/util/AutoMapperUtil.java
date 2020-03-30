@@ -32,7 +32,6 @@ public class AutoMapperUtil {
                         //当目标方法为set且目标方法字段与原方法字段相同时
                         if (destMethodName.startsWith("set") && destMethodName.substring(3, destMethodName.length()).equals(srcMethodName.substring(3, srcMethodName.length()))) {
                             dm.invoke(destination, getValue);
-
                         }
                     }
                 } catch (Exception e) {

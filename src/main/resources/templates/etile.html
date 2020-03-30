@@ -76,13 +76,13 @@
     <div class="layui-carousel" id="test1" style="position: absolute; top: 15%">
         <div carousel-item>
             <div>
-                <a href="http://localhost:10086/img/img/re1.png"><img src="http://localhost:10086/img/img/re1.png"></a>
-                <a href="http://localhost:10086/img/img/re2.jpg"><img src="http://localhost:10086/img/img/re2.jpg"></a>
-                <a href="http://localhost:10086/img/img/re4.png"><img src="http://localhost:10086/img/img/re4.png"></a>
+                <a href="http://39.106.218.135:10086/img/img/re1.png"><img src="http://39.106.218.135:10086/img/img/re1.png"></a>
+                <a href="http://39.106.218.135:10086/img/img/re2.jpg"><img src="http://39.106.218.135:10086/img/img/re2.jpg"></a>
+                <a href="http://39.106.218.135:10086/img/img/re4.png"><img src="http://39.106.218.135:10086/img/img/re4.png"></a>
             </div>
-            <div><a href="http://localhost:10086/img/img/re6.jpg"><img src="http://localhost:10086/img/img/re6.jpg"></a>
+            <div><a href="http://39.106.218.135:10086/img/img/re6.jpg"><img src="http://39.106.218.135:10086/img/img/re6.jpg"></a>
             </div>
-            <div><a href="http://localhost:10086/img/img/re7.jpg"><img src="http://localhost:10086/img/img/re7.jpg"></a>
+            <div><a href="http://39.106.218.135:10086/img/img/re7.jpg"><img src="http://39.106.218.135:10086/img/img/re7.jpg"></a>
             </div>
         </div>
     </div>
@@ -118,7 +118,7 @@
     var type = getQueryString('category');
     var url = '/zt/api/count/' + type;
     var type_counts = 0;
-    var re_url = 'http://localhost:8080/bs/index/topics/etiles?category=' + type;
+    var re_url = 'http://39.106.218.135:8080/bs/index/topics/etiles?category=' + type;
     $.ajaxSettings.async = false;       //开启同步
     $.getJSON(url, function (data) {
         type_counts = data;

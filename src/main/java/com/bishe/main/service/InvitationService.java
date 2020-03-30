@@ -19,4 +19,12 @@ public interface InvitationService {
     List<InvitationVO> getInvitationVOByType(Integer pageNum, Integer invitationType);
 
     Integer getPage(Integer id);
+
+    Integer insertInvitation(Invitation invitation);
+
+    List<InvitationVO> getInvitationVOByUserId(String userId);
+
+    List<InvitationVO> getInvitationVOByCircleId(Integer cirId);
+
+    Integer deleteInvitation(int id);
 }

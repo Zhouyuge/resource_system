@@ -40,7 +40,7 @@ $(function () {
                 no = data.etile.etileNo
             }
         });
-        var re_url = 'http://localhost:8080/bs/index/topics/detail_etile?etile_no=' + no;
+        var re_url = 'http://39.106.218.135:8080/bs/index/topics/detail_etile?etile_no=' + no;
         //执行一个laypage实例
         laypage.render({
             elem: 'page_helper' //注意，这里的 page_helper 是 ID，不用加 # 号

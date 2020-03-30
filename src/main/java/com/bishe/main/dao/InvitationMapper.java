@@ -21,4 +21,8 @@ public interface InvitationMapper {
     int updateByPrimaryKey(Invitation record);
 
     List<Invitation> selectInviByType(@Param(value="invitationTypeId") Integer invitationTypeId);
+
+    List<Invitation> selectByUserId(@Param(value="userId") String userId);
+
+    List<Invitation> selectByCirId(@Param(value="cirId")Integer cirId);
 }

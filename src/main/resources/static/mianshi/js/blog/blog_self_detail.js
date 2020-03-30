@@ -9,7 +9,7 @@ $(function(){
            var html = '<strong style="font-size: 20px">'+data.blogName+'</strong>\n' +
                '       <div style="margin-top: 15px; color: grey">\n' +
                '            <span>浏览:'+data.viewNum+'&nbsp;|&nbsp;点赞:'+data.agreeNum+'&nbsp;|&nbsp;2019-11-25</span>\n' +
-               '            <a href="http://localhost:8082?id='+data.blogId+'" style="margin-left:10px;color: #5FB878">编辑</a>\n' +
+               '            <a href="http://39.106.218.135:8082?id='+data.blogId+'" style="margin-left:10px;color: #5FB878">编辑</a>\n' +
                '            <a href="" style="margin-left:10px;color: #5FB878">删除</a>\n' +
                '       </div>\n' +
                '\n' +

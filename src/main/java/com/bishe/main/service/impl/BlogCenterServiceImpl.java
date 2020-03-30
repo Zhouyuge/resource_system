@@ -47,4 +47,10 @@ public class BlogCenterServiceImpl implements BlogCenterService {
         }
         return null;
     }
+
+    public Integer getPages() {
+        return blogCenterMapper.selectByExample(new BlogCenterExample()).size() > 0
+                ? blogCenterMapper.selectByExample(new BlogCenterExample()).size() / num + 1
+                : 0;
+    }
 }

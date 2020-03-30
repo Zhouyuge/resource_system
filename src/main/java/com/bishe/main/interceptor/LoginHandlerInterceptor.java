@@ -37,7 +37,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
                 response.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
                 String token = CookieUtils.getCookieValue(request, COOKIE_NAME);
                 if (StringUtils.isEmpty(token)) {
-                    response.sendRedirect("http://localhost:8081/bs/login");
+                    response.sendRedirect("http://39.106.218.135:8081/bs/login");
                     return false;
                 }
                 this.token = token;
@@ -47,7 +47,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
                 }
                 String userStr = userService.queryUserByToken(token);
                 if (userStr == null) {
-                    response.sendRedirect("http://localhost:8081/bs/login");
+                    response.sendRedirect("http://39.106.218.135:8081/bs/login");
                     return false;
                 }
                 ObjectMapper objectMapper = new ObjectMapper();

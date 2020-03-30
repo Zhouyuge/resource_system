@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,8 +28,11 @@ public class PostController {
     @GetMapping("/post/{pageNum}")
     @ApiOperation("分页获取所有岗位详情")
     public Map<String, Object> getPosts(@PathVariable("pageNum")Integer pageNum) {
+        Map<String, Object> modelMap = new HashMap<>();
         try{
-            return MapUtil.sucMsg(postService.getPostVOs(pageNum));
+            modelMap = MapUtil.sucMsg(postService.getPostVOs(pageNum));
+            modelMap.put("pages", postService.getPageNums(null));
+            return modelMap;
         }catch (Exception e) {
             e.printStackTrace();
             log.error("岗位查询错误", e.getMessage());
@@ -39,8 +43,11 @@ public class PostController {
     @ApiOperation("根据类别id获取岗位详情")
     @GetMapping("/post_type/{typeId}/{pageNum}")
     public Map<String, Object> getPostListByType(@PathVariable("typeId") Integer typeId, @PathVariable("pageNum") Integer pageNum){
+        Map<String, Object> resultMap = new HashMap<>();
         try{
-            return MapUtil.sucMsg(postService.getPostVOsByTypeId(typeId, pageNum));
+            resultMap = MapUtil.sucMsg(postService.getPostVOsByTypeId(typeId, pageNum));
+            resultMap.put("pages", postService.getPageNums(typeId));
+            return resultMap;
         }catch (Exception e) {
             log.error("岗位查询错误", e.getMessage());
             e.printStackTrace();

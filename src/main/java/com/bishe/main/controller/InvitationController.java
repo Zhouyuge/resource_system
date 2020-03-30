@@ -1,5 +1,6 @@
 package com.bishe.main.controller;
 
+import com.bishe.main.entity.Invitation;
 import com.bishe.main.entity.result.Result;
 import com.bishe.main.service.InvitationService;
 import com.bishe.main.vo.InvitationVO;
@@ -40,5 +41,29 @@ public class InvitationController {
         Result<List> result = Result.success(invitationService.getInvitationVOByType(pageNum, typeId));
         result.setPage(invitationService.getPage(typeId));
         return result;
+    }
+
+    @ApiOperation("添加帖子")
+    @PostMapping("/invis")
+    public Result addInvitations(@RequestBody Invitation invitation){
+        return Result.success(invitationService.insertInvitation(invitation));
+    }
+
+    @ApiOperation("获取用户的帖子")
+    @GetMapping("/invis_user/{user_id}")
+    public Result<List> getInvitationByUserId(@PathVariable("user_id")String userId){
+        return Result.success(invitationService.getInvitationVOByUserId(userId));
+    }
+
+    @ApiOperation("删除帖子")
+    @DeleteMapping("/invis")
+    public Result deleteInvitation(@RequestParam("id") Integer id){
+        return Result.success(invitationService.deleteInvitation(id));
+    }
+
+    @ApiOperation("获取圈子下的帖子")
+    @GetMapping("/invis_cir/{cir_id}")
+    public Result<List> getInvitationByCirId(@PathVariable("cir_id") Integer cirId){
+        return Result.success(invitationService.getInvitationVOByCircleId(cirId));
     }
 }

@@ -19,4 +19,6 @@ public interface DailyPointMapper {
     int updateByPrimaryKey(DailyPoint record);
 
     List<DailyPointVO> selectAll();
+
+    List<DailyPointVO> selectByUserId(String userId);
 }

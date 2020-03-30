@@ -18,4 +18,6 @@ public interface PostService {
     PostVO getPostVOById(Integer id);
 
     List<PostVO> getPostVOByFactoryId(Integer factoryId);
+
+    Integer getPageNums(Integer typeId);
 }

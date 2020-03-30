@@ -2,19 +2,18 @@ package com.bishe.main.controller;
 
 import com.bishe.main.entity.Resume;
 import com.bishe.main.entity.User;
+import com.bishe.main.entity.result.Result;
 import com.bishe.main.service.WorkService;
 import com.bishe.main.util.MapUtil;
 import com.bishe.main.vo.SelfDetailVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 /**
  * @author Kirito
@@ -41,5 +40,36 @@ public class WorkController {
             resultMap = MapUtil.errMsg("简历生成出错！");
         }
         return resultMap;
+    }
+
+    @ApiOperation("获取个人简历")
+    @GetMapping("/resume/{user_id}")
+    public Result<List> getResumeList(@PathVariable("user_id") String userId){
+        return Result.success(workService.getUserResumeList(userId));
+    }
+
+    @ApiOperation("通过id获取简历")
+    @GetMapping("/resume_id/{id}")
+    public Result<Resume> getResumeById(@PathVariable("id") Integer id){
+        return Result.success(workService.getResumeById(id));
+    }
+
+    @PostMapping("/resume/app")
+    @ApiOperation("app端生成简历")
+    public Result insertResume(@RequestBody Resume resume) {
+        return Result.success(workService.addResume(resume));
+    }
+
+    @ApiOperation("更新简历")
+    @PutMapping("/resume")
+    public Result updateResume(@RequestBody Resume resume){
+        return Result.success(workService.updateResume(resume));
+    }
+
+
+    @ApiOperation("通过id删除简历")
+    @DeleteMapping("/resume")
+    public Result deleteResumeById(@RequestParam("id") Integer id){
+        return Result.success(workService.deleteResume(id));
     }
 }

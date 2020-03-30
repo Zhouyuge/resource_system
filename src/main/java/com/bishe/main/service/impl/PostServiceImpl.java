@@ -126,4 +126,13 @@ public class PostServiceImpl implements PostService {
         List<Post> postList = postMapper.getPostsByTypeId(typeId);
         return postPages;
     }
+
+
+    @Override
+    public Integer getPageNums(Integer typeId) {
+        if(typeId != null){
+            return postMapper.getPostsByTypeId(typeId).size() / pageSize + 1;
+        }
+        return postMapper.getPosts().size() / pageSize + 1;
+    }
 }

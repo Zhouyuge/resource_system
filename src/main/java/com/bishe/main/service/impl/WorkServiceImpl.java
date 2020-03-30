@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Kirito
@@ -56,5 +57,48 @@ public class WorkServiceImpl implements WorkService {
             return 500;
         }
         return 200;
+    }
+
+    /**
+     * 获取用户简历
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Resume> getUserResumeList(String userId) {
+        ResumeExample resumeExample = new ResumeExample();
+        resumeExample.or().andUserIdEqualTo(userId);
+        return resumeMapper.selectByExample(resumeExample);
+    }
+
+
+    /**
+     * 通过id获取简历
+     * @param id
+     * @return
+     */
+    @Override
+    public Resume getResumeById(Integer id) {
+        return resumeMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 更新简历
+     * @param resume
+     * @return
+     */
+    @Override
+    public int updateResume(Resume resume) {
+        return resumeMapper.updateByPrimaryKeySelective(resume);
+    }
+
+    @Override
+    public int deleteResume(Integer id) {
+        return resumeMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int addResume(Resume resume) {
+        return resumeMapper.insertSelective(resume);
     }
 }

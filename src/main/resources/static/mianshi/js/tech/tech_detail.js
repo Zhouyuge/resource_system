@@ -48,7 +48,7 @@ $(function () {
                                 '                    </div>\n' +
                                 '                    <div class="layui-col-md11" style="background: #d9edf7">\n' +
                                 '                        <a id="' + item.fileDownUrl + '" onclick="toPdfDetail(this)">\n' +
-                                '                            <img style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" src = "http://localhost:10086/img/tech_img/mod1.png" />\n' +
+                                '                            <img style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" src = "http://39.106.218.135:10086/img/tech_img/mod1.png" />\n' +
                                 '                            <span style="margin-left: 5px;" title="' + item.fileName + '">' + item.simpleName + '</span>\n' +
                                 '                        </a>\n' +
                                 '                    </div>\n' +
@@ -63,7 +63,7 @@ $(function () {
                                 '                    </div>\n' +
                                 '                    <div class="layui-col-md11" style="background: #d9edf7">\n' +
                                 '                        <a href="' + item.fileUrl + '">\n' +
-                                '                            <img style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" src = "http://localhost:10086/img/tech_img/mod1.png" />\n' +
+                                '                            <img style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px" src = "http://39.106.218.135:10086/img/tech_img/mod1.png" />\n' +
                                 '                            <span style="margin-left: 5px;" title="' + item.fileName + '">' + item.simpleName + '</span>\n' +
                                 '                        </a>\n' +
                                 '                    </div>\n' +

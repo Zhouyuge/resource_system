@@ -7,7 +7,9 @@ import com.bishe.main.entity.BlogCenter;
 import com.bishe.main.entity.RestBlog;
 import com.bishe.main.entity.User;
 import com.bishe.main.service.BlogCenterService;
+import com.bishe.main.service.UserService;
 import com.bishe.main.util.AutoMapperUtil;
+import com.bishe.main.util.PrettyTimeUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Kirito
@@ -31,6 +34,9 @@ public class BlogController {
     @Autowired
     private BlogCenterService blogCenterService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/blog/{page}")
     @ApiOperation("分页获取专栏博客简介")
     @ApiImplicitParam(name = "分页", value = "page", required = true, paramType = "int")
@@ -40,10 +46,17 @@ public class BlogController {
         if (blogCenters != null) {
             List<BlogDto> blogDtos = new ArrayList<>();
             AutoMapperUtil.mappingList(blogCenters, blogDtos, BlogDto.class);
+
+            blogDtos = blogDtos.stream().map(e -> {
+                e.setUser(userService.getUserByPrimaryKey(e.getBlogCenterAuthor()));
+                e.setPrettyTime(PrettyTimeUtil.getPrettyTime(e.getBlogCenterEditTime()));
+                return e;
+            }).collect(Collectors.toList());
+
             if (blogDtos.size() > 0) {
                 modelMap.put("success", true);
                 modelMap.put("blogDtos", blogDtos);
-                modelMap.put("pages", 2);
+                modelMap.put("pages", blogCenterService.getPages());
                 return modelMap;
             } else {
                 System.out.println("----------------> 转换失败！");
@@ -63,6 +76,8 @@ public class BlogController {
         if (id != null) {
             BlogContentDto blogContentDto = blogCenterService.getBlogContentDtoById(id);
             if (blogContentDto != null) {
+                blogContentDto.setUser(userService.getUserByPrimaryKey(blogContentDto.getBlogCenterAuthor()));
+                blogContentDto.setPrettyTime(PrettyTimeUtil.getPrettyTime(blogContentDto.getBlogCenterEditTime()));
                 modelMap.put("blog", blogContentDto);
                 modelMap.put("success", true);
                 return modelMap;
@@ -82,7 +97,7 @@ public class BlogController {
     public List<BlogRestDto> getBlogDtosByRestUserId (HttpServletRequest request){
         RestTemplate restTemplate = new RestTemplate();
         User user = (User)request.getSession().getAttribute("user");
-        String url = "http://localhost:8082/kirito/blogs/" + user.getUserId();
+        String url = "http://39.106.218.135:8082/kirito/blogs/" + user.getUserId();
         Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
         System.out.println(modelMap.toString());
         List<BlogRestDto> blogRestDtos = (List)modelMap.get("blogDtos");
@@ -92,7 +107,7 @@ public class BlogController {
     @GetMapping("/blog_rest_detail/{id}")
     public Object getBlogByRestId(@PathVariable("id") String blogId) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8082/kirito/blog/" + blogId;
+        String url = "http://39.106.218.135:8082/kirito/blog/" + blogId;
         Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
         if ((boolean)modelMap.get("success")) {
             return modelMap.get("blog");

@@ -8,7 +8,7 @@ $(function () {
     getEtiles();
 
     function getEtiles() {
-        var pic_html = '<img style="position: absolute; left: 15%" src="http://localhost:10086/img/img/b' + type + '.png"/>'
+        var pic_html = '<img style="position: absolute; left: 15%" src="http://39.106.218.135:10086/img/img/b' + type + '.png"/>'
         var html = '<table class="table">'
             + '<caption><div class="row"><div class="col-lg-1"></div>'
             + '<div class="input-group col-md-4"><input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="请输入题目名称..."><span style="background: #5bc0de" class="glyphicon glyphicon-search input-group-addon" id="sizing-addon1"></span></div></div>'

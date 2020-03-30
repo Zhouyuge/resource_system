@@ -23,27 +23,27 @@ $(function () {
                     '                        <b><span style="font-size: 16px;">项目概括</span></b>\n' +
                     '                        <div style="margin-top: 20px;">\n' +
                     '                            <div style="margin: 20px">\n' +
-                    '                                <img width="20px" height="20px" src="http://localhost:10086/img/action/1.png">\n' +
+                    '                                <img width="20px" height="20px" src="http://39.106.218.135:10086/img/action/1.png">\n' +
                     '                                <span style="margin-left: 20px; font-size: 16px">技术栈</span>\n' +
                     '                                <span style="position: absolute; left: 500px">' + action.actionProposeTime.split(" ")[0] + '</span>\n' +
                     '                            </div>\n' +
                     '                            <div style="margin: 20px">\n' +
-                    '                                <img width="20px" height="20px" src="http://localhost:10086/img/action/2.png">\n' +
+                    '                                <img width="20px" height="20px" src="http://39.106.218.135:10086/img/action/2.png">\n' +
                     '                                <span style="margin-left: 20px; font-size: 16px"> 建议用时</span>\n' +
                     '                                <span style="position: absolute; left: 500px">' + action.actionProposeTime.split(" ")[1] + '</span>\n' +
                     '                            </div>\n' +
                     '                            <div style="margin: 20px">\n' +
-                    '                                <img width="20px" height="20px" src="http://localhost:10086/img/action/3.png">\n' +
+                    '                                <img width="20px" height="20px" src="http://39.106.218.135:10086/img/action/3.png">\n' +
                     '                                <span style="margin-left: 20px; font-size: 16px">竞争力</span>\n' +
                     '                                <span style="position: absolute; left: 500px">' + action.actionProposeTime.split(" ")[2] + '</span>\n' +
                     '                            </div>\n' +
                     '                            <div style="margin: 20px">\n' +
-                    '                                <img width="20px" height="20px" src="http://localhost:10086/img/action/4.png">\n' +
+                    '                                <img width="20px" height="20px" src="http://39.106.218.135:10086/img/action/4.png">\n' +
                     '                                <span style="margin-left: 20px; font-size: 16px">难度</span>\n' +
                     '                                <span style="position: absolute; left: 500px">' + action.actionProposeTime.split(" ")[3] + '</span>\n' +
                     '                            </div>\n' +
                     '                            <div style="margin: 20px">\n' +
-                    '                                <img width="20px" height="20px" src="http://localhost:10086/img/action/5.png">\n' +
+                    '                                <img width="20px" height="20px" src="http://39.106.218.135:10086/img/action/5.png">\n' +
                     '                                <span style="margin-left: 20px; font-size: 16px">职位</span>\n' +
                     '                                <span style="position: absolute; left: 500px">' + action.actionProposeTime.split(" ")[4] + '</span>\n' +
                     '                            </div>\n' +

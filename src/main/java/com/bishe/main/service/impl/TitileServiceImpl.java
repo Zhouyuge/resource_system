@@ -36,36 +36,52 @@ public class TitileServiceImpl implements TitleService {
     private static Integer wrongCount = 0;
     /**
      *
-     * @param uId 用户Id
+     * 选取未做过的题
      * @return
      */
 
-    public List<TitleDto> getTitleDtos(String uId) {
+    public List<TitleDto> getTitleDtos(String uId, Integer sTtype) {
         TakeTitleExample takeTitleExample = new TakeTitleExample();
         takeTitleExample.or().andUserIdEqualTo(uId);
         List<TakeTitleWithBLOBs> takeTitles = takeTitleMapper.selectByExampleWithBLOBs(takeTitleExample);
+
+
+         // 将用户信息插入到做过题数据库中
+        if(takeTitles.size() == 0) {
+            TakeTitleWithBLOBs takeTitle = new TakeTitleWithBLOBs();
+            takeTitle.setUserId(uId);
+            takeTitleMapper.insertSelective(takeTitle);
+        }
+
+        SelectTitleExample.Criteria criteria = null;
+        SelectTitleExample selectTitleExample = new SelectTitleExample();
+        criteria = selectTitleExample.or().andTitleTypeEqualTo(sTtype);
         if (takeTitles.size() == 1) {
-            SelectTitleExample.Criteria criteria = null;
-            SelectTitleExample selectTitleExample = new SelectTitleExample();
+            /**
+             * 不选取做对的题
+             */
             if (Strings.isNotEmpty(takeTitles.get(0).getRightTitleId())) {
                 String[] rightId = takeTitles.get(0).getRightTitleId().split(",");
                 List<Integer> rightIds = Arrays.asList(Convert.toIntArray(rightId));
-                criteria = selectTitleExample.or().andTitleIdNotIn(rightIds);  //选出除正确题错误提之外的题 TODO...
+                selectTitleExample.or(criteria.andTitleIdNotIn(rightIds));  //选出除正确题之外的题
                 rightCount = rightId.length;
             }
 
+            /**
+             * 不选取做错的题
+             */
             if (Strings.isNotEmpty(takeTitles.get(0).getWrongTitleId())) {
                 String[] wrongId = takeTitles.get(0).getWrongTitleId().split(",");
                 List<Integer> wrongIds = Arrays.asList(Convert.toIntArray(wrongId));
+
                 selectTitleExample.or(criteria.andTitleIdNotIn(wrongIds));  //选出除错误题之外的题
+
                 wrongCount = wrongId.length;
             }
-                List<TitleDto> titleDtos = new ArrayList<>();
-                AutoMapperUtil.mappingList(selectTitleMapper.selectByExample(selectTitleExample), titleDtos, TitleDto.class);
-                return titleDtos.subList(0, 20);
-
         }
-        return null;
+        List<TitleDto> titleDtos = new ArrayList<>();
+        AutoMapperUtil.mappingList(selectTitleMapper.selectByExample(selectTitleExample), titleDtos, TitleDto.class);
+        return titleDtos.size() > 20 ? titleDtos : titleDtos.subList(0, 20);
     }
 
     @Override
@@ -80,7 +96,7 @@ public class TitileServiceImpl implements TitleService {
 
         for (TitleDto titleDto : titleDtos) {
             SelectTitle selectTitle = selectTitleMapper.selectByPrimaryKey(titleDto.getTitleId());  //获取题目
-            if (titleDto.getAns().equals(selectTitle.getTitleAnswer())) {   //当检测的答案相同
+            if (! StringUtils.isEmpty(titleDto.getAns()) && titleDto.getAns().equals(selectTitle.getTitleAnswer())) {   //当检测的答案相同
                 if (StringUtils.isEmpty(takeTitle.getRightTitleId())) {     //客户还未答题情况下
                     takeTitle.setRightTitleId(titleDto.getTitleId().toString());
                 } else {                                                    //客户已经答题过情况下
@@ -124,5 +140,27 @@ public class TitileServiceImpl implements TitleService {
         }
         return takeTitles.get(0).getRightTitleId().split(",").length
                 + takeTitles.get(0).getWrongTitleId().split(",").length;
+    }
+
+    /**
+     * 获取用户做错的题
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<SelectTitle> getWrongDtos(String userId) {
+        TakeTitleExample takeTitleExample = new TakeTitleExample();
+        takeTitleExample.or().andUserIdEqualTo(userId);
+        List<TakeTitleWithBLOBs> takeTitles = takeTitleMapper.selectByExampleWithBLOBs(takeTitleExample);
+
+        if(takeTitles.size() == 0 || takeTitles.get(0).getWrongTitleId().equals("") ||takeTitles.get(0).getWrongTitleId() == null) {
+            return null;
+        }
+
+        SelectTitleExample selectTitleExample = new SelectTitleExample();
+        List<Integer> wrongIds = Arrays.asList(Convert.toIntArray(takeTitles.get(0).getWrongTitleId().split(",")));
+        selectTitleExample.or().andTitleIdIn(wrongIds);
+        List<SelectTitle> selectTitles = selectTitleMapper.selectByExample(selectTitleExample);
+        return selectTitles;
     }
 }
