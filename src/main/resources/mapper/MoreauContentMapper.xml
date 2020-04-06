@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.MoreauContentMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.MoreauContent">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="chap_id" jdbcType="INTEGER" property="chapId" />
+    <result column="ali" jdbcType="INTEGER" property="ali" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bishe.main.entity.MoreauContent">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, chap_id, ali
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_moreau_content
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_moreau_content
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.MoreauContent" useGeneratedKeys="true">
+    insert into tb_moreau_content (title, chap_id, ali, 
+      content)
+    values (#{title,jdbcType=VARCHAR}, #{chapId,jdbcType=INTEGER}, #{ali,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.MoreauContent" useGeneratedKeys="true">
+    insert into tb_moreau_content
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="chapId != null">
+        chap_id,
+      </if>
+      <if test="ali != null">
+        ali,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="chapId != null">
+        #{chapId,jdbcType=INTEGER},
+      </if>
+      <if test="ali != null">
+        #{ali,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.MoreauContent">
+    update tb_moreau_content
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="chapId != null">
+        chap_id = #{chapId,jdbcType=INTEGER},
+      </if>
+      <if test="ali != null">
+        ali = #{ali,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bishe.main.entity.MoreauContent">
+    update tb_moreau_content
+    set title = #{title,jdbcType=VARCHAR},
+      chap_id = #{chapId,jdbcType=INTEGER},
+      ali = #{ali,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.MoreauContent">
+    update tb_moreau_content
+    set title = #{title,jdbcType=VARCHAR},
+      chap_id = #{chapId,jdbcType=INTEGER},
+      ali = #{ali,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

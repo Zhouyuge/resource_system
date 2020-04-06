@@ -1,8 +1,7 @@
 $(function(){
-   var url = '/bc/api/blog_rest';
-
+   var userId = $('#user').attr("data-self");
+   var url = '/bc/api/blog_rest/' + userId;
    getBlogs();
-
    function getBlogs(){
        $.getJSON(url, function(data){
           var html = '';

@@ -93,11 +93,10 @@ public class BlogController {
     }
 
     @ApiOperation("调用博客项目中获取博客的API")
-    @GetMapping("/blog_rest")
-    public List<BlogRestDto> getBlogDtosByRestUserId (HttpServletRequest request){
+    @GetMapping("/blog_rest/{user_id}")
+    public List<BlogRestDto> getBlogDtosByRestUserId (@PathVariable("user_id") String userId){
         RestTemplate restTemplate = new RestTemplate();
-        User user = (User)request.getSession().getAttribute("user");
-        String url = "http://39.106.218.135:8082/kirito/blogs/" + user.getUserId();
+        String url = "http://39.106.218.135:8082/kirito/blogs/" + userId;
         Map<String, Object> modelMap = restTemplate.getForObject(url, Map.class);
         System.out.println(modelMap.toString());
         List<BlogRestDto> blogRestDtos = (List)modelMap.get("blogDtos");

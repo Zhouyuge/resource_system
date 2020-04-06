@@ -118,6 +118,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateUserInfo(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
     public List<User> getAllUsers() {
         List<User> users = userMapper.selectByExample(new UserExample());
        // 将用户密码制空

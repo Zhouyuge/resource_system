@@ -152,6 +152,11 @@ public class UserController {
         return modelMap;
     }
 
+    @PutMapping("/user_info")
+    public Result updateUserInfo(@RequestBody User user) {
+        return Result.success(userService.updateUserInfo(user));
+    }
+
     @PutMapping("/user/{user}/{token}")
     public Map<String, Object> updateUser(@PathVariable("user") String userStr, @PathVariable("token") String token) throws IOException{
         Map<String, Object> modelMap = new HashMap<>();

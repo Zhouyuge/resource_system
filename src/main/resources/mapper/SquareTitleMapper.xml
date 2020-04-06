@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.SquareTitleMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.SquareTitle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title_name" jdbcType="VARCHAR" property="titleName" />
+    <result column="title_content" jdbcType="VARCHAR" property="titleContent" />
+    <result column="title_labels" jdbcType="VARCHAR" property="titleLabels" />
+    <result column="title_hard" jdbcType="INTEGER" property="titleHard" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title_name, title_content, title_labels, title_hard, user_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_square_title
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_square_title
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.SquareTitle" useGeneratedKeys="true">
+    insert into tb_square_title (title_name, title_content, title_labels, 
+      title_hard, user_id, create_time
+      )
+    values (#{titleName,jdbcType=VARCHAR}, #{titleContent,jdbcType=VARCHAR}, #{titleLabels,jdbcType=VARCHAR}, 
+      #{titleHard,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.SquareTitle" useGeneratedKeys="true">
+    insert into tb_square_title
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="titleName != null">
+        title_name,
+      </if>
+      <if test="titleContent != null">
+        title_content,
+      </if>
+      <if test="titleLabels != null">
+        title_labels,
+      </if>
+      <if test="titleHard != null">
+        title_hard,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="titleName != null">
+        #{titleName,jdbcType=VARCHAR},
+      </if>
+      <if test="titleContent != null">
+        #{titleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="titleLabels != null">
+        #{titleLabels,jdbcType=VARCHAR},
+      </if>
+      <if test="titleHard != null">
+        #{titleHard,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.SquareTitle">
+    update tb_square_title
+    <set>
+      <if test="titleName != null">
+        title_name = #{titleName,jdbcType=VARCHAR},
+      </if>
+      <if test="titleContent != null">
+        title_content = #{titleContent,jdbcType=VARCHAR},
+      </if>
+      <if test="titleLabels != null">
+        title_labels = #{titleLabels,jdbcType=VARCHAR},
+      </if>
+      <if test="titleHard != null">
+        title_hard = #{titleHard,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.SquareTitle">
+    update tb_square_title
+    set title_name = #{titleName,jdbcType=VARCHAR},
+      title_content = #{titleContent,jdbcType=VARCHAR},
+      title_labels = #{titleLabels,jdbcType=VARCHAR},
+      title_hard = #{titleHard,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

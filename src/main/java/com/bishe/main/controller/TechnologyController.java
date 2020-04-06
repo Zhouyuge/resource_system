@@ -6,6 +6,7 @@ import com.bishe.main.entity.Technology;
 import com.bishe.main.entity.User;
 import com.bishe.main.service.CommentService;
 import com.bishe.main.service.TechnologeService;
+import com.bishe.main.service.UserService;
 import com.bishe.main.util.MapUtil;
 import com.bishe.main.vo.TechnologeVO;
 import io.swagger.annotations.Api;
@@ -33,6 +34,8 @@ public class TechnologyController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private UserService userService;
     private final Integer functionId = 1;
     @ApiOperation("根据分类Id获取技术栈: 1.语言框架; 2.数据存储")
     @GetMapping("/technology/{id}")
@@ -95,9 +98,9 @@ public class TechnologyController {
 
     @PostMapping("/comment")
     @ApiOperation("添加用户评论")
-    public Map<String, Object> addComment(@RequestParam("content") String content,@RequestParam("id") Integer id, HttpServletRequest request) {
+    public Map<String, Object> addComment(@RequestParam("content") String content,@RequestParam("id") Integer id, @RequestParam("user_id") String userId) {
         Comment comment = new Comment();
-        User user = (User)request.getSession().getAttribute("user");
+        User user = userService.getUserByPrimaryKey(userId);
         comment.setAgreeNum(0);
         comment.setCommentContent(content);
         comment.setCommentNum(0);

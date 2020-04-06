@@ -24,6 +24,8 @@ public interface UserService {
 
     int addDailyPoint(DailyPointVO dailyPointVO, String userId);
 
+    int updateUserInfo(User user);
+
     int pageCount();
 
     User getUserByPrimaryKey(String userId);
