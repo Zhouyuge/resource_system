@@ -2,6 +2,7 @@ package com.bishe.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Kirito
@@ -120,4 +121,24 @@ public class MainController {
 
     @RequestMapping("/index/talk_detail")
     public String talkDetail() { return "talk_detail"; }
+
+    @RequestMapping("/index/square_title")
+    public String squareTitle(){
+        return "square_title";
+    };
+
+    @RequestMapping("/index/sqaure_title_detail")
+    public String sqaureTtileDetail(){
+        return "square_title_detail";
+    }
+
+    @RequestMapping("/index/square_edit")
+    public String sqaureEdit(){
+        return "square_edit";
+    }
+
+    @RequestMapping("/index/mock_exam")
+    public String MockExam(){
+        return "mock_exam";
+    }
 }

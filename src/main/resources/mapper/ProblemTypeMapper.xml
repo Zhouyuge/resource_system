@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.ProblemTypeMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.ProblemType">
+    <id column="problem_type_id" jdbcType="INTEGER" property="problemTypeId" />
+    <result column="problem_type_name" jdbcType="VARCHAR" property="problemTypeName" />
+    <result column="problem_type_description" jdbcType="VARCHAR" property="problemTypeDescription" />
+    <result column="problem_type_img" jdbcType="VARCHAR" property="problemTypeImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    problem_type_id, problem_type_name, problem_type_description, problem_type_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from problem_type
+    where problem_type_id = #{problemTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from problem_type
+    where problem_type_id = #{problemTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bishe.main.entity.ProblemType">
+    insert into problem_type (problem_type_id, problem_type_name, problem_type_description, 
+      problem_type_img)
+    values (#{problemTypeId,jdbcType=INTEGER}, #{problemTypeName,jdbcType=VARCHAR}, #{problemTypeDescription,jdbcType=VARCHAR}, 
+      #{problemTypeImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bishe.main.entity.ProblemType">
+    insert into problem_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="problemTypeId != null">
+        problem_type_id,
+      </if>
+      <if test="problemTypeName != null">
+        problem_type_name,
+      </if>
+      <if test="problemTypeDescription != null">
+        problem_type_description,
+      </if>
+      <if test="problemTypeImg != null">
+        problem_type_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="problemTypeId != null">
+        #{problemTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="problemTypeName != null">
+        #{problemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="problemTypeDescription != null">
+        #{problemTypeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="problemTypeImg != null">
+        #{problemTypeImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.ProblemType">
+    update problem_type
+    <set>
+      <if test="problemTypeName != null">
+        problem_type_name = #{problemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="problemTypeDescription != null">
+        problem_type_description = #{problemTypeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="problemTypeImg != null">
+        problem_type_img = #{problemTypeImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where problem_type_id = #{problemTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.ProblemType">
+    update problem_type
+    set problem_type_name = #{problemTypeName,jdbcType=VARCHAR},
+      problem_type_description = #{problemTypeDescription,jdbcType=VARCHAR},
+      problem_type_img = #{problemTypeImg,jdbcType=VARCHAR}
+    where problem_type_id = #{problemTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

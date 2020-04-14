@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
+  </head>
+<body style="background: #e0e0e0">
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="">题库</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">公司真题</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
+            <dd><a href="">在线编程</a></dd>
+            <dd><a href="/bs/index/mock_exam">模拟笔试</a></dd>
+
+            <dd><a href="/bs/index/uni">考研真题</a></dd>
+<dd><a href="/bs/index/topics">精华广场</a></dd>
+            <dd><a href="/bs/index/square_title">试题广场</a></dd>
+        </dl>
+    </li>
+
+    <li class="layui-nav-item">
+        <a href="javascript:;">学习</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
+<dd><a href="/bs/index/project_action">项目实战</a></dd><dd><a href="/bs/index/library">图书馆</a></dd>
+            <dd><a href="/bs/index/technology">技术栈</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
+    <li class="layui-nav-item"><a href="">讨论区</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/bs/index/talk">讨论区</a></dd>
+            <dd><a href="/bs/index/circle">圈子</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">发现</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
+        </dl>
+    </li>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
+
+    </li>
+
+    </li>
+</ul>
+
+<div class="layui-row">
+    <div class="layui-col-md6 layui-col-md-offset1" style="background: #ffffff; margin-top: 20px;">
+        <div style="margin: 20px">
+            <img src="http://localhost:10086/img/b_img/q-ico.png" />
+            <span style="font-size: 16px">[问答题]</span>
+        </div>
+
+        <hr style="margin: 20px;" />
+
+        <div style="margin: 20px">
+            <span style="font-size: 16px" id="title_name"></span>
+        </div>
+
+        <div id="title_content" style="margin: 20px">
+        </div>
+
+        <div class="site-demo-button" id="layerDemo" style="color: #888888; margin-left: 62%; margin-bottom: 20px; margin-top: 20px">
+            <a id="addNote" data-method="offset" data-type="auto" onclick="showNoteEdit();">
+                <i class="layui-icon layui-icon-read"></i>
+                <span>添加笔记 |</span>
+            </a>
+            <i class="layui-icon layui-icon-share"></i>
+            <span>分享 |</span>
+            <i class="layui-icon layui-icon-help"></i>
+            <span>求解答 </span>
+        </div>
+    </div>
+    <div style="margin: 20px; background: #ffffff" class="layui-col-md3">
+        <div style="margin: 20px">
+            <span class="layui-badge-dot"></span>
+            <b><span style="font-size: 16px;">问题信息</span></b>
+         </div>
+
+         <div style="margin-top: 20px; margin-left: 20px">
+            <span style="color: #9F9F9F">上传者:</span>
+            <span style="color: #2aabd2">Eureka</span>
+         </div>
+
+         <div style="margin-left: 20px; margin-top: 10px; margin-bottom: 20px">
+            <span style="color: #9F9F9F">难度:</span>
+            <span id="hard"></span>
+         </div>
+    </div>
+
+    <div class="layui-col-md-offset1 layui-col-md6" style="display: none;background: #ffffff; margin-top: 15px" id="talk_content">
+        <div style="margin: 20px">
+            <span class="layui-badge-dot"></span>
+            <b><span style="font-size: 16px;">我的笔记</span></b>
+        </div>
+     </div>
+
+    <div class="layui-col-md-offset1 layui-col-md6" style="background: #ffffff; margin-top: 15px" id="comment_list">
+        <div style="margin: 20px">
+             <span class="layui-badge-dot"></span>
+             <b><span style="font-size: 16px;">回答列表</span></b>
+        </div>
+
+          <hr style="margin: 20px" class="layui-bg-green">
+          <div id="no_content" style="text-align: center;">
+               <img class="layui-circle" src="http://39.106.218.135:10086/img/lib_img/sofa.png">
+               <br/>
+               <span>暂无题解</span>
+               <br/>
+               <br/>
+          </div>
+     </div>
+
+     <div class="layui-col-md-offset1 layui-col-md6" style="margin-top: 15px; background: #ffffff">
+        <textarea id="demo" style="display: none;"></textarea>
+        <button id="comment"  style="margin: 20px;" class="layui-btn">添加题解</button>
+     </div>
+</div>
+<div style="background:#ffffff; border:1px solid #e0e0e0;height: 330px; margin: 9px; position: absolute; top: 38%; left: 59%; width: 25%">
+             <div style="margin: 20px">
+                 <span class="layui-badge-dot"></span>
+                 <strong style="font-size: 16px">热门推荐</strong>
+             </div>
+             <div class="layui-carousel" id="test1" style="margin: 20px;">
+                 <div carousel-item>
+                     <div>
+                         <a href="http://39.106.218.135:10086/img/img/re1.png"><img src="http://39.106.218.135:10086/img/img/re1.png"></a>
+                         <a href="http://39.106.218.135:10086/img/img/re2.jpg"><img src="http://39.106.218.135:10086/img/img/re2.jpg"></a>
+                         <a href="http://39.106.218.135:10086/img/img/re4.png"><img src="http://39.106.218.135:10086/img/img/re4.png"></a>
+                     </div>
+                     <div><a href="http://39.106.218.135:10086/img/img/re6.jpg"><img src="http://39.106.218.135:10086/img/img/re6.jpg"></a>
+                     </div>
+                     <div><a href="http://39.106.218.135:10086/img/img/re7.jpg"><img src="http://39.106.218.135:10086/img/img/re7.jpg"></a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+</body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/square/square_detail.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/square/square_function.js"></script>
+<script>
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '80%' //设置容器宽度
+            , height: '80%'
+            , arrow: 'hover' //始终显示箭头
+            , anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+<script>
+layui.use('layedit', function(){
+  var layedit = layui.layedit;
+  var index = layedit.build('demo', {
+
+  }); //建立编辑器
+  var $ = layui.jquery;
+  layedit.set({
+      uploadImage: {
+          url: '/square/api/upload' //接口url
+          ,type: '' //默认post
+          ,success: function (data) {
+                alert(data.data.src);
+              }
+           }
+        });
+     var btn = $('#comment');
+     btn.click(function() {
+        var content = layedit.getContent(index);
+        addComment(content);
+     });
+});
+</script>
+</html>

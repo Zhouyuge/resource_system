@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>专栏-文章</title>
+    <title>模拟考试</title>
     <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
     <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
 </head>
-<body style="background: #e0e0e0">
+<body style="background: #fffff">
 <ul class="layui-nav" lay-filter="">
     <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
     <li class="layui-nav-item"><a href="">仿牛客网</a></li>
@@ -23,14 +23,11 @@
             <dd><a href="/bs/index/square_title">试题广场</a></dd>
         </dl>
     </li>
-    <li class="layui-nav-item"><a href="">面试</a>
-        <dl class="layui-nav-child">
-            <dd><a href="">面经总结</a>
-        </dl>
-    </li>
+
     <li class="layui-nav-item">
         <a href="javascript:;">学习</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
             <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
             <dd><a href="/bs/index/project_action">项目实战</a></dd>
             <dd><a href="/bs/index/library">图书馆</a></dd>
@@ -62,41 +59,67 @@
 
     </li>
 </ul>
+
 <div>
-    <div align="center" style="background: #5f5f5f"><img src="http://39.106.218.135:10086/img/b_img/bg_blog.jpg"/></div>
-    <div>
-        <div id="top1" style="background: #ffffff; position: relative; left: 81px;top: 20px; width: 800px">
-            <ul class="flow-default yuyue_list" id="LAY_demo1">
-                <li><h2 style="color: #5FB878; text-align: center">专栏-文章列表</h2></li>
-            </ul>
-        </div>
+    <div style="background: #00121b">
+        <img style="margin-left: 80px" height="300px" src="http://localhost:10086/img/b_img/2.jpg"/>
     </div>
 
-    <div style="position: absolute; left: 70%; top: 60%; background: #ffffff; width: 340px">
-        <div style="margin: 20px">
-            <span class="layui-badge">热</span>
-            <strong>精选作者</strong>
-        </div>
-        <div style="margin: 20px">
-            <div class="pic">
-                <img style="width: 60px; height: 60px"
-                     src="https://uploadfiles.nowcoder.com/images/20191022/416907265_1571736625708_B0EA1810D347D5D545F7DADB4312F40F"
-                     alt="">
-                <span>海神唐三</span>
+    <div class="layui-row" style="margin: 20px">
+        <div class="layui-col-md-offset1 layui-col-md11">
+            <div>
+                <i style="color: #609E53; background: #609E53;">1</i>
+                <b style="font-size: 16px">模拟笔试考试说明</b>
             </div>
         </div>
-        <div style="margin: 20px">
-            <p>曾就职于阿里、美团点评和某港股上市公司，拥有8年“电商和本地生活、2B和2C、平台和工具”的相关产品经验。面试过的产品经理（校招和社招）不下200人，对互联网产品的面试有着深刻的体会。</p>
+
+        <div class="layui-col-md-offset1 layui-col-md10 layui-row" style="margin-top: 40px">
+           <div class="layui-col-md4" style="text-align: center;">
+               <div style="background: #2aabd2; width: 50px; height: 50px; margin-left: 165px; margin-bottom: 20px" class="layui-circle">
+                    <br/>
+                    <span style="color: #ffffff; font-size: 20px">1</span>
+                </div>
+                <hr class="layui-bg-blue" style="margin: 10px" />
+               <b style="color: #2aabd2; font-size: 18px;">1.考试报名</b>
+               <br/>
+               <span>只需填写一次报名信息，即可参加本场及后续场次考试。</span>
+           </div>
+           <div class="layui-col-md4" style="text-align: center;">
+               <div style="background: #2aabd2; width: 50px; height: 50px; margin-left: 165px; margin-bottom: 20px" class="layui-circle">
+                    <br/>
+                    <span style="color: #ffffff; font-size: 20px">2</span>
+                </div>
+                <hr class="layui-bg-blue" style="margin: 10px" />
+               <b style="color: #2aabd2; font-size: 18px;">2.笔试答题</b>
+               <br/>
+               <span>笔试正式开始前15分钟，可提前进入笔试地址调试设备。</span>
+           </div>
+           <div class="layui-col-md4" style="text-align: center;">
+               <div style="background: #2aabd2; width: 50px; height: 50px; margin-left: 165px; margin-bottom: 20px" class="layui-circle">
+                    <br/>
+                    <span style="color: #ffffff; font-size: 20px">3</span>
+                </div>
+                <hr class="layui-bg-blue" style="margin: 10px" />
+               <b style="color: #2aabd2; font-size: 18px;">3.领取报告</b>
+               <br/>
+               <span>考试结束后5个工作日内即可在笔试报告页面领取成绩报告</span>
+           </div>
+        </div>
+        <div class="layui-col-md-offset1 layui-col-md11" style="margin-top: 50px">
+            <div>
+                <i style="color: #609E53; background: #609E53;">1</i>
+                <b style="font-size: 16px">等你来战</b>
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 <script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
 <script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../../../layui/layui.js"></script>
 <script type="text/javascript" src="../../../layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/common.js"></script>
-<script type="text/javascript" src="../../../mianshi/js/blog/blog.js"></script>
 <script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
-
+<script type="text/javascript" src="../../../mianshi/js/circle/circle.js"></script>
 </html>

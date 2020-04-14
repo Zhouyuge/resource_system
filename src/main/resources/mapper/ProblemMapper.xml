@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.dao.ProblemMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.Problem">
+    <id column="problem_id" jdbcType="BIGINT" property="problemId" />
+    <result column="problem_type_id" jdbcType="INTEGER" property="problemTypeId" />
+    <result column="problem_name" jdbcType="VARCHAR" property="problemName" />
+    <result column="input_file_root_path" jdbcType="VARCHAR" property="inputFileRootPath" />
+    <result column="output_file_root_path" jdbcType="VARCHAR" property="outputFileRootPath" />
+    <result column="problem_label" jdbcType="VARCHAR" property="problemLabel" />
+    <result column="time_limit" jdbcType="INTEGER" property="timeLimit" />
+    <result column="memory_limit" jdbcType="INTEGER" property="memoryLimit" />
+    <result column="problem_creator_id" jdbcType="INTEGER" property="problemCreatorId" />
+    <result column="problem_difficulty" jdbcType="INTEGER" property="problemDifficulty" />
+    <result column="problem_value" jdbcType="INTEGER" property="problemValue" />
+    <result column="problem_version" jdbcType="INTEGER" property="problemVersion" />
+    <result column="is_publish" jdbcType="BIT" property="isPublish" />
+    <result column="total_submit_count" jdbcType="INTEGER" property="totalSubmitCount" />
+    <result column="total_right_count" jdbcType="INTEGER" property="totalRightCount" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bishe.main.entity.ProblemWithBLOBs">
+    <result column="problem_content" jdbcType="LONGVARCHAR" property="problemContent" />
+    <result column="all_right_people_ids" jdbcType="LONGVARCHAR" property="allRightPeopleIds" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    problem_id, problem_type_id, problem_name, input_file_root_path, output_file_root_path, 
+    problem_label, time_limit, memory_limit, problem_creator_id, problem_difficulty, 
+    problem_value, problem_version, is_publish, total_submit_count, total_right_count
+  </sql>
+  <sql id="Blob_Column_List">
+    problem_content, all_right_people_ids
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from problem
+    where problem_id = #{problemId,jdbcType=BIGINT}
+  </select>
+
+  <select id="getProblem" resultMap="ResuleMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from problem
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from problem
+    where problem_id = #{problemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bishe.main.entity.ProblemWithBLOBs">
+    insert into problem (problem_id, problem_type_id, problem_name, 
+      input_file_root_path, output_file_root_path, 
+      problem_label, time_limit, memory_limit, 
+      problem_creator_id, problem_difficulty, problem_value, 
+      problem_version, is_publish, total_submit_count, 
+      total_right_count, problem_content, all_right_people_ids
+      )
+    values (#{problemId,jdbcType=BIGINT}, #{problemTypeId,jdbcType=INTEGER}, #{problemName,jdbcType=VARCHAR}, 
+      #{inputFileRootPath,jdbcType=VARCHAR}, #{outputFileRootPath,jdbcType=VARCHAR}, 
+      #{problemLabel,jdbcType=VARCHAR}, #{timeLimit,jdbcType=INTEGER}, #{memoryLimit,jdbcType=INTEGER}, 
+      #{problemCreatorId,jdbcType=INTEGER}, #{problemDifficulty,jdbcType=INTEGER}, #{problemValue,jdbcType=INTEGER}, 
+      #{problemVersion,jdbcType=INTEGER}, #{isPublish,jdbcType=BIT}, #{totalSubmitCount,jdbcType=INTEGER}, 
+      #{totalRightCount,jdbcType=INTEGER}, #{problemContent,jdbcType=LONGVARCHAR}, #{allRightPeopleIds,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bishe.main.entity.ProblemWithBLOBs">
+    insert into problem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="problemId != null">
+        problem_id,
+      </if>
+      <if test="problemTypeId != null">
+        problem_type_id,
+      </if>
+      <if test="problemName != null">
+        problem_name,
+      </if>
+      <if test="inputFileRootPath != null">
+        input_file_root_path,
+      </if>
+      <if test="outputFileRootPath != null">
+        output_file_root_path,
+      </if>
+      <if test="problemLabel != null">
+        problem_label,
+      </if>
+      <if test="timeLimit != null">
+        time_limit,
+      </if>
+      <if test="memoryLimit != null">
+        memory_limit,
+      </if>
+      <if test="problemCreatorId != null">
+        problem_creator_id,
+      </if>
+      <if test="problemDifficulty != null">
+        problem_difficulty,
+      </if>
+      <if test="problemValue != null">
+        problem_value,
+      </if>
+      <if test="problemVersion != null">
+        problem_version,
+      </if>
+      <if test="isPublish != null">
+        is_publish,
+      </if>
+      <if test="totalSubmitCount != null">
+        total_submit_count,
+      </if>
+      <if test="totalRightCount != null">
+        total_right_count,
+      </if>
+      <if test="problemContent != null">
+        problem_content,
+      </if>
+      <if test="allRightPeopleIds != null">
+        all_right_people_ids,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="problemId != null">
+        #{problemId,jdbcType=BIGINT},
+      </if>
+      <if test="problemTypeId != null">
+        #{problemTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="problemName != null">
+        #{problemName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputFileRootPath != null">
+        #{inputFileRootPath,jdbcType=VARCHAR},
+      </if>
+      <if test="outputFileRootPath != null">
+        #{outputFileRootPath,jdbcType=VARCHAR},
+      </if>
+      <if test="problemLabel != null">
+        #{problemLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null">
+        #{timeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="memoryLimit != null">
+        #{memoryLimit,jdbcType=INTEGER},
+      </if>
+      <if test="problemCreatorId != null">
+        #{problemCreatorId,jdbcType=INTEGER},
+      </if>
+      <if test="problemDifficulty != null">
+        #{problemDifficulty,jdbcType=INTEGER},
+      </if>
+      <if test="problemValue != null">
+        #{problemValue,jdbcType=INTEGER},
+      </if>
+      <if test="problemVersion != null">
+        #{problemVersion,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null">
+        #{isPublish,jdbcType=BIT},
+      </if>
+      <if test="totalSubmitCount != null">
+        #{totalSubmitCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalRightCount != null">
+        #{totalRightCount,jdbcType=INTEGER},
+      </if>
+      <if test="problemContent != null">
+        #{problemContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="allRightPeopleIds != null">
+        #{allRightPeopleIds,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.ProblemWithBLOBs">
+    update problem
+    <set>
+      <if test="problemTypeId != null">
+        problem_type_id = #{problemTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="problemName != null">
+        problem_name = #{problemName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputFileRootPath != null">
+        input_file_root_path = #{inputFileRootPath,jdbcType=VARCHAR},
+      </if>
+      <if test="outputFileRootPath != null">
+        output_file_root_path = #{outputFileRootPath,jdbcType=VARCHAR},
+      </if>
+      <if test="problemLabel != null">
+        problem_label = #{problemLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="timeLimit != null">
+        time_limit = #{timeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="memoryLimit != null">
+        memory_limit = #{memoryLimit,jdbcType=INTEGER},
+      </if>
+      <if test="problemCreatorId != null">
+        problem_creator_id = #{problemCreatorId,jdbcType=INTEGER},
+      </if>
+      <if test="problemDifficulty != null">
+        problem_difficulty = #{problemDifficulty,jdbcType=INTEGER},
+      </if>
+      <if test="problemValue != null">
+        problem_value = #{problemValue,jdbcType=INTEGER},
+      </if>
+      <if test="problemVersion != null">
+        problem_version = #{problemVersion,jdbcType=INTEGER},
+      </if>
+      <if test="isPublish != null">
+        is_publish = #{isPublish,jdbcType=BIT},
+      </if>
+      <if test="totalSubmitCount != null">
+        total_submit_count = #{totalSubmitCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalRightCount != null">
+        total_right_count = #{totalRightCount,jdbcType=INTEGER},
+      </if>
+      <if test="problemContent != null">
+        problem_content = #{problemContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="allRightPeopleIds != null">
+        all_right_people_ids = #{allRightPeopleIds,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where problem_id = #{problemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bishe.main.entity.ProblemWithBLOBs">
+    update problem
+    set problem_type_id = #{problemTypeId,jdbcType=INTEGER},
+      problem_name = #{problemName,jdbcType=VARCHAR},
+      input_file_root_path = #{inputFileRootPath,jdbcType=VARCHAR},
+      output_file_root_path = #{outputFileRootPath,jdbcType=VARCHAR},
+      problem_label = #{problemLabel,jdbcType=VARCHAR},
+      time_limit = #{timeLimit,jdbcType=INTEGER},
+      memory_limit = #{memoryLimit,jdbcType=INTEGER},
+      problem_creator_id = #{problemCreatorId,jdbcType=INTEGER},
+      problem_difficulty = #{problemDifficulty,jdbcType=INTEGER},
+      problem_value = #{problemValue,jdbcType=INTEGER},
+      problem_version = #{problemVersion,jdbcType=INTEGER},
+      is_publish = #{isPublish,jdbcType=BIT},
+      total_submit_count = #{totalSubmitCount,jdbcType=INTEGER},
+      total_right_count = #{totalRightCount,jdbcType=INTEGER},
+      problem_content = #{problemContent,jdbcType=LONGVARCHAR},
+      all_right_people_ids = #{allRightPeopleIds,jdbcType=LONGVARCHAR}
+    where problem_id = #{problemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.Problem">
+    update problem
+    set problem_type_id = #{problemTypeId,jdbcType=INTEGER},
+      problem_name = #{problemName,jdbcType=VARCHAR},
+      input_file_root_path = #{inputFileRootPath,jdbcType=VARCHAR},
+      output_file_root_path = #{outputFileRootPath,jdbcType=VARCHAR},
+      problem_label = #{problemLabel,jdbcType=VARCHAR},
+      time_limit = #{timeLimit,jdbcType=INTEGER},
+      memory_limit = #{memoryLimit,jdbcType=INTEGER},
+      problem_creator_id = #{problemCreatorId,jdbcType=INTEGER},
+      problem_difficulty = #{problemDifficulty,jdbcType=INTEGER},
+      problem_value = #{problemValue,jdbcType=INTEGER},
+      problem_version = #{problemVersion,jdbcType=INTEGER},
+      is_publish = #{isPublish,jdbcType=BIT},
+      total_submit_count = #{totalSubmitCount,jdbcType=INTEGER},
+      total_right_count = #{totalRightCount,jdbcType=INTEGER}
+    where problem_id = #{problemId,jdbcType=BIGINT}
+  </update>
+</mapper>
