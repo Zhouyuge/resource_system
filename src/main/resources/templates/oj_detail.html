@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
+    <link rel="stylesheet" href="//static.nowcoder.com/nc/style/0.0.44/fontcustom/global/global.css">
+    <link rel="stylesheet" href="//static.nowcoder.com/nc/style/0.0.44/common/global.css">
+</head>
+<body>
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="">题库</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">公司真题</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
+            <dd><a href="/bs/index/oj_index">在线编程</a></dd>
+            <dd><a href="/bs/index/mock_exam">模拟笔试</a></dd>
+
+            <dd><a href="/bs/index/uni">考研真题</a></dd>
+            <dd><a href="/bs/index/topics">精华广场</a></dd>
+            <dd><a href="/bs/index/square_title">试题广场</a></dd>
+        </dl>
+    </li>
+
+    <li class="layui-nav-item">
+        <a href="javascript:;">学习</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
+            <dd><a href="/bs/index/project_action">项目实战</a></dd>
+            <dd><a href="/bs/index/library">图书馆</a></dd>
+            <dd><a href="/bs/index/technology">技术栈</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
+    <li class="layui-nav-item"><a href="">讨论区</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/bs/index/talk">讨论区</a></dd>
+            <dd><a href="/bs/index/circle">圈子</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">发现</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
+        </dl>
+    </li>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
+
+    </li>
+
+    </li>
+</ul>
+<div class="layui-row">
+    <div class="layui-col-md6" style="background: #ffffff">
+        <div id="oj_detail" style="margin: 20px">
+        </div>
+    </div>
+
+    <div class="layui-col-md6" style="background: #000000; height: 650px">
+       <div>
+           <pre id="code_content" class="layui-code" lay-title="Java" lay-skin="notepad">
+    //在里面存放任意的JAVA代码(最好先本地OJ，再提交)
+    import java.util.*;
+    public class Main{
+       public static void main(String[] args){
+
+       }
+    }
+           </pre>
+        </div>
+       <button id="submit" class="layui-btn" style="margin-top: 20px; margin-bottom: 20px;   margin-left: 40%;" onclick="submitCode()">提交代码</button>
+       <button class="layui-btn layui-btn-danger" onclick="getEdit()">编辑代码</button>
+
+
+        <div class="layui-anim layui-anim-upbit" style="color: #ffffff">
+            <table class="layui-table" style="background: #000000">
+              <colgroup>
+                <col width="100">
+                <col width="100">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>成绩</th>
+                  <th>通过</th>
+                  <th>详情</th>
+                </tr>
+              </thead>
+              <tbody id="result">
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/oj/oj_detail.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/oj/oj_func.js"></script>
+<script>
+layui.use('code', function(){
+  layui.code({
+   height: '1000px',
+   encode: true
+  }); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+});
+</script>
+</html>

@@ -141,4 +141,10 @@ public class MainController {
     public String MockExam(){
         return "mock_exam";
     }
+
+    @RequestMapping("/index/oj_index")
+    public String ojIndex(){ return "oj_index"; }
+
+    @RequestMapping("/index/oj_detail")
+    public String ojDetail(){ return "oj_detail"; }
 }

@@ -32,6 +32,7 @@ public class Result<T> {
         return new Result<T>(codeMsg);
     }
 
+
     /**
      * 只传入数据默认成功，所以默认添加的code和msg
      * @param data

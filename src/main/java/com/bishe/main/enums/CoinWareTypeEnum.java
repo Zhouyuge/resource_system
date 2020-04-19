@@ -1,7 +1,5 @@
 package com.bishe.main.enums;
 
-import lombok.Data;
-
 /**
  * @author Kirito
  * @Date 2019/11/13 11:08

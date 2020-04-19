@@ -39,7 +39,7 @@
     where problem_id = #{problemId,jdbcType=BIGINT}
   </select>
 
-  <select id="getProblem" resultMap="ResuleMapWithBLOBs">
+  <select id="getProblem" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List" />
     ,

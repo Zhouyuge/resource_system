@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线编程</title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+    <link rel="shortcut icon" href="../../../mianshi/icon.png"/>
+</head>
+<body style="background: #e9e9e9">
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item"><img src="../../../mianshi/icon.png"/></li>
+    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
+    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="">题库</a>
+        <dl class="layui-nav-child">
+            <dd><a href="">公司真题</a></dd>
+            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
+            <dd><a href="/bs/index/oj_index">在线编程</a></dd>
+            <dd><a href="/bs/index/mock_exam">模拟笔试</a></dd>
+
+            <dd><a href="/bs/index/uni">考研真题</a></dd>
+            <dd><a href="/bs/index/topics">精华广场</a></dd>
+            <dd><a href="/bs/index/square_title">试题广场</a></dd>
+        </dl>
+    </li>
+
+    <li class="layui-nav-item">
+        <a href="javascript:;">学习</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
+            <dd><a href="/bs/index/project_action">项目实战</a></dd>
+            <dd><a href="/bs/index/library">图书馆</a></dd>
+            <dd><a href="/bs/index/technology">技术栈</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
+    <li class="layui-nav-item"><a href="">讨论区</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="/bs/index/talk">讨论区</a></dd>
+            <dd><a href="/bs/index/circle">圈子</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">发现</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+
+            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
+        </dl>
+    </li>
+    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
+        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
+    </li>
+    <li style="position: absolute; left: 79%" class="layui-nav-item">
+        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
+    </li>
+    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
+
+    </li>
+
+    </li>
+</ul>
+<div class="layui-row">
+    <div class="layui-col-md-offset1 layui-col-md7 layui-row" style="background: #ffffff; margin-top: 20px">
+        <input style="width: 300px; margin: 20px" type="text" id="select_orderId" name="select_orderId" lay-verify="required" placeholder="请输入题目编号" autocomplete="off" class="layui-input layui-col-md5">
+        <button class="layui-btn layui-btn-danger" style="margin-top: 20px">搜索</button>
+
+        <table class="layui-table" lay-skin="line" style="margin: 20px; width: 800px">
+          <colgroup>
+            <col width="120">
+            <col width="400">
+            <col width="120">
+            <col width="120">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>考点</th>
+              <th>题目</th>
+              <th>难度</th>
+              <th>通过率</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+        </table>
+
+        <div id="demo0" style="margin: 20px"></div>
+    </div>
+
+    <div style="margin-top: 20px; margin-left: 20px; background: #ffffff;" class="layui-col-md3">
+        <img style="margin-left: 40%; margin-top: 80px; margin-bottom: 20px" class="layui-circle" width="65px" height="65px" src="http://localhost:10086/img/h_img/mine.png"/>
+        <div style="text-align: center; margin-bottom: 20px">
+            <span style="color: #269abc; font-size: 16px">Eureka</span>
+        </div>
+        <hr/>
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <i class="layui-icon layui-icon-fonts-clear" style="color: #009f95; margin: 20px; font-size: 20px"></i>
+            <span style="margin-left: 20px; font-size: 16px;">已挑战</span>
+            <span style="margin-left: 100px;">0题/150题</span>
+        </div>
+        <hr/>
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <i class="layui-icon layui-icon-find-fill" style="color: #009f95; margin: 20px; font-size: 20px"></i>
+            <span style="margin-left: 20px; font-size: 16px;">已通过</span>
+            <span style="margin-left: 100px;">0题/150题</span>
+        </div>
+        <hr/>
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <i class="layui-icon layui-icon-upload" style="color: #009f95; margin: 20px; font-size: 20px"></i>
+            <span style="margin-left: 20px; font-size: 16px;">已提交</span>
+            <span style="margin-left: 100px;">0次</span>
+        </div>
+
+        <hr/>
+
+        <div style="border: #FD482C solid 2px; width: 80px; height: 80px; margin-top: 20px; margin-bottom: 20px; margin-left: 60%" class="layui-circle">
+            <div class="layui-circle" style="border: #FD482C dotted 1px; text-align: center; width: 70px; height: 70px; margin: 4px">
+                <br/>
+                <b style="color: #d43f3a">通过率:</b>
+                <b style="color: #d43f3a">0.0%</b>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 20px; background: #ffffff" class="layui-col-md-offset9 layui-col-md3">
+        <div style="margin: 20px">
+            <span class="layui-badge-dot"></span>
+            <b><span style="font-size: 20px;">挑战排行榜</span></b>
+        </div>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px">
+    <span style="text-align: center">created by @Kirito</span>
+</div>
+</body>
+<script type="text/javascript" src="../../../mianshi/jquery.min.js"></script>
+<script type="text/javascript" src="../../../mianshi/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/common.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/user/common_user.js"></script>
+<script type="text/javascript" src="../../../mianshi/js/oj/oj_index.js"></script>
+</html>

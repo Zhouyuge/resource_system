@@ -28,7 +28,7 @@ public class CodeMsg {
         return  new CodeMsg(code, msg);
     }
 
-    private CodeMsg(int code, String msg){
+    public CodeMsg(int code, String msg){
         this.code = code;
         this.msg = msg;
     }
