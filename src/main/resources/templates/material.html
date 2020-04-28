@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源管理页面</title>
+    <link href="../../../layui/css/layui.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <div class="layui-col-md12 layui-row" style="width: 100%; height: 45px; background: #393D49" name="head">
+        <div class="layui-col-md9" style="text-align: center;">
+            <h3 style="font-size: 22px;color: #ffffff; margin-top: 8px; margin-left: 300px">资源管理页面</h3>
+        </div>
+
+        <div class="layui-col-md3" style="margin-top: 12px;">
+            <span style="color: #f0ad4e;">欢迎:</span>
+            <span style="color: #ffffff">WU FL</span>
+            <span style="margin-left: 12px; color: #9acfea">系统时间:</span>
+            <span style="color: #ffffff" id="time"></span>
+        </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md1">
+            <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="test">
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源分类管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/category">资源类别操作</a></dd>
+                </dl>
+              </li>
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源信息管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/material">资源操作</a></dd>
+                </dl>
+              </li>
+
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源库存管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/stock">库存操作</a></dd>
+                </dl>
+              </li>
+
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">任务管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="javascript:;">任务分配及操作</a></dd>
+                </dl>
+              </li>
+
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源分配管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="javascript:;">资源分配信息操作</a></dd>
+                </dl>
+              </li>
+            </ul>
+        </div>
+
+        <div class="layui-col-md9 layui-col-md-offset2" style="margin-top: 20px;margin-bottom: 20px; border: #269abc 1px solid">
+            <div class="layui-row">
+                <input id="searchVal" style="margin: 20px; width: 300px" type="text" name="search" placeholder="请输入资源名称" class="layui-input layui-col-md4">
+                <button onclick="searchCate()" class="layui-btn layui-btn-primary layui-col-md1" style="margin-top: 20px">搜索<i style="font-size: 10px; margin-left: 3px" class="layui-icon layui-icon-search"></i></button>
+                <button onclick="addOne();" class="layui-btn layui-btn-normal" style="margin-top: 20px; margin-left: 463px"><i class="layui-icon layui-icon-upload"></i>添加资源</button>
+            </div>
+
+            <span id="tipCount" style="margin: 23px; color: #5FB878"></span>
+            <div style="margin: 20px">
+                <table class="layui-table">
+                  <colgroup>
+                    <col width="60">
+                    <col width="150">
+                    <col width="90">
+                    <col width="90">
+                    <col width="100">
+                    <col width="100">
+                  </colgroup>
+                  <thead>
+                    <tr style="background: #269abc; color: #ffffff">
+                      <th>资源名称</th>
+                      <th>资源信息</th>
+                      <th>资源类别</th>
+                      <th>计量单位</th>
+                      <th>图片描述</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="body">
+
+                  </tbody>
+                </table>
+            </div>
+
+            <div id="page" style="margin-left: 300px"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../bishe/jquery.min.js"></script>
+<script type="text/javascript" src="../../../bishe/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../../layui/layui.js"></script>
+<script type="text/javascript" src="../../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../../bishe/js/common.js"></script>
+<script type="text/javascript" src="../../../bishe/js/index.js"></script>
+<script type="text/javascript" src="../../../bishe/js/material/material.js"></script>
+<script type="text/javascript" src="../../../bishe/js/material/material_function.js"></script>
+</html>

@@ -31,10 +31,10 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("spring boots使用Swagger2构建RESTful apis")
-                .description("开发文档1.0")
-                .termsOfServiceUrl("http://zwg19970829.github.io")
-                .contact("@Kirito")
+                .title("资源管理开发接口")
+                .description("开发文档整理")
+                .termsOfServiceUrl("123456")
+                .contact("WUFULING")
                 .version("1.jquery.2.0.0")
                 .build();
     }

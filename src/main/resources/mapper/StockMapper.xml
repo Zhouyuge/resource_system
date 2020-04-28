@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.mapper.StockMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.Stock">
+    <id column="stock_id" jdbcType="INTEGER" property="stockId" />
+    <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="edit_time" jdbcType="TIMESTAMP" property="editTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stock_id, resource_id, number, edit_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_stock
+    where stock_id = #{stockId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_stock
+    where stock_id = #{stockId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bishe.main.entity.Stock">
+    insert into tb_stock (stock_id, resource_id, number, 
+      edit_time)
+    values (#{stockId,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bishe.main.entity.Stock">
+    insert into tb_stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockId != null">
+        stock_id,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="editTime != null">
+        edit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockId != null">
+        #{stockId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.Stock">
+    update tb_stock
+    <set>
+      <if test="resourceId != null">
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where stock_id = #{stockId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.Stock">
+    update tb_stock
+    set resource_id = #{resourceId,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=TIMESTAMP}
+    where stock_id = #{stockId,jdbcType=INTEGER}
+  </update>
+</mapper>

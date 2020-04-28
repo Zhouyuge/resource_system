@@ -13,11 +13,11 @@ import java.util.List;
 
 /**
  * @author Kirito
- * @Date 2019/6/1710:19
+ * @Date 2020/2/17 10:19
  */
 public class MybatisGenerator {
     public static void main(String[] args) throws Exception {
-        String today = "2020-04-18 10:23:33";
+        String today = "2020-04-28 10:23:33";
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = simpleDateFormat.parse(today);

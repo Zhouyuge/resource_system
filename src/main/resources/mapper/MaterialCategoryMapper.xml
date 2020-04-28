@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.main.mapper.MaterialCategoryMapper">
+  <resultMap id="BaseResultMap" type="com.bishe.main.entity.MaterialCategory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="category_content" jdbcType="VARCHAR" property="categoryContent" />
+    <result column="category_count" jdbcType="INTEGER" property="categoryCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="use_repeat" jdbcType="BIT" property="useRepeat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, category_name, category_content, category_count, create_time, use_repeat
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_material_category
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_material_category
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.MaterialCategory" useGeneratedKeys="true">
+    insert into tb_material_category (category_name, category_content, category_count, 
+      create_time, use_repeat)
+    values (#{categoryName,jdbcType=VARCHAR}, #{categoryContent,jdbcType=VARCHAR}, #{categoryCount,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{useRepeat,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bishe.main.entity.MaterialCategory" useGeneratedKeys="true">
+    insert into tb_material_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categoryName != null">
+        category_name,
+      </if>
+      <if test="categoryContent != null">
+        category_content,
+      </if>
+      <if test="categoryCount != null">
+        category_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="useRepeat != null">
+        use_repeat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryContent != null">
+        #{categoryContent,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCount != null">
+        #{categoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useRepeat != null">
+        #{useRepeat,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bishe.main.entity.MaterialCategory">
+    update tb_material_category
+    <set>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryContent != null">
+        category_content = #{categoryContent,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCount != null">
+        category_count = #{categoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useRepeat != null">
+        use_repeat = #{useRepeat,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bishe.main.entity.MaterialCategory">
+    update tb_material_category
+    set category_name = #{categoryName,jdbcType=VARCHAR},
+      category_content = #{categoryContent,jdbcType=VARCHAR},
+      category_count = #{categoryCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      use_repeat = #{useRepeat,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,36 +1,32 @@
 package com.bishe.main.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class User {
-    private String userId;
+    private byte[] userId;
+
+    private String userAccount;
 
     private String userName;
 
     private String userPassword;
 
-    private Boolean userSex;
+    private Date createTime;
 
-    private String userVisualName;
-
-    private String userTel;
-
-    private String userEmal;
-
-    private String userDetail;
-
-    private String userHeadPic;
-
-    private Date userCreateTime;
-
-    public String getUserId() {
+    public byte[] getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(byte[] userId) {
+        this.userId = userId;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount == null ? null : userAccount.trim();
     }
 
     public String getUserName() {
@@ -49,75 +45,11 @@ public class User {
         this.userPassword = userPassword == null ? null : userPassword.trim();
     }
 
-    public Boolean getUserSex() {
-        return userSex;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUserSex(Boolean userSex) {
-        this.userSex = userSex;
-    }
-
-    public String getUserVisualName() {
-        return userVisualName;
-    }
-
-    public void setUserVisualName(String userVisualName) {
-        this.userVisualName = userVisualName == null ? null : userVisualName.trim();
-    }
-
-    public String getUserTel() {
-        return userTel;
-    }
-
-    public void setUserTel(String userTel) {
-        this.userTel = userTel == null ? null : userTel.trim();
-    }
-
-    public String getUserEmal() {
-        return userEmal;
-    }
-
-    public void setUserEmal(String userEmal) {
-        this.userEmal = userEmal == null ? null : userEmal.trim();
-    }
-
-    public String getUserDetail() {
-        return userDetail;
-    }
-
-    public void setUserDetail(String userDetail) {
-        this.userDetail = userDetail == null ? null : userDetail.trim();
-    }
-
-    public String getUserHeadPic() {
-        return userHeadPic;
-    }
-
-    public void setUserHeadPic(String userHeadPic) {
-        this.userHeadPic = userHeadPic == null ? null : userHeadPic.trim();
-    }
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
-    public Date getUserCreateTime() {
-        return userCreateTime;
-    }
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
-    public void setUserCreateTime(Date userCreateTime) {
-        this.userCreateTime = userCreateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userSex=" + userSex +
-                ", userVisualName='" + userVisualName + '\'' +
-                ", userTel='" + userTel + '\'' +
-                ", userEmal='" + userEmal + '\'' +
-                ", userDetail='" + userDetail + '\'' +
-                ", userHeadPic='" + userHeadPic + '\'' +
-                ", userCreateTime=" + userCreateTime +
-                '}';
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

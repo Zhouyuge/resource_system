@@ -17,9 +17,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  #  配置当前要使用的数据源的操作类型
     driver-class-name: com.mysql.jdbc.Driver    #  配置mysql的驱动程序类
-    url: jdbc:mysql://39.106.218.135:3306/db_bishe?useUnicode=true&characterEncoding=utf8&useSSL=false    #  数据库连接地址
-    username: Kirito                                 #  数据库用户名
-    password: "0323"                                 #  数据库密码
+    url: jdbc:mysql://localhost:3306/db_material?useUnicode=true&characterEncoding=utf8&useSSL=false    #  数据库连接地址
+    username: root                                 #  数据库用户名
+    password: ""                                 #  数据库密码
     tomcat:
       connection-properties:  druid.stat.mergeSql=true
     dbcp2:                                        #  进行数据库连接池的配置
@@ -75,4 +75,4 @@ spring:
     cache: false #页面不加载缓存，修改及时生效
 logging:  #打印mysql语句
   level:
-    com.bishe.main.dao: DEBUG
+    com.bishe.main.mapper: DEBUG

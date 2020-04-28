@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link href="../../layui/css/layui.css" rel="stylesheet" media="all">
+</head>
+<body style="background: #2ea0ff">
+    <div style="text-align: center;">
+        <h1 style="color: #ffffff; margin-top: 60px">资源管理系统登录页面</h1>
+    </div>
+
+    <div style="background: #ffffff; width: 600px; height: 400px; margin-left: 45%; margin-top: 3%; box-shadow: 10px 10px 5px #333333;">
+      <span style="color:#ffffff;">1</span>
+      <div style="margin-top: 80px">
+        <form class="layui-form" action="">
+          <div class="layui-form-item">
+            <label class="layui-form-label">账号:</label>
+            <div class="layui-input-block">
+              <input style="width: 350px" type="text" name="userAccount" required  lay-verify="required" placeholder="请输入管理账号" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+
+          <div class="layui-form-item" style="margin-top: 30px;">
+            <label class="layui-form-label">密码:</label>
+            <div class="layui-input-inline">
+              <input style="width: 350px" type="password" name="userPassword" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+           </div>
+
+           <div class="layui-form-item" style="margin-top: 30px">
+             <label class="layui-form-label">验证码:</label>
+             <div class="layui-input-block">
+               <input style="width: 80px; height: 32px" required  lay-verify="required" name="verifyCode" type="text" autocomplete="off" class="layui-input">
+             </div>
+           </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+              <button style="width: 100px; margin-left: 30px; margin-right: 60px;" class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+              <a style="width: 100px" onclick="caidan()" class="layui-btn layui-btn-danger">忘记密码?</a>
+            </div>
+          </div>
+         </form>
+      </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../bishe/jquery.min.js"></script>
+<script type="text/javascript" src="../../bishe/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../bishe/js/common.js"></script>
+<script>
+layui.use('form', function(){
+    var form = layui.form;
+    //监听提交
+    form.on('submit(formDemo)', function(data){
+      var user = JSON.stringify(data.field);
+      $.ajax({
+        type : "POST",
+        data : user,
+        dataType : "json",
+        url : "/user/login",
+        contentType :"application/json;charset=utf-8",
+        success : function(data) {
+          if (data.code == 200){
+              window.location.href = '/system/index';
+          } else {
+              layer.msg(data.msg, {
+                icon: 2,
+              })
+          }
+        }
+      });
+      return false;
+    });
+ });
+</script>
+<script>
+    function caidan() {
+        layer.msg("请联系qq:2571335916", {
+             icon: 1
+        })
+
+    }
+</script>
+</html>

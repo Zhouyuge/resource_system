@@ -12,31 +12,15 @@ public class Result<T> {
     private T data;
 
     private Integer page;
-    /**
-     * 请求成功时调用
-     * @param data
-     * @param <T>
-     * @return
-     */
+
     public static <T> Result<T> success(T data) {
         return new Result<T>(data);
     }
 
-    /**
-     * 请求失败或发生异常时的调用
-     * @param codeMsg
-     * @param <T>
-     * @return
-     */
     public static <T> Result<T> error(CodeMsg codeMsg) {
         return new Result<T>(codeMsg);
     }
 
-
-    /**
-     * 只传入数据默认成功，所以默认添加的code和msg
-     * @param data
-     */
     private Result(T data) {
         this.code = 200;
         this.msg = "success";

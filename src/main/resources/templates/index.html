@@ -2,214 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
-    <link href="../layui/css/layui.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="../mianshi/icon.png"/>
+    <title>系统主页</title>
+    <link href="../../layui/css/layui.css" rel="stylesheet" media="all">
 </head>
-<body style="background: #e0e0e0">
-<ul class="layui-nav" lay-filter="">
-    <li class="layui-nav-item"><img src="../mianshi/icon.png"/></li>
-    <li class="layui-nav-item"><a href="">仿牛客网</a></li>
-    <li class="layui-nav-item"><a href="/bs/index">首页</a></li>
-    <li class="layui-nav-item layui-this"><a href="">题库</a>
-        <dl class="layui-nav-child">
-            <dd><a href="">公司真题</a></dd>
-            <dd><a href="/bs/index/title/s_title">专项练习</a></dd>
-            <dd><a href="/bs/index/oj_index">在线编程</a></dd>
-            <dd><a href="/bs/index/mock_exam">模拟笔试</a></dd>
+<body>
+    <div class="layui-col-md12 layui-row" style="width: 100%; height: 45px; background: #393D49" name="head">
+        <div class="layui-col-md9" style="text-align: center;">
+            <h3 style="font-size: 22px;color: #ffffff; margin-top: 8px; margin-left: 300px">资源管理系统</h3>
+        </div>
 
-            <dd><a href="/bs/index/uni">考研真题</a></dd>
-<dd><a href="/bs/index/topics">精华广场</a></dd>
-            <dd><a href="/bs/index/square_title">试题广场</a></dd>
-        </dl>
-    </li>
-
-    <li class="layui-nav-item">
-        <a href="javascript:;">学习</a>
-        <dl class="layui-nav-child"> <!-- 二级菜单 -->
-
-            <dd><a href="/bs/index/study/blog">专栏-文章</a></dd>
-<dd><a href="/bs/index/project_action">项目实战</a></dd><dd><a href="/bs/index/library">图书馆</a></dd>
-            <dd><a href="/bs/index/technology">技术栈</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item"><a href="/bs/index/post">求职</a></li>
-    <li class="layui-nav-item"><a href="">讨论区</a>
-        <dl class="layui-nav-child"> <!-- 二级菜单 -->
-            <dd><a href="/bs/index/talk">讨论区</a></dd>
-            <dd><a href="/bs/index/circle">圈子</a></dd>
-        </dl>
-    </li>
-    <li class="layui-nav-item"><a href="">发现</a>
-        <dl class="layui-nav-child"> <!-- 二级菜单 -->
-
-            <dd><a href="/bs/index/find/coin_ware">牛币兑换中心</a></dd>
-        </dl>
-    </li>
-    <li style="position: absolute; left:63%" class="layui-nav-item"><input type="text" class="layui-input-inline"/>
-        <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm">搜索</button>
-    </li>
-    <li style="position: absolute; left: 79%" class="layui-nav-item">
-        <i style="color: #f7f7f7" class="layui-icon layui-icon-cellphone-fine">APP</i>
-    </li>
-    <li style="position: absolute; left: 83%" class="layui-nav-item" id="user_info">
-
-    </li>
-
-    </li>
-</ul>
+        <div class="layui-col-md3" style="margin-top: 12px;">
+            <span style="color: #f0ad4e;">欢迎:</span>
+            <span style="color: #ffffff">WU FL</span>
+            <span style="margin-left: 12px; color: #9acfea">系统时间:</span>
+            <span style="color: #ffffff" id="time"></span>
+        </div>
+    </div>
 
     <div class="layui-row">
-        <div class="layui-col-md-offset1 layui-col-md7" style="margin-top: 15px">
-            <div style="background: #ffffff;margin: 20px" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-              <ul class="layui-tab-title">
-                <li class="layui-this">动态</li>
-              </ul>
-              <div class="layui-tab-content">
-                 <div class="layui-tab-item layui-show">
-                    <textarea id="demo" style="display: none"></textarea>
-                    <button id="dailyPoint" style="margin-left : 90%; margin-top: 10px" class="layui-btn">打卡</button>
-                  </div>
-              </div>
-            </div>
+        <div>
+            <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="test">
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源分类管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/category">资源类别操作</a></dd>
+                </dl>
+              </li>
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源信息管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/material">资源操作</a></dd>
+                </dl>
+              </li>
 
-            <ul id="daily_list">
-                <li>
-                    <div class="layui-row" style="background: #ffffff; margin-left: 20px; margin-right: 20px; margin-bottom: 10px">
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源库存管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="/system/index/stock">库存操作</a></dd>
+                </dl>
+              </li>
 
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">任务管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="javascript:;">任务分配及操作</a></dd>
+                </dl>
+              </li>
 
-
-                    </div>
-                </li>
+              <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">资源分配管理</a>
+                <dl class="layui-nav-child">
+                  <dd><a href="javascript:;">资源分配信息操作</a></dd>
+                </dl>
+              </li>
             </ul>
-    </div>
-
-    <div class="layui-col-md3" style="background: #ffffff; margin-top: 35px">
-         <div style="background: #F1F9F8; margin: 10px">
-            <img style="margin: 10px" src="http://39.106.218.135:10086/img/h_img/default.jpg" class="layui-circle" width="40px" height="40px"/>
-            <span>Kirito</span>
-
-            <a href="" style="color: #009f95; margin-left: 35%">
-                <i class="layui-icon layui-icon-friends"></i>
-                <span>个人主页</span>
-            </a>
-         </div>
-
-         <div style="margin: 20px">
-             <span class="layui-badge-dot"></span>
-             <b><span style="font-size: 15px;">能力评估</span></b>
-         </div>
-         <div style="margin: 20px">
-             <div style="margin-bottom: 20px">
-                <img src="http://39.106.218.135:10086/img/tech_img/resize,h_70,w_701.png" width="35px" height="35px" />
-                    <span>Java</span>
-             </div>
-             <div class="layui-progress">
-                <div class="layui-progress-bar" lay-percent="92%"></div>
-             </div>
         </div>
-         <div style="margin: 20px">
-             <div style="margin-bottom: 20px">
-                <img src="http://39.106.218.135:10086/img/tech_img/resize,h_70,w_7036.png" width="35px" height="35px" />
-                    <span>MySQL</span>
-             </div>
-             <div class="layui-progress">
-                <div class="layui-progress-bar layui-bg-red" lay-percent="46%"></div>
-             </div>
-        </div>
-         <div style="margin: 20px">
-             <div style="margin-bottom: 20px">
-                <img src="http://39.106.218.135:10086/img/tech_img/resize,h_70,w_7024.png" width="35px" height="35px" />
-                    <span>Spring Cloud</span>
-             </div>
-             <div class="layui-progress">
-                <div class="layui-progress-bar layui-bg-blue" lay-percent="78%"></div>
-             </div>
+
+        <div style="margin-left: 700px; margin-top: 200px">
+            <h1>WELCOME!</h1>
         </div>
     </div>
 
-    <div class="layui-col-md3" style="background: #ffffff; margin-top: 15px">
-         <div style="margin: 20px">
-             <span class="layui-badge-dot"></span>
-             <b><span style="font-size: 15px;">刷题</span></b>
-         </div>
-         <div style="margin: 10px" class="layui-row">
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/1.png" />
-                <br/>
-                <a href=""><span>真题练习</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/2.png" />
-                <br/>
-                <a href=""><span>专项练习</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/3.png" />
-                <br/>
-                <a href=""><span>在线编程</span></a>
-            </div>
-         </div>
-         <hr style="margin: 20px" />
-
-        <div style="margin: 20px">
-             <span class="layui-badge-dot"></span>
-             <b><span style="font-size: 15px;">提升</span></b>
-         </div>
-         <div style="margin: 10px" class="layui-row">
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/4.png" />
-                <br/>
-                <a href=""><span>学技术</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/5.png" />
-                <br/>
-                <a href=""><span>看书</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/6.png" />
-                <br/>
-                <a href=""><span>做项目</span></a>
-            </div>
-         </div>
-         <hr style="margin: 20px" />
-
-        <div style="margin: 20px">
-             <span class="layui-badge-dot"></span>
-             <b><span style="font-size: 15px;">找工作</span></b>
-         </div>
-         <div style="margin: 10px" class="layui-row">
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/7.png" />
-                <br/>
-                <a href=""><span>投简历</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/8.png" />
-                <br/>
-                <a href=""><span>补面经</span></a>
-            </div>
-            <div class="layui-col-md4" style="text-align: center">
-                <img src="http://39.106.218.135:10086/img/index_icon/9.png" />
-                <br/>
-                <a href=""><span>讨论区</span></a>
-            </div>
-         </div>
-    </div>
-</div>
-<script type="text/javascript" src="../mianshi/jquery.min.js"></script>
-<script type="text/javascript" src="../mianshi/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../layui/layui.js"></script>
-<script type="text/javascript" src="../layui/layui.all.js"></script>
-<script type="text/javascript" src="../mianshi/js/user/common_user.js"></script>
-<script type="text/javascript" src="../mianshi/js/user/user_function.js"></script>
-
-<script>
-//注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
-layui.use('element', function(){
-  var element = layui.element;
-});
-</script>
 </body>
+<script type="text/javascript" src="../../bishe/jquery.min.js"></script>
+<script type="text/javascript" src="../../bishe/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="../../layui/layui.all.js"></script>
+<script type="text/javascript" src="../../bishe/js/common.js"></script>
+<script type="text/javascript" src="../../bishe/js/index.js"></script>
 </html>
